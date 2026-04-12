@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세보기 | 게시판 | ADBC Center</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="gnb-root"></div>
+
+
+    <div class="breadcrumb-container">
+        <div class="container breadcrumb">
+            <span>Home</span>
+            <span>게시판</span>
+            <span class="active">상세보기</span>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="board-container">
+            <!-- Sidebar -->
+            <aside class="board-sidebar">
+                <h3>게시판</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="board-notice.html" class="active">공지사항</a></li>
+                    <li><a href="#">FAQ</a></li>
+                    <li><a href="#">질의응답</a></li>
+                    <li><a href="#">자료실</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Post Content -->
+            <div class="board-content">
+                <div id="post-detail-area">
+                    <!-- Data will be injected here -->
+                    <div style="padding: 100px; text-align: center; color: var(--text-muted);">게시물을 불러오는 중...</div>
+                </div>
+
+                <div class="post-footer-btns">
+                    <a href="board-notice.html" class="btn-primary" style="background: var(--text-muted);">목록으로</a>
+                    <div id="admin-btns" style="display: none; gap: 10px;">
+                        <button class="btn-primary" style="background: var(--primary-blue);" onclick="editPost()">수정</button>
+                        <button class="btn-primary" style="background: #e74c3c; border-color: #e74c3c;" onclick="deletePost()">삭제</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: #f1f3f5; padding: 60px 0; text-align: center; border-top: 1px solid var(--border-color); margin-top: 80px;">
+        <div class="container">
+            <p style="color: var(--text-muted);">&copy; 2026 Sejong Autonomous Driving Big Data Control Center. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="board-logic.js"></script>
+    <script src="main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const postId = urlParams.get('id');
+
+            if (postId) {
+                incrementViews(postId);
+                renderDetail(postId);
+            } else {
+                alert('잘못된 접근입니다.');
+                location.href = 'board-notice.html';
+            }
+        });
+
+        function renderDetail(id) {
+            const post = getPostById(id);
+            const detailArea = document.getElementById('post-detail-area');
+            const adminBtns = document.getElementById('admin-btns');
+
+            if (!post) {
+                detailArea.innerHTML = '<div style="padding: 100px; text-align: center;">존재하지 않는 게시물입니다.</div>';
+                return;
+            }
+
+            // Simple admin check simulation (always true for this prototype)
+            adminBtns.style.display = 'flex';
+
+            detailArea.innerHTML = `
+                <div class="post-view-header">
+                    <h2>${post.title}</h2>
+                    <div class="post-meta">
+                        <span><strong>작성자:</strong> ${post.writer}</span>
+                        <span><strong>작성일:</strong> ${post.date}</span>
+                        <span><strong>조회수:</strong> ${post.views}</span>
+                    </div>
+                </div>
+                <div class="post-content">
+                    ${post.content.replace(/\n/g, '<br>')}
+                </div>
+                ${post.files && post.files.length > 0 ? `
+                    <div class="post-attachments">
+                        <span class="attachment-title">첨부파일 (${post.files.length})</span>
+                        ${post.files.map(file => `
+                            <a href="#" class="attachment-item">
+                                📎 ${file.name} (${file.size})
+                            </a>
+                        `).join('')}
+                    </div>
+                ` : ''}
+            `;
+        }
+
+        function deletePost() {
+            if (confirm('정말로 삭제하시겠습니까?')) {
+                const urlParams = new URLSearchParams(window.location.search);
+                const id = urlParams.get('id');
+                let data = getBoardData();
+                data = data.filter(p => p.id != id);
+                saveBoardData(data);
+                alert('삭제되었습니다.');
+                location.href = 'board-notice.html';
+            }
+        }
+
+        function editPost() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const id = urlParams.get('id');
+            location.href = `board-write.html?id=${id}`;
+        }
+    </script>
+</body>
+</html>

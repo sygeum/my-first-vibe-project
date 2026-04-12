@@ -1,0 +1,159 @@
+/* Center Location Page Specific Styles */
+
+.location-container {
+    padding-bottom: 100px;
+}
+
+/* 1. Map Area */
+.location-map-section {
+    margin-bottom: 60px;
+}
+
+.map-container {
+    width: 100%;
+    height: 500px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* 2. Address Card */
+.address-section {
+    margin-bottom: 60px;
+}
+
+.address-card {
+    background: #fff;
+    padding: 50px;
+    border-radius: 24px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    text-align: center;
+    position: relative;
+    transition: var(--transition);
+}
+
+.address-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-blue);
+}
+
+.address-label {
+    display: inline-block;
+    color: var(--accent-blue);
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+}
+
+.address-text {
+    font-size: 2rem;
+    color: var(--primary-navy);
+    font-weight: 800;
+    line-height: 1.3;
+    word-break: keep-all;
+}
+
+.btn-copy-address {
+    margin-top: 30px;
+    background: var(--bg-gray);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn-copy-address:hover {
+    background: var(--primary-navy);
+    color: #fff;
+    border-color: var(--primary-navy);
+}
+
+/* 3. Transport Info */
+.transport-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+.transport-card {
+    background: #fff;
+    padding: 40px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+}
+
+.transport-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid var(--bg-gray);
+}
+
+.transport-icon {
+    font-size: 1.8rem;
+    width: 50px;
+    height: 50px;
+    background: var(--secondary-blue);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.transport-card h4 {
+    font-size: 1.25rem;
+    color: var(--primary-navy);
+    font-weight: 800;
+}
+
+.transport-content {
+    color: var(--text-main);
+    line-height: 1.8;
+}
+
+.transport-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.transport-content li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+}
+
+.transport-content li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--accent-blue);
+    font-weight: 900;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .address-text { font-size: 1.5rem; }
+}
+
+@media (max-width: 768px) {
+    .transport-grid { grid-template-columns: 1fr; }
+    .map-container { height: 350px; }
+    .address-card { padding: 30px 20px; }
+    .address-text { font-size: 1.25rem; }
+}

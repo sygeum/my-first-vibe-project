@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 | ADBC Center</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="gnb-root"></div>
+
+
+    <div class="breadcrumb-container">
+        <div class="container breadcrumb">
+            <span>Home</span>
+            <span class="active">회원가입</span>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="signup-card">
+            <header style="text-align: center; margin-bottom: 30px;">
+                <h2 style="color: var(--primary-navy);">계정 생성</h2>
+                <p style="color: var(--text-muted);">ADBC 통합 플랫폼 계정을 생성합니다.</p>
+            </header>
+
+            <form id="signup-form">
+                <div class="form-group">
+                    <label for="name">성함</label>
+                    <div class="input-wrapper">
+                        <input type="text" id="name" name="name" placeholder="홍길동" required>
+                    </div>
+                    <span class="error-message">성함을 입력해주세요.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">이메일 주소</label>
+                    <div class="input-wrapper">
+                        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                    </div>
+                    <span class="error-message">올바른 이메일 형식을 입력해주세요.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">비밀번호</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="password" name="password" placeholder="10자 이상 입력해주세요" required>
+                    </div>
+                    <span class="error-message">비밀번호는 10자 이상이어야 합니다.</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">비밀번호 확인</label>
+                    <div class="input-wrapper">
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="비밀번호 확인" required>
+                    </div>
+                    <span class="error-message">비밀번호가 일치하지 않습니다.</span>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 20px;">가입 신청</button>
+            </form>
+        </div>
+    </main>
+
+    <div id="success-overlay" class="success-overlay">
+        <div class="success-icon">✓</div>
+        <h2>가입 신청 완료</h2>
+        <p style="color: var(--text-muted); margin-top: 10px;">관리자 승인 후 시스템 이용이 가능합니다.</p>
+        <button class="btn-primary" style="margin-top: 30px;" onclick="location.href='index.html'">메인으로 돌아가기</button>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
