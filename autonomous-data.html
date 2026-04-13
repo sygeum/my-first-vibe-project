@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자율 주행 데이터 | ADBC Center</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="gnb-root"></div>
+
+    <div class="breadcrumb-container">
+        <div class="container breadcrumb">
+            <span>Home</span>
+            <span>자율 주행 데이터</span>
+            <span class="active">자율 주행 데이터</span>
+        </div>
+    </div>
+
+    <!-- 1. Hero Section -->
+    <header class="hero" style="height: 300px;">
+        <div class="container">
+            <h1>자율 주행 데이터</h1>
+            <p>자율주행 데이터 조회 및 오픈랩 분석 환경 신청을 위한 통합 안내 채널입니다.</p>
+        </div>
+    </header>
+
+    <main class="container tabs-container" style="padding-bottom: 100px;">
+        <!-- Sub Tab Menu (Page Level) -->
+        <section style="padding: 60px 0 0;">
+            <div class="sub-tab-container" style="display: flex;">
+                <a href="javascript:void(0);" class="sub-tab-item tab-btn active" data-tab="open-lab">오픈랩 신청</a>
+                <a href="javascript:void(0);" class="sub-tab-item tab-btn" data-tab="data-flow">데이터 흐름도</a>
+                <a href="javascript:void(0);" class="sub-tab-item tab-btn" data-tab="collection">수집 대상</a>
+                <a href="javascript:void(0);" class="sub-tab-item tab-btn" data-tab="standards">데이터 규격</a>
+            </div>
+            
+            <!-- Open Lab Request Tab Content -->
+            <div id="open-lab" class="tab-content active" style="padding-top: 60px;">
+                <!-- 안내 문구 영역 -->
+                <div class="intro-text-box" style="margin-bottom: 60px;">
+                    <p>
+                        <strong>자율주행 테스트 완료 후 오픈랩 신청이 가능합니다.</strong><br>
+                        오픈랩 신청 후 승인 절차를 거쳐 분석 환경을 활용할 수 있습니다.
+                    </p>
+                </div>
+
+                <!-- 절차 안내 영역 -->
+                <h2 class="section-title">자율주행 연구 이용절차</h2>
+                
+                <div class="flow-container" style="margin-bottom: 60px;">
+                    <div class="flow-step">
+                        <div class="flow-icon">📝</div>
+                        <span class="card-num">STEP 1</span>
+                        <h4>오픈랩 신청</h4>
+                    </div>
+
+                    <div class="flow-arrow">➔</div>
+
+                    <div class="flow-step">
+                        <div class="flow-icon">💻</div>
+                        <span class="card-num">STEP 2</span>
+                        <h4>오픈랩 활용</h4>
+                    </div>
+
+                    <div class="flow-arrow">➔</div>
+
+                    <div class="flow-step">
+                        <div class="flow-icon">✅</div>
+                        <span class="card-num">STEP 3</span>
+                        <h4>신청 완료</h4>
+                    </div>
+                </div>
+
+                <!-- 버튼 영역 -->
+                <div style="text-align: center; margin-bottom: 80px;">
+                    <a href="#" class="btn-primary" style="font-size: 1.1rem; padding: 15px 40px; display: inline-block;">오픈랩 신청</a>
+                </div>
+
+                <!-- 단계별 상세 설명 영역 -->
+                <div class="step-detail-box">
+                    <div class="step-detail-left">
+                        <span class="card-num">STEP 1</span>
+                        <h4>오픈랩 신청</h4>
+                    </div>
+                    <div class="step-detail-right">
+                        <ul>
+                            <li>사전요청 데이터 선택</li>
+                            <li>이용목적 및 분석환경, 솔루션 선택</li>
+                            <li>승인 후 방문 절차 진행</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-detail-box">
+                    <div class="step-detail-left">
+                        <span class="card-num">STEP 2</span>
+                        <h4>오픈랩 활용</h4>
+                    </div>
+                    <div class="step-detail-right">
+                        <ul>
+                            <li>할당된 분석환경 계정으로 접속</li>
+                            <li>빅데이터 및 자율주행 테스트 데이터를 활용한 분석 가능</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-detail-box">
+                    <div class="step-detail-left">
+                        <span class="card-num">STEP 3</span>
+                        <h4>신청 완료</h4>
+                    </div>
+                    <div class="step-detail-right">
+                        <ul>
+                            <li>신청 승인 및 활용 완료 상태 표시</li>
+                            <li>필요 시 완료 메시지 또는 후속 이용 안내 문구 추가</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Other Tabs Placeholder -->
+            <div id="data-flow" class="tab-content" style="padding-top: 60px;">
+                <div class="intro-text-box" style="margin-bottom: 60px;">
+                    <p>
+                        <strong>자율주행 데이터 통합 수집 및 서비스 제공 흐름도</strong><br>
+                        차량 및 인프라 장비에서 수집된 데이터가 중앙 플랫폼을 거쳐 다양한 서비스로 제공되는 과정을 안내합니다.
+                    </p>
+                </div>
+                
+                <div class="df-container">
+                    <!-- Left: 수집 장비 -->
+                    <div class="df-col">
+                        <div class="df-box">
+                            <h4 class="df-box-title">📡 데이터 수집</h4>
+                            <ul class="df-list">
+                                <li>차량 주행 데이터</li>
+                                <li>차량 상태 데이터</li>
+                                <li>교통 및 신호 데이터</li>
+                                <li>영상 데이터 (CCTV)</li>
+                                <li>센서 데이터 (Radar, LiDAR)</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Arrow -->
+                    <div class="df-arrow-col">➔</div>
+                    
+                    <!-- Middle: Edge & Platform -->
+                    <div class="df-col">
+                        <div class="df-box center-server">
+                            <h4 class="df-box-title" style="margin-bottom: 16px;">⚡ 엣지 컴퓨팅</h4>
+                            <div style="width: 100%;">
+                                <div class="df-tag">현장 데이터 수집</div>
+                                <div class="df-tag">실시간 데이터 처리</div>
+                                <div class="df-tag">이벤트 분석</div>
+                            </div>
+                        </div>
+                        
+                        <div class="df-box center-server">
+                            <div style="font-size:2.5rem; margin-bottom:10px;">☁️</div>
+                            <h4 class="df-box-title" style="margin-bottom: 16px;">중앙 데이터 플랫폼</h4>
+                            <div style="width: 100%;">
+                                <div class="df-tag highlight">데이터 저장</div>
+                                <div class="df-tag highlight">데이터 통합</div>
+                                <div class="df-tag highlight">데이터 분석</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Arrow -->
+                    <div class="df-arrow-col">➔</div>
+                    
+                    <!-- Right: 서비스 -->
+                    <div class="df-col">
+                        <div class="df-box">
+                            <h4 class="df-box-title">🖥️ 관제 시스템</h4>
+                            <ul class="df-list">
+                                <li>실시간 차량 위치 모니터링</li>
+                                <li>이벤트 및 위험 상황 알림</li>
+                                <li>영상 연동</li>
+                            </ul>
+                        </div>
+                        <div class="df-box">
+                            <h4 class="df-box-title">🏢 기업지원 서비스</h4>
+                            <ul class="df-list">
+                                <li>데이터 다운로드 (CSV / JSON)</li>
+                                <li>API 제공</li>
+                                <li>분석 리포트 제공</li>
+                                <li>운전행태 데이터 제공</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="collection" class="tab-content" style="padding-top: 60px;">
+                <h3 style="text-align:center; padding:100px 0; color:var(--primary-navy);">수집 대상 (콘텐츠 준비 중)</h3>
+            </div>
+            
+            <div id="standards" class="tab-content" style="padding-top: 60px;">
+                <h3 style="text-align:center; padding:100px 0; color:var(--primary-navy);">데이터 규격 (콘텐츠 준비 중)</h3>
+            </div>
+        </section>
+    </main>
+
+    <footer style="background: #f1f3f5; padding: 60px 0; text-align: center; border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <p style="color: var(--text-muted);">&copy; 2026 Sejong Autonomous Driving Big Data Control Center. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

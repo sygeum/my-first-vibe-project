@@ -199,7 +199,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                     </div>
                     <a href="index.html" class="${currentPage === 'index.html' ? 'active' : ''}">모니터링</a>
-                    <a href="#">데이터 플랫폼</a>
+                    <div class="has-dropdown">
+                        <a href="autonomous-data.html" class="${['autonomous-data.html'].includes(currentPage) ? 'active' : ''}">자율 주행 데이터</a>
+                        <div class="dropdown-menu">
+                            <a href="autonomous-data.html">자율 주행 데이터</a>
+                            <a href="#">자율 주행 데이터 신청</a>
+                            <a href="#">분석 데이터 신청</a>
+                        </div>
+                    </div>
                     <a href="#">인프라 예약</a>
                     <a href="signup.html" class="${currentPage === 'signup.html' ? 'active' : ''}">회원가입</a>
                 </div>
