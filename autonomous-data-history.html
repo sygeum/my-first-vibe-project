@@ -265,6 +265,18 @@
                 statusText: '승인완료'
             },
             {
+                id: 'AN-2026-002',
+                dataCategory: '분석 데이터',
+                date: '2026-04-14',
+                period: '2026-04-14',
+                type: '분석데이터4',
+                purpose: '교차로 보행자 사고 위험도 예측 연구를 위한 유동인구 및 차량 속도 데이터 활용',
+                files: '-',
+                status: 'rejected',
+                statusText: '반려',
+                rejectReason: '신청 목적이 구체적이지 않으며, 요청하신 데이터 범위가 연구 목적에 비해 과도하게 광범위합니다. 연구 계획서를 보완하여 재신청해주시기 바랍니다.'
+            },
+            {
                 id: 'AN-2026-001',
                 dataCategory: '분석 데이터',
                 date: '2026-04-14',
@@ -283,8 +295,8 @@
                 type: 'PVD, LiDAR',
                 purpose: '차량 객체 인식 AI 모델 학습용 대용량 LiDAR 데이터 수집 및 도로 환경 분석',
                 files: '-',
-                status: 'review',
-                statusText: '검토중'
+                status: 'received',
+                statusText: '접수완료'
             }
         ];
 
@@ -346,6 +358,11 @@
             const item = historyData.find(d => d.id === id);
             const detailContent = document.getElementById('detail-content');
             
+            let progressMsg = '현재 담당자가 신청 내용을 검토 중입니다.';
+            if (item.status === 'approved') progressMsg = '자율주행 데이터 신청 승인이 완료되었습니다.';
+            if (item.status === 'rejected') progressMsg = '신청하신 데이터 요청이 반려되었습니다.';
+            if (item.status === 'received') progressMsg = '데이터 신청이 정상적으로 접수되었습니다.';
+
             detailContent.innerHTML = `
                 <div class="detail-header">
                     <div>
@@ -389,11 +406,19 @@
                 <div class="detail-section" style="margin-bottom: 0;">
                     <h4>진행 상태</h4>
                     <div style="background: var(--bg-gray); padding: 20px; border-radius: 10px; display: flex; flex-direction: column; gap: 15px;">
-                        <div style="display: flex; align-items: center; gap: 20px;">
+                        <div style="display: flex; align-items: flex-start; gap: 20px;">
                             <span class="status-badge status-${item.status}">${item.statusText}</span>
-                            <p style="font-size: 0.95rem; color: var(--text-main);">
-                                ${item.status === 'approved' ? '자율주행 데이터 신청 승인이 완료되었습니다.' : '현재 담당자가 신청 내용을 검토 중입니다.'}
-                            </p>
+                            <div style="flex: 1;">
+                                <p style="font-size: 0.95rem; color: var(--text-main); font-weight: 600; margin-bottom: 5px;">
+                                    ${progressMsg}
+                                </p>
+                                ${item.status === 'rejected' ? `
+                                    <div style="margin-top: 15px; background: #fff; padding: 15px; border: 1px solid #fecaca; border-radius: 8px;">
+                                        <div style="font-size: 0.85rem; font-weight: 700; color: #b91c1c; margin-bottom: 8px;">반려 사유</div>
+                                        <div style="font-size: 0.9rem; color: var(--text-main); line-height: 1.6;">${item.rejectReason}</div>
+                                    </div>
+                                ` : ''}
+                            </div>
                         </div>
                         ${item.status === 'approved' ? `
                             <div style="border-top: 1px solid var(--border-color); padding-top: 15px; display: flex; align-items: center; justify-content: space-between;">

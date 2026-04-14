@@ -18,56 +18,191 @@
         </div>
     </div>
 
-    <main class="container">
-        <div class="signup-card">
-            <header style="text-align: center; margin-bottom: 30px;">
-                <h2 style="color: var(--primary-navy);">계정 생성</h2>
-                <p style="color: var(--text-muted);">ADBC 통합 플랫폼 계정을 생성합니다.</p>
+    <main class="container" style="max-width: 600px; margin: 10px auto 30px;">
+        <div class="signup-card" style="max-width: none;">
+            <header style="text-align: center; margin-bottom: 12px;">
+                <h2 style="color: var(--primary-navy); font-size: 2rem;">회원가입</h2>
+                <p style="color: var(--text-muted);">ADBC 통합 플랫폼 시스템 이용을 위해 회원정보를 입력해주세요.</p>
             </header>
 
             <form id="signup-form">
-                <div class="form-group">
-                    <label for="name">성함</label>
-                    <div class="input-wrapper">
-                        <input type="text" id="name" name="name" placeholder="홍길동" required>
+                <!-- 1. 약관 동의 -->
+                <section class="signup-section">
+                    <h3 class="section-title">1. 약관 동의</h3>
+                    <div class="terms-container">
+                        <div class="terms-all">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="terms-all">
+                                <span>전체 약관에 동의합니다.</span>
+                            </label>
+                        </div>
+                        <div class="terms-items">
+                            <div class="terms-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="terms-check required" id="term1">
+                                    <span>이용약관 동의 (필수)</span>
+                                </label>
+                                <button type="button" class="btn-text">보기</button>
+                            </div>
+                            <div class="terms-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="terms-check required" id="term2">
+                                    <span>개인정보 수집 및 이용 동의 (필수)</span>
+                                </label>
+                                <button type="button" class="btn-text">보기</button>
+                            </div>
+                            <div class="terms-item">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" class="terms-check" id="term3">
+                                    <span>마케팅 정보 수신 동의 (선택)</span>
+                                </label>
+                                <button type="button" class="btn-text">보기</button>
+                            </div>
+                        </div>
                     </div>
-                    <span class="error-message">성함을 입력해주세요.</span>
-                </div>
+                </section>
 
-                <div class="form-group">
-                    <label for="email">이메일 주소</label>
-                    <div class="input-wrapper">
-                        <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                <hr class="divider">
+
+                <!-- 2. 회원 유형 선택 -->
+                <section class="signup-section">
+                    <h3 class="section-title">2. 회원 유형 선택</h3>
+                    <div class="user-type-group">
+                        <label class="type-card">
+                            <input type="radio" name="user_type" value="individual" checked>
+                            <div class="type-content">
+                                <span class="type-icon">👤</span>
+                                <span class="type-label">개인회원</span>
+                            </div>
+                        </label>
+                        <label class="type-card">
+                            <input type="radio" name="user_type" value="enterprise">
+                            <div class="type-content">
+                                <span class="type-icon">🏢</span>
+                                <span class="type-label">기업회원</span>
+                            </div>
+                        </label>
                     </div>
-                    <span class="error-message">올바른 이메일 형식을 입력해주세요.</span>
-                </div>
+                </section>
 
-                <div class="form-group">
-                    <label for="password">비밀번호</label>
-                    <div class="input-wrapper">
-                        <input type="password" id="password" name="password" placeholder="10자 이상 입력해주세요" required>
+                <hr class="divider">
+
+                <!-- 3. 본인 인증 -->
+                <section class="signup-section">
+                    <h3 class="section-title">3. 본인 인증</h3>
+                    <div class="form-group">
+                        <label for="phone">휴대폰 번호 <span class="required-mark">*</span></label>
+                        <div class="input-with-btn">
+                            <input type="text" id="phone" placeholder="'-' 제외 숫자만 입력" maxlength="11">
+                            <button type="button" id="btn-request-auth" class="btn-outline">인증번호 요청</button>
+                        </div>
                     </div>
-                    <span class="error-message">비밀번호는 10자 이상이어야 합니다.</span>
-                </div>
-
-                <div class="form-group">
-                    <label for="confirm-password">비밀번호 확인</label>
-                    <div class="input-wrapper">
-                        <input type="password" id="confirm-password" name="confirm-password" placeholder="비밀번호 확인" required>
+                    
+                    <div id="auth-code-wrapper" style="display: none; margin-top: 8px;">
+                        <label for="auth-code">인증번호 입력</label>
+                        <div class="input-with-btn">
+                            <div style="position: relative; flex: 1;">
+                                <input type="text" id="auth-code" placeholder="인증번호 4자리(1234)" maxlength="4">
+                                <span id="auth-timer" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: #e74c3c; font-size: 0.85rem; font-weight: 600;">03:00</span>
+                            </div>
+                            <button type="button" id="btn-verify-auth" class="btn-secondary">인증 완료</button>
+                        </div>
+                        <p class="status-msg" id="auth-status"></p>
                     </div>
-                    <span class="error-message">비밀번호가 일치하지 않습니다.</span>
-                </div>
+                    <div id="auth-success-badge" style="display: none; margin-top: 5px;">
+                        <span class="badge success">✅ 본인 인증 완료</span>
+                    </div>
+                </section>
 
-                <button type="submit" class="btn-primary" style="width: 100%; margin-top: 20px;">가입 신청</button>
+                <hr class="divider">
+
+                <!-- 4. 가입 정보 입력 -->
+                <section class="signup-section">
+                    <h3 class="section-title">4. 가입 정보 입력</h3>
+                    <div class="form-group">
+                        <label for="name">성명 <span class="required-mark">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" id="name" name="name" placeholder="실명을 입력하세요" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">이메일 주소 <span class="required-mark">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                        </div>
+                        <p class="field-guide">로그인 및 알림 수신용으로 사용됩니다.</p>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">비밀번호 <span class="required-mark">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" name="password" placeholder="영문, 숫자, 특수문자 조합 10자 이상" required>
+                        </div>
+                        <div id="pw-strength-meter" class="strength-meter-wrap" style="display: none;">
+                            <div class="strength-bar-container">
+                                <div id="pw-strength-bar" class="strength-bar"></div>
+                            </div>
+                            <span id="pw-strength-text" class="strength-text">보통</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirm-password">비밀번호 확인 <span class="required-mark">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="password" id="confirm-password" name="confirm-password" placeholder="비밀번호를 다시 입력하세요" required>
+                        </div>
+                        <p id="pw-match-error" class="error-text" style="display: none;">비밀번호가 일치하지 않습니다.</p>
+                    </div>
+                </section>
+
+                <!-- 5. 기업 정보 입력 (기업회원 선택 시에만 노출) -->
+                <section id="enterprise-section" class="signup-section" style="display: none;">
+                    <hr class="divider">
+                    <h3 class="section-title">5. 기업 정보 입력</h3>
+                    <div class="form-group">
+                        <label for="company-name">회사명 <span class="required-mark">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="text" id="company-name" placeholder="회사명을 입력하세요">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="biz-reg-num">사업자 등록번호 <span class="required-mark">*</span></label>
+                        <div class="input-with-btn">
+                            <input type="text" id="biz-reg-num" placeholder="'-' 제외 10자리 입력" maxlength="10">
+                            <button type="button" id="btn-verify-biz" class="btn-outline">인증</button>
+                        </div>
+                        <div id="biz-success-badge" style="display: none; margin-top: 5px;">
+                            <span class="badge success">✅ 사업자 인증 완료</span>
+                        </div>
+                    </div>
+                </section>
+
+                <div style="margin-top: 16px;">
+                    <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%; font-size: 1.1rem; padding: 18px;">가입 신청</button>
+                    <p style="text-align: center; margin-top: 20px; color: var(--text-muted); font-size: 0.9rem;">
+                        이미 계정이 있으신가요? <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">로그인하기</a>
+                    </p>
+                </div>
             </form>
         </div>
     </main>
 
+    <!-- 가입 완료 팝업 -->
     <div id="success-overlay" class="success-overlay">
-        <div class="success-icon">✓</div>
-        <h2>가입 신청 완료</h2>
-        <p style="color: var(--text-muted); margin-top: 10px;">관리자 승인 후 시스템 이용이 가능합니다.</p>
-        <button class="btn-primary" style="margin-top: 30px;" onclick="location.href='index.html'">메인으로 돌아가기</button>
+        <div class="success-content">
+            <div class="success-icon">✓</div>
+            <h2>회원가입 완료</h2>
+            <div class="success-msg">
+                <p>회원가입이 완료되었습니다.</p>
+                <p>관리자 승인 후 시스템 이용이 가능합니다.</p>
+                <p style="margin-top: 10px; font-size: 0.9rem;">(로그인 후 서비스를 이용하실 수 있습니다.)</p>
+            </div>
+            <div class="success-actions">
+                <button class="btn-primary" onclick="location.href='index.html'">메인으로 이동</button>
+                <button class="btn-outline" style="margin-left: 10px;">로그인 페이지</button>
+            </div>
+        </div>
     </div>
 
     <script src="main.js"></script>

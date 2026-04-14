@@ -41,81 +41,202 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function initSignupForm() {
-        const form = signupForm;
-        const inputs = form.querySelectorAll('input');
-        const passwordInput = document.getElementById('password');
-        const confirmInput = document.getElementById('confirm-password');
-        const strengthBar = document.getElementById('strength-bar');
-        const strengthMeter = document.getElementById('strength-meter');
-        const successOverlay = document.getElementById('success-overlay');
+        const form = document.getElementById('signup-form');
+        if (!form) return;
 
-        passwordInput.addEventListener('input', () => {
-            const val = passwordInput.value;
-            if (val.length > 0) {
-                strengthMeter.style.display = 'block';
-                let strength = 0;
-                if (val.length >= 10) strength++; // Updated requirement
-                if (/[A-Z]/.test(val) && /[0-9]/.test(val)) strength++;
-                if (/[^A-Za-z0-9]/.test(val)) strength++;
+        // 1. Terms Agreement Logic
+        const termsAll = document.getElementById('terms-all');
+        const termsChecks = document.querySelectorAll('.terms-check');
 
-                strengthBar.className = 'strength-bar';
-                if (strength === 1) strengthBar.classList.add('weak');
-                else if (strength === 2) strengthBar.classList.add('medium');
-                else if (strength >= 3) strengthBar.classList.add('strong');
-            } else {
-                strengthMeter.style.display = 'none';
-            }
+        termsAll.addEventListener('change', () => {
+            termsChecks.forEach(check => check.checked = termsAll.checked);
         });
 
-        inputs.forEach(input => {
-            input.addEventListener('blur', () => validateInput(input));
-            input.addEventListener('input', () => {
-                if (input.parentElement.parentElement.classList.contains('error')) {
-                    validateInput(input);
+        termsChecks.forEach(check => {
+            check.addEventListener('change', () => {
+                const allChecked = Array.from(termsChecks).every(c => c.checked);
+                termsAll.checked = allChecked;
+            });
+        });
+
+        // 2. User Type Selection
+        const userTypeRadios = document.querySelectorAll('input[name="user_type"]');
+        const enterpriseSection = document.getElementById('enterprise-section');
+
+        userTypeRadios.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                if (e.target.value === 'enterprise') {
+                    enterpriseSection.style.display = 'block';
+                } else {
+                    enterpriseSection.style.display = 'none';
                 }
             });
         });
 
-        function validateInput(input) {
-            const group = input.parentElement.parentElement;
-            let isValid = true;
+        // 3. Identity Verification (Mockup)
+        const phoneInput = document.getElementById('phone');
+        const btnRequestAuth = document.getElementById('btn-request-auth');
+        const authCodeWrapper = document.getElementById('auth-code-wrapper');
+        const authCodeInput = document.getElementById('auth-code');
+        const btnVerifyAuth = document.getElementById('btn-verify-auth');
+        const authTimer = document.getElementById('auth-timer');
+        const authStatus = document.getElementById('auth-status');
+        const authSuccessBadge = document.getElementById('auth-success-badge');
 
-            if (input.required && !input.value) {
-                isValid = false;
-            } else if (input.type === 'email') {
-                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                isValid = emailRegex.test(input.value);
-            } else if (input.id === 'password') {
-                isValid = input.value.length >= 10;
-            } else if (input.id === 'confirm-password') {
-                isValid = input.value === passwordInput.value;
-            }
+        let isPhoneVerified = false;
+        let timerInterval;
 
-            if (isValid) {
-                group.classList.remove('error');
-                group.classList.add('success');
-            } else {
-                group.classList.remove('success');
-                group.classList.add('error');
+        btnRequestAuth.addEventListener('click', () => {
+            if (!phoneInput.value) {
+                alert('휴대폰 번호를 입력해주세요.');
+                return;
             }
-            return isValid;
+            alert('인증번호가 발송되었습니다. (인증번호: 1234)');
+            authCodeWrapper.style.display = 'block';
+            startAuthTimer();
+            btnRequestAuth.innerText = '재전송';
+        });
+
+        function startAuthTimer() {
+            clearInterval(timerInterval);
+            let timeLeft = 180;
+            timerInterval = setInterval(() => {
+                const min = Math.floor(timeLeft / 60);
+                const sec = timeLeft % 60;
+                authTimer.innerText = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+                if (timeLeft <= 0) {
+                    clearInterval(timerInterval);
+                    authStatus.innerText = '인증 시간이 만료되었습니다. 다시 시도해주세요.';
+                    authStatus.className = 'status-msg error-text';
+                }
+                timeLeft--;
+            }, 1000);
         }
 
+        btnVerifyAuth.addEventListener('click', () => {
+            if (authCodeInput.value === '1234') {
+                clearInterval(timerInterval);
+                isPhoneVerified = true;
+                authCodeWrapper.style.display = 'none';
+                authSuccessBadge.style.display = 'block';
+                btnRequestAuth.disabled = true;
+                phoneInput.disabled = true;
+            } else {
+                authStatus.innerText = '인증번호가 일치하지 않습니다.';
+                authStatus.className = 'status-msg error-text';
+            }
+        });
+
+        // 4. Business Verification (Mockup)
+        const bizRegNumInput = document.getElementById('biz-reg-num');
+        const btnVerifyBiz = document.getElementById('btn-verify-biz');
+        const bizSuccessBadge = document.getElementById('biz-success-badge');
+        let isBizVerified = false;
+
+        btnVerifyBiz.addEventListener('click', () => {
+            if (bizRegNumInput.value.length === 10) {
+                isBizVerified = true;
+                bizSuccessBadge.style.display = 'block';
+                btnVerifyBiz.disabled = true;
+                bizRegNumInput.disabled = true;
+            } else {
+                alert('올바른 사업자 등록번호 10자리를 입력해주세요.');
+            }
+        });
+
+        // 5. Validation Logic
+        const pwInput = document.getElementById('password');
+        const confirmPwInput = document.getElementById('confirm-password');
+        const matchError = document.getElementById('pw-match-error');
+        const strengthMeter = document.getElementById('pw-strength-meter');
+        const strengthBar = document.getElementById('pw-strength-bar');
+        const strengthText = document.getElementById('pw-strength-text');
+
+        pwInput.addEventListener('input', () => {
+            const val = pwInput.value;
+            if (val.length > 0) {
+                strengthMeter.style.display = 'flex';
+                let strength = 0;
+                if (val.length >= 10) strength++;
+                if (/[A-Z]/.test(val) && /[0-9]/.test(val)) strength++;
+                if (/[^A-Za-z0-9]/.test(val)) strength++;
+
+                strengthBar.className = 'strength-bar';
+                if (strength <= 1) {
+                    strengthBar.classList.add('weak');
+                    strengthText.innerText = '약함';
+                } else if (strength === 2) {
+                    strengthBar.classList.add('medium');
+                    strengthText.innerText = '보통';
+                } else {
+                    strengthBar.classList.add('strong');
+                    strengthText.innerText = '강함';
+                }
+            } else {
+                strengthMeter.style.display = 'none';
+            }
+            checkPasswordMatch();
+        });
+
+        confirmPwInput.addEventListener('input', checkPasswordMatch);
+
+        function checkPasswordMatch() {
+            if (confirmPwInput.value && pwInput.value !== confirmPwInput.value) {
+                matchError.style.display = 'block';
+            } else {
+                matchError.style.display = 'none';
+            }
+        }
+
+        // 6. Final Submission
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            let isFormValid = true;
-            inputs.forEach(input => {
-                if (!validateInput(input)) isFormValid = false;
-            });
 
-            if (isFormValid) {
-                const btn = document.getElementById('submit-btn');
-                btn.disabled = true;
-                btn.innerHTML = '처리 중...';
-                setTimeout(() => {
-                    successOverlay.classList.add('active');
-                }, 1500);
+            // Check Required Terms
+            const requiredTerms = document.querySelectorAll('.terms-check.required');
+            const termsValid = Array.from(requiredTerms).every(t => t.checked);
+            if (!termsValid) {
+                alert('필수 약관에 동의하셔야 합니다.');
+                return;
             }
+
+            // Check Phone Verification
+            if (!isPhoneVerified) {
+                alert('본인 인증을 완료해주세요.');
+                return;
+            }
+
+            // Check Business Verification if Enterprise
+            const selectedType = form.querySelector('input[name="user_type"]:checked').value;
+            if (selectedType === 'enterprise') {
+                if (!document.getElementById('company-name').value) {
+                    alert('회사명을 입력해주세요.');
+                    return;
+                }
+                if (!isBizVerified) {
+                    alert('사업자 인증을 완료해주세요.');
+                    return;
+                }
+            }
+
+            // Basic Validation
+            if (pwInput.value.length < 10) {
+                alert('비밀번호는 10자 이상이어야 합니다.');
+                return;
+            }
+            if (pwInput.value !== confirmPwInput.value) {
+                alert('비밀번호가 일치하지 않습니다.');
+                return;
+            }
+
+            // Success!
+            const submitBtn = document.getElementById('submit-btn');
+            submitBtn.disabled = true;
+            submitBtn.innerText = '처리 중...';
+            
+            setTimeout(() => {
+                document.getElementById('success-overlay').classList.add('active');
+            }, 1000);
         });
     }
 

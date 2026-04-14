@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>데이터 신청 승인관리 | 관리자시스템 | ADBC Center</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .admin-layout {
+            display: grid;
+            grid-template-columns: 380px 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        /* Master Column - List */
+        .master-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .filter-section {
+            background: #f8f9fc;
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .filter-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .admin-filter {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 0.85rem;
+            outline: none;
+        }
+        .admin-search {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            outline: none;
+            font-size: 0.9rem;
+        }
+
+        .admin-history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-height: 850px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+        .admin-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .admin-card:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+        .admin-card.active {
+            border-color: var(--primary-blue);
+            background: #f0f7ff;
+            box-shadow: 0 4px 15px rgba(33, 122, 252, 0.1);
+        }
+
+        /* Detail Column */
+        .detail-column {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 40px;
+            min-height: 700px;
+            box-shadow: var(--shadow);
+        }
+        .admin-detail-header {
+            border-bottom: 2px solid #f1f3f5;
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+        }
+        .admin-detail-header h3 {
+            font-size: 1.6rem;
+            color: var(--primary-navy);
+            margin-top: 10px;
+        }
+
+        .admin-info-grid {
+            display: grid;
+            grid-template-columns: 160px 1fr;
+            row-gap: 18px;
+            column-gap: 20px;
+            margin-bottom: 40px;
+        }
+        .admin-label {
+            font-weight: 700;
+            color: #495057;
+            background: #f8f9fa;
+            padding: 12px 18px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+        }
+        .admin-value {
+            padding: 12px 10px;
+            color: var(--text-main);
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+
+        /* Action Area */
+        .action-panel {
+            background: #fdfdfe;
+            border: 1px solid #dee2e6;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        .action-panel h4 {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--primary-navy);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+        .btn-admin {
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid transparent;
+            font-size: 0.95rem;
+        }
+        .btn-check { background: var(--bg-gray); color: #495057; border-color: var(--border-color); }
+        .btn-approve { background: #d4edda; color: #155724; border-color: #c3e6cb; }
+        .btn-reject { background: #f8d7da; color: #721c24; border-color: #f5c6cb; }
+        
+        .btn-admin:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+
+        #reject-reason-box {
+            display: none;
+            margin-top: 20px;
+            animation: fadeIn 0.3s ease;
+        }
+        .reject-reason-area {
+            width: 100%;
+            height: 120px;
+            padding: 15px;
+            border: 1.5px solid #f5c6cb;
+            border-radius: 8px;
+            resize: none;
+            outline: none;
+            font-size: 0.95rem;
+        }
+
+        /* Status & Category Badges */
+        .status-badge {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+        .status-review { background: #fff3cd; color: #856404; }
+        .status-approved { background: #d4edda; color: #155724; }
+        .status-rejected { background: #f8d7da; color: #721c24; }
+        .status-received { background: #e2e3e5; color: #383d41; }
+
+        .category-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+        }
+        .cat-auto { background: #eef2ff; color: #4338ca; border: 1px solid #c7d2fe; }
+        .cat-analysis { background: #fff1f2; color: #be123c; border: 1px solid #fecdd3; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 1200px) {
+            .admin-layout { grid-template-columns: 1fr; }
+            .detail-column { padding: 30px; }
+        }
+    </style>
+</head>
+<body>
+    <div id="gnb-root"></div>
+
+    <div class="breadcrumb-container">
+        <div class="container breadcrumb">
+            <span>Home</span>
+            <span>관리 시스템</span>
+            <span class="active">데이터 신청 승인관리</span>
+        </div>
+    </div>
+
+    <header class="hero" style="height: 250px;">
+        <div class="container">
+            <h1>데이터 신청 승인관리</h1>
+            <p>사용자가 신청한 데이터 내역을 확인하고 승인 또는 반려 처리합니다.</p>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 60px 0 100px;">
+        <div class="board-header" style="margin-bottom: 20px;">
+            <div class="board-title">
+                <h2>신청 목록 관리</h2>
+            </div>
+        </div>
+
+        <div class="admin-layout">
+            <!-- Left: Card List & Filters -->
+            <div class="master-column">
+                <div class="filter-section">
+                    <div class="filter-row">
+                        <select id="category-filter" class="admin-filter">
+                            <option value="all">전체 구분</option>
+                            <option value="자율주행 데이터">자율주행 데이터</option>
+                            <option value="분석 데이터">분석 데이터</option>
+                        </select>
+                        <select id="status-filter" class="admin-filter">
+                            <option value="all">전체 상태</option>
+                            <option value="received">접수완료</option>
+                            <option value="review">검토중</option>
+                            <option value="approved">승인완료</option>
+                            <option value="rejected">반려</option>
+                        </select>
+                    </div>
+                    <input type="text" id="admin-search" class="admin-search" placeholder="신청번호 또는 데이터 유형 검색">
+                </div>
+
+                <div id="admin-history-list" class="admin-history-list">
+                    <!-- Cards injected here -->
+                </div>
+            </div>
+
+            <!-- Right: Detail & Action Panel -->
+            <div id="admin-detail-panel" class="detail-column">
+                <div id="admin-detail-content">
+                    <div style="text-align: center; padding-top: 150px; color: var(--text-muted);">
+                        <p>좌측 목록에서 신청 건을 선택하여 상세 내용을 확인하시기 바랍니다.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: #f1f3f5; padding: 60px 0; text-align: center; border-top: 1px solid var(--border-color);">
+        <div class="container">
+            <p style="color: var(--text-muted);">&copy; 2026 ADBC Center Admin System. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        const adminHistoryData = [
+            {
+                id: 'AD-2026-001',
+                dataCategory: '자율주행 데이터',
+                date: '2026-04-14',
+                period: '2026-04-14',
+                type: 'PVD, LiDAR',
+                purpose: '자율주행 테스트 차량 경로 최적화 및 객체 인식 AI 모델 학습용 정밀 지도 데이터 분석',
+                files: '신청서_A사.pdf',
+                status: 'received',
+                statusText: '접수완료'
+            },
+            {
+                id: 'AD-2026-002',
+                dataCategory: '자율주행 데이터',
+                date: '2026-04-12',
+                period: '2026-04-11 ~ 2026-04-12',
+                type: 'SPaT, TIM, RSA, LiDAR',
+                purpose: '교차로 스마트 보이스 경고 알고리즘 개발을 위한 V2X 메시지 기반 원천 데이터 추출',
+                files: '신청서_B대학.pdf',
+                status: 'review',
+                statusText: '검토중'
+            },
+            {
+                id: 'AN-2026-001',
+                dataCategory: '분석 데이터',
+                date: '2026-04-10',
+                period: '2026-04-01 ~ 2026-04-10',
+                type: '분석데이터1, 분석데이터5',
+                purpose: '세종시 지역별 교통 정체 지점의 특징 분석 및 시간대별 이동 패턴 시뮬레이션 연구',
+                files: '연구계획서_C연구소.zip',
+                status: 'approved',
+                statusText: '승인완료'
+            }
+        ];
+
+        let curCategory = 'all';
+        let curStatus = 'all';
+        let curSearch = '';
+        let currentID = null;
+
+        function renderAdminList() {
+            const listEl = document.getElementById('admin-history-list');
+            listEl.innerHTML = '';
+
+            const filtered = adminHistoryData.filter(item => {
+                const matchesCat = curCategory === 'all' || item.dataCategory === curCategory;
+                const matchesStat = curStatus === 'all' || item.status === curStatus;
+                const matchesSearch = item.id.toLowerCase().includes(curSearch.toLowerCase()) || 
+                                     item.type.toLowerCase().includes(curSearch.toLowerCase());
+                return matchesCat && matchesStat && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                listEl.innerHTML = '<div style="text-align: center; padding: 50px; color: #adb5bd;">조회된 신청 내역이 없습니다.</div>';
+                return;
+            }
+
+            filtered.forEach((item, idx) => {
+                const card = document.createElement('div');
+                card.className = `admin-card ${item.id === currentID ? 'active' : ''}`;
+                card.onclick = () => selectAdminItem(item.id, card);
+                
+                const catClass = item.dataCategory === '자율주행 데이터' ? 'cat-auto' : 'cat-analysis';
+
+                card.innerHTML = `
+                    <span class="category-badge ${catClass}">${item.dataCategory}</span>
+                    <div class="card-status" style="margin-bottom: 10px;">
+                        <span class="status-badge status-${item.status}">${item.statusText}</span>
+                    </div>
+                    <h4 style="margin-bottom: 8px; color: var(--primary-navy);">${item.id}</h4>
+                    <div style="font-size: 0.85rem; color: #666; display: flex; flex-direction: column; gap: 4px;">
+                        <span><strong>유형:</strong> ${item.type}</span>
+                        <span><strong>신청일:</strong> ${item.date}</span>
+                    </div>
+                `;
+                listEl.appendChild(card);
+            });
+        }
+
+        function selectAdminItem(id, cardEl) {
+            currentID = id;
+            document.querySelectorAll('.admin-card').forEach(c => c.classList.remove('active'));
+            cardEl.classList.add('active');
+
+            const item = adminHistoryData.find(d => d.id === id);
+            const contentEl = document.getElementById('admin-detail-content');
+
+            contentEl.innerHTML = `
+                <div class="admin-detail-header">
+                    <span class="status-badge status-${item.status}" id="hero-status-badge">${item.statusText}</span>
+                    <h3>신청번호: ${item.id}</h3>
+                    <p style="margin-top: 10px; font-weight: 600; color: var(--primary-blue);">데이터 구분: ${item.dataCategory}</p>
+                </div>
+
+                <div class="admin-info-grid">
+                    <div class="admin-label">데이터 구분</div><div class="admin-value" style="font-weight: 700;">${item.dataCategory}</div>
+                    <div class="admin-label">신청일</div><div class="admin-value">${item.date}</div>
+                    <div class="admin-label">신청 기간</div><div class="admin-value">${item.period}</div>
+                    <div class="admin-label">데이터 유형</div><div class="admin-value">${item.type}</div>
+                    <div class="admin-label">활용 목적</div><div class="admin-value" style="background:#f1f3f5; border-radius:6px; padding:15px; margin-top:5px;">${item.purpose}</div>
+                    <div class="admin-label">첨부파일</div><div class="admin-value">${item.files !== '-' ? `<a href="#" style="color:var(--primary-blue); text-decoration:underline;">${item.files}</a>` : '-'}</div>
+                    <div class="admin-label">현재 상태</div><div class="admin-value" id="detail-status-text"><strong>${item.statusText}</strong></div>
+                </div>
+
+                <div class="action-panel">
+                    <h4><span style="color:var(--primary-blue);">●</span> 신청 처리 관리</h4>
+                    <div class="btn-group">
+                        <button class="btn-admin btn-check" onclick="updateStatus('review', '검토중')">검토중 처리</button>
+                        <button class="btn-admin btn-approve" onclick="updateStatus('approved', '승인완료')">최종 승인</button>
+                        <button class="btn-admin btn-reject" onclick="toggleRejectBox()">반려 처리</button>
+                    </div>
+
+                    <div id="reject-reason-box">
+                        <p style="margin-bottom: 10px; font-weight: 600; color: var(--text-main);">반려 사유 입력</p>
+                        <textarea class="reject-reason-area" placeholder="반려 사유를 상세하게 입력해 주세요. (사용자에게 노출됩니다)"></textarea>
+                        <button class="btn-primary" style="margin-top: 15px; width: 100%;" onclick="confirmReject()">반려 확정</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        function updateStatus(statusKey, statusText) {
+            const item = adminHistoryData.find(d => d.id === currentID);
+            if (!item) return;
+
+            // Update Mock Data
+            item.status = statusKey;
+            item.statusText = statusText;
+
+            // UI Update - Detail Panel
+            const badge = document.getElementById('hero-status-badge');
+            badge.className = `status-badge status-${statusKey}`;
+            badge.innerText = statusText;
+
+            document.getElementById('detail-status-text').innerHTML = `<strong>${statusText}</strong>`;
+            
+            // Hide reject box
+            document.getElementById('reject-reason-box').style.display = 'none';
+
+            // UI Update - Master List
+            renderAdminList();
+            
+            alert(`[${item.id}] 건의 상태가 '${statusText}'(으)로 변경되었습니다.`);
+        }
+
+        function toggleRejectBox() {
+            const box = document.getElementById('reject-reason-box');
+            box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+        }
+
+        function confirmReject() {
+            const reasonArea = document.querySelector('.reject-reason-area');
+            if (!reasonArea.value.trim()) {
+                alert('반려 사유를 입력해 주세요.');
+                return;
+            }
+            updateStatus('rejected', '반려');
+        }
+
+        // Filters & Search
+        document.getElementById('category-filter').addEventListener('change', (e) => {
+            curCategory = e.target.value;
+            renderAdminList();
+        });
+        document.getElementById('status-filter').addEventListener('change', (e) => {
+            curStatus = e.target.value;
+            renderAdminList();
+        });
+        document.getElementById('admin-search').addEventListener('input', (e) => {
+            curSearch = e.target.value;
+            renderAdminList();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderAdminList();
+        });
+    </script>
+</body>
+</html>
