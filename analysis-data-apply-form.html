@@ -79,18 +79,6 @@
                 </div>
 
                 <form id="apply-form" class="write-form">
-                    <div class="form-row">
-                        <div class="form-label">일자</div>
-                        <div class="form-input">
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="date" id="start-date" required style="flex: 0 1 auto; max-width: 200px;">
-                                <span style="font-weight: bold; color: var(--text-muted);">~</span>
-                                <input type="date" id="end-date" required style="flex: 0 1 auto; max-width: 200px;">
-                            </div>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">* 데이터 원천기간은 최대 7일까지 신청 가능합니다.</p>
-                        </div>
-                    </div>
-                    
                     <div class="form-row" style="align-items: flex-start;">
                         <div class="form-label" style="padding-top: 10px;">데이터 유형</div>
                         <div class="form-input">
@@ -101,6 +89,18 @@
                                 <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-main);"><input type="checkbox" name="data-type" value="분석데이터4" style="width: 18px; height: 18px;"> 분석데이터4</label>
                                 <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-main);"><input type="checkbox" name="data-type" value="분석데이터5" style="width: 18px; height: 18px;"> 분석데이터5</label>
                             </div>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-label">일자</div>
+                        <div class="form-input">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="date" id="start-date" required style="flex: 0 1 auto; max-width: 200px;">
+                                <span style="font-weight: bold; color: var(--text-muted);">~</span>
+                                <input type="date" id="end-date" required style="flex: 0 1 auto; max-width: 200px;">
+                            </div>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">* 데이터 원천기간은 최대 7일까지 신청 가능합니다.</p>
                         </div>
                     </div>
 
@@ -145,7 +145,7 @@
             </p>
             <div style="display: flex; gap: 10px; justify-content: center;">
                 <button class="btn-primary" style="background: var(--bg-gray); color: var(--text-main); border: 1px solid var(--border-color); flex: 1; padding: 12px;" onclick="closePopup()">확인</button>
-                <button class="btn-primary" style="flex: 1; padding: 12px;" onclick="location.href='analysis-data-history.html'">신청내역 확인</button>
+                <button class="btn-primary" style="flex: 1; padding: 12px;" onclick="location.href='autonomous-data-history.html'">신청내역 확인</button>
             </div>
         </div>
     </div>

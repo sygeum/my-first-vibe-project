@@ -7,46 +7,173 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        .filter-area {
+        .history-layout {
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        /* Left Column: Master List */
+        .master-column {
             display: flex;
-            align-items: center;
-            gap: 10px;
-            background: var(--bg-light);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
+            flex-direction: column;
+            gap: 20px;
         }
-        .filter-area select, .filter-area input[type="date"] {
-            padding: 10px;
+        .search-mini {
+            position: relative;
+        }
+        .search-mini input {
+            width: 100%;
+            padding: 12px 15px;
             border: 1px solid var(--border-color);
-            border-radius: 4px;
+            border-radius: 8px;
             outline: none;
+            font-size: 0.9rem;
         }
+        .history-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-height: 800px;
+            overflow-y: auto;
+            padding-right: 5px;
+        }
+        .history-card {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.2s;
+            position: relative;
+        }
+        .history-card:hover {
+            border-color: var(--primary-blue);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transform: translateY(-2px);
+        }
+        .history-card.active {
+            border-color: var(--primary-blue);
+            background: #f0f7ff;
+            box-shadow: 0 4px 15px rgba(33, 122, 252, 0.1);
+        }
+        .history-card .card-status {
+            margin-bottom: 12px;
+        }
+        .history-card h4 {
+            font-size: 1rem;
+            color: var(--primary-navy);
+            margin-bottom: 8px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .history-card .meta-info {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        /* Right Column: Detail Panel */
+        .detail-column {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 15px;
+            padding: 40px;
+            min-height: 600px;
+            box-shadow: var(--shadow);
+        }
+        .detail-header {
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 25px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        .detail-header h3 {
+            font-size: 1.5rem;
+            color: var(--primary-navy);
+            margin-top: 10px;
+        }
+        .detail-section {
+            margin-bottom: 35px;
+        }
+        .detail-section h4 {
+            font-size: 1.1rem;
+            color: var(--primary-navy);
+            margin-bottom: 15px;
+            padding-left: 10px;
+            border-left: 4px solid var(--primary-blue);
+        }
+        .detail-grid {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            row-gap: 15px;
+            column-gap: 20px;
+        }
+        .detail-label {
+            font-weight: 700;
+            color: var(--text-main);
+            background: var(--bg-gray);
+            padding: 10px 15px;
+            border-radius: 6px;
+        }
+        .detail-value {
+            padding: 10px 5px;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Common Status Badges */
         .status-badge {
             display: inline-block;
-            padding: 5px 12px;
+            padding: 6px 14px;
             border-radius: 50px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 700;
         }
         .status-review { background: #fff3cd; color: #856404; }
         .status-approved { background: #d4edda; color: #155724; }
         .status-rejected { background: #f8d7da; color: #721c24; }
         .status-received { background: #e2e3e5; color: #383d41; }
-        .btn-view {
-            padding: 5px 10px;
-            background: #fff;
-            border: 1px solid var(--primary-blue);
-            color: var(--primary-blue);
+
+        .category-badge {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 8px;
             border-radius: 4px;
-            font-size: 0.8rem;
-            cursor: pointer;
-            transition: 0.2s;
-            text-decoration: none;
+            margin-bottom: 5px;
         }
-        .btn-view:hover {
-            background: var(--primary-blue);
-            color: #fff;
+        .cat-auto { background: #eef2ff; color: #4338ca; border: 1px solid #c7d2fe; }
+        .cat-analysis { background: #fef2f2; color: #b91c1c; border: 1px solid #fecaca; }
+
+        .filter-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        .history-filter {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 0.85rem;
+            outline: none;
+            background: #fff;
+        }
+
+        @media (max-width: 1024px) {
+            .history-layout {
+                grid-template-columns: 1fr;
+            }
+            .detail-column {
+                padding: 25px;
+            }
         }
     </style>
 </head>
@@ -79,70 +206,39 @@
                     </div>
                 </div>
 
-                <!-- Filter Area -->
-                <div class="board-search" style="justify-content: flex-start; background: #f8f9fc; padding: 20px; border-radius: 8px; border: 1px solid var(--border-color);">
-                    <div style="display: flex; align-items: center; gap: 10px;">
-                        <span style="font-weight: 600; color: var(--text-main); margin-right: 10px;">상태</span>
-                        <select>
-                            <option value="all">전체</option>
-                            <option value="received">접수완료</option>
-                            <option value="review">검토중</option>
-                            <option value="approved">승인완료</option>
-                            <option value="rejected">반려</option>
-                        </select>
-                        
-                        <span style="font-weight: 600; color: var(--text-main); margin: 0 10px;">조회 기간</span>
-                        <input type="date">
-                        <span style="color: var(--text-muted);">~</span>
-                        <input type="date">
-                        
-                        <button class="btn-primary" style="margin-left: auto; padding: 10px 24px;">검색</button>
+                <div class="history-layout">
+                    <!-- Left: Card List -->
+                    <div class="master-column">
+                        <div class="filter-group">
+                            <select id="category-filter" class="history-filter">
+                                <option value="all">전체 데이터</option>
+                                <option value="자율주행 데이터">자율주행 데이터</option>
+                                <option value="분석 데이터">분석 데이터</option>
+                            </select>
+                            <select id="status-filter" class="history-filter">
+                                <option value="all">전체 상태</option>
+                                <option value="received">접수완료</option>
+                                <option value="review">검토중</option>
+                                <option value="approved">승인완료</option>
+                                <option value="rejected">반려</option>
+                            </select>
+                        </div>
+                        <div class="search-mini">
+                            <input type="text" id="history-search" placeholder="신청번호, 유형, 구분을 입력하세요">
+                        </div>
+                        <div id="history-list" class="history-list">
+                            <!-- Cards will be injected here -->
+                        </div>
                     </div>
-                </div>
 
-                <!-- History Table -->
-                <div style="overflow-x: auto;">
-                    <table class="board-table" style="min-width: 1000px;">
-                        <thead>
-                            <tr>
-                                <th>신청번호</th>
-                                <th>신청일</th>
-                                <th>신청 기간</th>
-                                <th>데이터 유형</th>
-                                <th>LiDAR</th>
-                                <th>활용 목적</th>
-                                <th>첨부파일</th>
-                                <th>상태</th>
-                                <th>관리</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>AD-2026-002</td>
-                                <td>2026-04-12</td>
-                                <td>2026-04-11 ~ 2026-04-12</td>
-                                <td style="text-align: left;">SPaT, TIM, RSA</td>
-                                <td>미신청</td>
-                                <td style="text-align: left; max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">자율주행 교차로 알고리즘 검증 및 안전도 평가...</td>
-                                <td>📎</td>
-                                <td><span class="status-badge status-approved">승인완료</span></td>
-                                <td><a href="#" class="btn-view">상세보기</a></td>
-                            </tr>
-                            <tr>
-                                <td>AD-2026-001</td>
-                                <td>2026-04-14</td>
-                                <td>2026-04-10 ~ 2026-04-14</td>
-                                <td style="text-align: left;">PVD, 영상데이터</td>
-                                <td>신청</td>
-                                <td style="text-align: left; max-width: 150px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">차량 객체 인식 AI 모델 학습용 데이터 수집 및...</td>
-                                <td>-</td>
-                                <td><span class="status-badge status-review">검토중</span></td>
-                                <td><a href="#" class="btn-view">상세보기</a></td>
-                            </tr>
-                            <!-- Empty message format -->
-                            <!-- <tr><td colspan="9" style="padding: 50px; color: var(--text-muted);">신청한 자율주행 데이터 내역이 없습니다.</td></tr> -->
-                        </tbody>
-                    </table>
+                    <!-- Right: Detail Panel -->
+                    <div id="detail-panel" class="detail-column">
+                        <div id="detail-content">
+                            <div style="text-align: center; padding-top: 100px; color: var(--text-muted);">
+                                <p>좌측에서 신청 내역을 선택하면 상세정보를 확인할 수 있습니다.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -155,5 +251,180 @@
     </footer>
 
     <script src="main.js"></script>
+    <script>
+        const historyData = [
+            {
+                id: 'AD-2026-002',
+                dataCategory: '자율주행 데이터',
+                date: '2026-04-12',
+                period: '2026-04-11 ~ 2026-04-12',
+                type: 'SPaT, TIM, RSA, LiDAR',
+                purpose: '자율주행 교차로 알고리즘 검증 및 안전도 평가를 위한 원천 데이터 전수 분석',
+                files: '신청서_기업명.pdf',
+                status: 'approved',
+                statusText: '승인완료'
+            },
+            {
+                id: 'AN-2026-001',
+                dataCategory: '분석 데이터',
+                date: '2026-04-14',
+                period: '2026-04-14',
+                type: '분석데이터1, 분석데이터3',
+                purpose: '세종시 교차로 정체 구간에 대한 시뮬레이션 및 데이터 기반 원인 분석 연구',
+                files: '-',
+                status: 'review',
+                statusText: '검토중'
+            },
+            {
+                id: 'AD-2026-001',
+                dataCategory: '자율주행 데이터',
+                date: '2026-04-14',
+                period: '2026-04-14',
+                type: 'PVD, LiDAR',
+                purpose: '차량 객체 인식 AI 모델 학습용 대용량 LiDAR 데이터 수집 및 도로 환경 분석',
+                files: '-',
+                status: 'review',
+                statusText: '검토중'
+            }
+        ];
+
+        let currentCategory = 'all';
+        let currentStatus = 'all';
+        let currentSearch = '';
+
+        function renderList() {
+            const listContainer = document.getElementById('history-list');
+            listContainer.innerHTML = '';
+            
+            const filtered = historyData.filter(item => {
+                const matchesCategory = currentCategory === 'all' || item.dataCategory === currentCategory;
+                const matchesStatus = currentStatus === 'all' || item.status === currentStatus;
+                const matchesSearch = item.id.toLowerCase().includes(currentSearch.toLowerCase()) || 
+                                     item.type.toLowerCase().includes(currentSearch.toLowerCase()) ||
+                                     item.dataCategory.toLowerCase().includes(currentSearch.toLowerCase());
+                
+                return matchesCategory && matchesStatus && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                listContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: var(--text-muted);">신청한 내역이 없습니다.</div>';
+                return;
+            }
+
+            filtered.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'history-card';
+                card.onclick = () => selectItem(item.id, card);
+                
+                const catClass = item.dataCategory === '자율주행 데이터' ? 'cat-auto' : 'cat-analysis';
+                
+                card.innerHTML = `
+                    <span class="category-badge ${catClass}">${item.dataCategory}</span>
+                    <div class="card-status">
+                        <span class="status-badge status-${item.status}">${item.statusText}</span>
+                    </div>
+                    <h4>${item.id}</h4>
+                    <div class="meta-info">
+                        <span><strong>유형:</strong> ${item.type}</span>
+                        <span><strong>신청일:</strong> ${item.date}</span>
+                    </div>
+                `;
+                listContainer.appendChild(card);
+                
+                // Select first item by default on initial render if no search/filter used manually
+                if (index === 0 && currentCategory === 'all' && currentStatus === 'all' && !currentSearch) {
+                    selectItem(item.id, card);
+                }
+            });
+        }
+
+        function selectItem(id, cardElement) {
+            // Update active state in list
+            document.querySelectorAll('.history-card').forEach(c => c.classList.remove('active'));
+            cardElement.classList.add('active');
+
+            const item = historyData.find(d => d.id === id);
+            const detailContent = document.getElementById('detail-content');
+            
+            detailContent.innerHTML = `
+                <div class="detail-header">
+                    <div>
+                        <span class="status-badge status-${item.status}">${item.statusText}</span>
+                        <h3>신청번호: ${item.id}</h3>
+                        <p style="margin-top: 10px; font-weight: 600; color: var(--primary-blue);">데이터 구분: ${item.dataCategory}</p>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>기본 정보</h4>
+                    <div class="detail-grid">
+                        <div class="detail-label">데이터 구분</div>
+                        <div class="detail-value" style="font-weight: 700; color: var(--primary-navy);">${item.dataCategory}</div>
+
+                        <div class="detail-label">신청일</div>
+                        <div class="detail-value">${item.date}</div>
+                        
+                        <div class="detail-label">신청 기간</div>
+                        <div class="detail-value">${item.period}</div>
+
+                        <div class="detail-label">데이터 유형</div>
+                        <div class="detail-value">${item.type}</div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h4>신청 내역 상세</h4>
+                    <div class="detail-grid">
+                        <div class="detail-label">포함 항목</div>
+                        <div class="detail-value">${item.type} (총 ${item.type.split(',').length}건)</div>
+
+                        <div class="detail-label">활용 목적</div>
+                        <div class="detail-value" style="word-break: break-all;">${item.purpose}</div>
+                        
+                        <div class="detail-label">첨부파일</div>
+                        <div class="detail-value">${item.files !== '-' ? `<a href="#" style="color: var(--primary-blue); text-decoration: underline;">${item.files}</a>` : '-'}</div>
+                    </div>
+                </div>
+
+                <div class="detail-section" style="margin-bottom: 0;">
+                    <h4>진행 상태</h4>
+                    <div style="background: var(--bg-gray); padding: 20px; border-radius: 10px; display: flex; flex-direction: column; gap: 15px;">
+                        <div style="display: flex; align-items: center; gap: 20px;">
+                            <span class="status-badge status-${item.status}">${item.statusText}</span>
+                            <p style="font-size: 0.95rem; color: var(--text-main);">
+                                ${item.status === 'approved' ? '자율주행 데이터 신청 승인이 완료되었습니다.' : '현재 담당자가 신청 내용을 검토 중입니다.'}
+                            </p>
+                        </div>
+                        ${item.status === 'approved' ? `
+                            <div style="border-top: 1px solid var(--border-color); padding-top: 15px; display: flex; align-items: center; justify-content: space-between;">
+                                <span style="font-weight: 700; color: var(--text-main);">데이터 다운로드</span>
+                                <button class="btn-primary" style="padding: 8px 20px; font-size: 0.85rem;">데이터 다운로드</button>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            `;
+        }
+
+        // Event Listeners
+        document.getElementById('category-filter').addEventListener('change', (e) => {
+            currentCategory = e.target.value;
+            renderList();
+        });
+
+        document.getElementById('status-filter').addEventListener('change', (e) => {
+            currentStatus = e.target.value;
+            renderList();
+        });
+
+        document.getElementById('history-search').addEventListener('input', (e) => {
+            currentSearch = e.target.value;
+            renderList();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderList();
+        });
+    </script>
 </body>
 </html>

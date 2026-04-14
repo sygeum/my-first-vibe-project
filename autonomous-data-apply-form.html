@@ -79,18 +79,6 @@
                 </div>
 
                 <form id="apply-form" class="write-form">
-                    <div class="form-row">
-                        <div class="form-label">일자</div>
-                        <div class="form-input">
-                            <div style="display: flex; align-items: center; gap: 10px;">
-                                <input type="date" id="start-date" required style="flex: 0 1 auto; max-width: 200px;">
-                                <span style="font-weight: bold; color: var(--text-muted);">~</span>
-                                <input type="date" id="end-date" required style="flex: 0 1 auto; max-width: 200px;">
-                            </div>
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">* 데이터 원천기간은 최대 7일까지 신청 가능합니다.</p>
-                        </div>
-                    </div>
-                    
                     <div class="form-row" style="align-items: flex-start;">
                         <div class="form-label" style="padding-top: 10px;">데이터 유형</div>
                         <div class="form-input">
@@ -102,15 +90,23 @@
                                 <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-main);"><input type="checkbox" name="data-type" value="RSA" style="width: 18px; height: 18px;"> RSA</label>
                                 <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-main);"><input type="checkbox" name="data-type" value="Radar" style="width: 18px; height: 18px;"> Radar</label>
                                 <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-main);"><input type="checkbox" name="data-type" value="돌발정보" style="width: 18px; height: 18px;"> 돌발정보</label>
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-main);"><input type="checkbox" name="data-type" value="LiDAR" style="width: 18px; height: 18px;"> LiDAR</label>
                             </div>
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <div class="form-label">LiDAR 데이터 신청</div>
+                        <div class="form-label">일자</div>
                         <div class="form-input">
-                            <input type="date" id="lidar-date" style="max-width: 200px;">
-                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px;">* 대용량 데이터로 한번에 1일 데이터만 신청할 수 있습니다.</p>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <input type="date" id="start-date" required style="flex: 0 1 auto; max-width: 200px;">
+                                <span style="font-weight: bold; color: var(--text-muted);">~</span>
+                                <input type="date" id="end-date" required style="flex: 0 1 auto; max-width: 200px;">
+                            </div>
+                            <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; line-height: 1.5;">
+                                * 데이터 원천기간은 최대 7일까지 신청 가능합니다.<br>
+                                * LiDAR는 대용량 데이터로 한번에 1일 데이터만 신청할 수 있습니다.
+                            </p>
                         </div>
                     </div>
 

@@ -202,7 +202,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="has-dropdown">
                         <a href="autonomous-data.html" class="${['autonomous-data.html', 'autonomous-data-apply.html', 'autonomous-data-apply-form.html', 'analysis-data-apply.html', 'analysis-data-apply-form.html'].includes(currentPage) ? 'active' : ''}">자율주행 데이터</a>
                         <div class="dropdown-menu">
-                            <a href="autonomous-data.html">자율주행 데이터</a>
                             <a href="autonomous-data-apply.html">자율주행 데이터 신청</a>
                             <a href="analysis-data-apply.html">분석 데이터 신청</a>
                         </div>
