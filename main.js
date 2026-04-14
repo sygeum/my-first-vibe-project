@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="has-dropdown">
                         <a href="#" class="${['about-purpose.html', 'about-facility.html', 'operation-control-map.html', 'operation-infra.html', 'center-location.html'].includes(currentPage) ? 'active' : ''}">센터 소개</a>
                         <div class="dropdown-menu">
-                            <a href="about-purpose.html">설립목적</a>
+                            <a href="about-purpose.html">설립 배경 및 목적</a>
                             <a href="about-facility.html">자율주행 관제센터</a>
                             <a href="operation-control-map.html">자율주행 운영 범위</a>
                             <a href="center-location.html">센터 위치</a>
@@ -200,11 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <a href="index.html" class="${currentPage === 'index.html' ? 'active' : ''}">모니터링</a>
                     <div class="has-dropdown">
-                        <a href="autonomous-data.html" class="${['autonomous-data.html'].includes(currentPage) ? 'active' : ''}">자율 주행 데이터</a>
+                        <a href="autonomous-data.html" class="${['autonomous-data.html', 'autonomous-data-apply.html', 'autonomous-data-apply-form.html', 'analysis-data-apply.html', 'analysis-data-apply-form.html'].includes(currentPage) ? 'active' : ''}">자율주행 데이터</a>
                         <div class="dropdown-menu">
-                            <a href="autonomous-data.html">자율 주행 데이터</a>
-                            <a href="#">자율 주행 데이터 신청</a>
-                            <a href="#">분석 데이터 신청</a>
+                            <a href="autonomous-data.html">자율주행 데이터</a>
+                            <a href="autonomous-data-apply.html">자율주행 데이터 신청</a>
+                            <a href="analysis-data-apply.html">분석 데이터 신청</a>
                         </div>
                     </div>
                     <a href="#">인프라 예약</a>
