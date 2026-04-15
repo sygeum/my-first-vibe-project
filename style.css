@@ -136,7 +136,7 @@ section {
     font-size: 2.25rem;
     text-align: center;
     color: var(--primary-navy);
-    margin-bottom: 48px;
+    margin-bottom: 20px;
     position: relative;
     padding-bottom: 20px;
 }
@@ -240,7 +240,7 @@ section {
 }
 
 .process-arrow::after {
-    content: '??;
+    content: '>';
     position: absolute;
     right: -5px;
     top: -9px;
@@ -752,7 +752,7 @@ section {
 }
 
 .orbit-step::before {
-    content: '??;
+    content: '>';
     font-size: 0.8rem;
     opacity: 0.6;
 }
@@ -1315,7 +1315,7 @@ section {
     }
 }
 
-.section-desc { text-align: center; font-size: 1.05rem; color: var(--text-muted); margin-top: -30px; margin-bottom: 48px; word-break: keep-all; line-height: 1.6; }
+.section-desc { text-align: center; font-size: 1.05rem; color: var(--text-muted); margin-top: 12px; margin-bottom: 48px; word-break: keep-all; line-height: 1.6; }
 
 
 /* Chevron (Overlapping Polygon) Info-graphic for 추진 과제 */

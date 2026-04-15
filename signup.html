@@ -85,36 +85,6 @@
                     </div>
                 </section>
 
-                <hr class="divider">
-
-                <!-- 3. 본인 인증 -->
-                <section class="signup-section">
-                    <h3 class="section-title">3. 본인 인증</h3>
-                    <div class="form-group">
-                        <label for="phone">휴대폰 번호 <span class="required-mark">*</span></label>
-                        <div class="input-with-btn">
-                            <input type="text" id="phone" placeholder="'-' 제외 숫자만 입력" maxlength="11">
-                            <button type="button" id="btn-request-auth" class="btn-outline">인증번호 요청</button>
-                        </div>
-                    </div>
-                    
-                    <div id="auth-code-wrapper" style="display: none; margin-top: 8px;">
-                        <label for="auth-code">인증번호 입력</label>
-                        <div class="input-with-btn">
-                            <div style="position: relative; flex: 1;">
-                                <input type="text" id="auth-code" placeholder="인증번호 4자리(1234)" maxlength="4">
-                                <span id="auth-timer" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: #e74c3c; font-size: 0.85rem; font-weight: 600;">03:00</span>
-                            </div>
-                            <button type="button" id="btn-verify-auth" class="btn-secondary">인증 완료</button>
-                        </div>
-                        <p class="status-msg" id="auth-status"></p>
-                    </div>
-                    <div id="auth-success-badge" style="display: none; margin-top: 5px;">
-                        <span class="badge success">✅ 본인 인증 완료</span>
-                    </div>
-                </section>
-
-                <hr class="divider">
 
                 <!-- 4. 가입 정보 입력 -->
                 <section class="signup-section">
@@ -128,10 +98,26 @@
 
                     <div class="form-group">
                         <label for="email">이메일 주소 <span class="required-mark">*</span></label>
-                        <div class="input-wrapper">
+                        <div class="input-with-btn">
                             <input type="email" id="email" name="email" placeholder="example@email.com" required>
+                            <button type="button" id="btn-request-email-auth" class="btn-outline">인증번호 요청</button>
                         </div>
                         <p class="field-guide">로그인 및 알림 수신용으로 사용됩니다.</p>
+                    </div>
+
+                    <div id="email-auth-wrapper" style="display: none; margin-top: 8px;">
+                        <label for="email-auth-code">이메일 인증번호</label>
+                        <div class="input-with-btn">
+                            <div style="position: relative; flex: 1;">
+                                <input type="text" id="email-auth-code" placeholder="인증번호를 입력하세요" maxlength="4">
+                                <span id="email-auth-timer" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: #e74c3c; font-size: 0.85rem; font-weight: 600;">03:00</span>
+                            </div>
+                            <button type="button" id="btn-verify-email-auth" class="btn-secondary">인증 완료</button>
+                        </div>
+                        <p class="status-msg" id="email-auth-status"></p>
+                    </div>
+                    <div id="email-auth-success-badge" style="display: none; margin-top: 5px;">
+                        <span class="badge success">✅ 이메일 인증 완료</span>
                     </div>
 
                     <div class="form-group">
@@ -181,7 +167,7 @@
                 <div style="margin-top: 16px;">
                     <button type="submit" id="submit-btn" class="btn-primary" style="width: 100%; font-size: 1.1rem; padding: 18px;">가입 신청</button>
                     <p style="text-align: center; margin-top: 20px; color: var(--text-muted); font-size: 0.9rem;">
-                        이미 계정이 있으신가요? <a href="#" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">로그인하기</a>
+                        이미 계정이 있으신가요? <a href="login.html" style="color: var(--primary-blue); font-weight: 600; text-decoration: none;">로그인하기</a>
                     </p>
                 </div>
             </form>
@@ -200,7 +186,7 @@
             </div>
             <div class="success-actions">
                 <button class="btn-primary" onclick="location.href='index.html'">메인으로 이동</button>
-                <button class="btn-outline" style="margin-left: 10px;">로그인 페이지</button>
+                <button class="btn-outline" style="margin-left: 10px;" onclick="location.href='login.html'">로그인 페이지</button>
             </div>
         </div>
     </div>

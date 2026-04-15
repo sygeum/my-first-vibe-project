@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원정보수정 | 마이페이지 | ADBC Center</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mypage-edit.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="gnb-root"></div>
+
+    <div class="breadcrumb-container">
+        <div class="container breadcrumb">
+            <span>Home</span>
+            <span>마이페이지</span>
+            <span class="active">회원정보수정</span>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero" style="height: 250px;">
+        <div class="container">
+            <h1>마이페이지</h1>
+            <p>나의 활동 정보와 계정 설정을 관리하실 수 있습니다.</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="mypage-container">
+            <!-- Left LNB (Sidebar) -->
+            <aside class="mypage-sidebar">
+                <div class="sidebar-header">
+                    <h3>마이페이지</h3>
+                    <p>My Page Management</p>
+                </div>
+                <ul class="sidebar-menu">
+                    <li><a href="mypage-edit.html" class="active">회원정보수정</a></li>
+                    <li><a href="#">질의응답</a></li>
+                    <li><a href="autonomous-data-history.html">자율주행 데이터 조회</a></li>
+                    <li><a href="#">분석데이터 조회</a></li>
+                    <li><a href="#">모바일 서비스 신청 조회</a></li>
+                </ul>
+            </aside>
+
+            <!-- Right Content -->
+            <div class="mypage-content">
+                <div class="edit-form-card">
+                    <div class="form-header">
+                        <h2>회원정보수정</h2>
+                        <span class="required-info"><span class="required-mark">*</span> 필수 입력 항목</span>
+                    </div>
+
+                    <form id="edit-profile-form">
+                        <!-- 기본 계정 정보 -->
+                        <div class="form-section">
+                            <h3 class="section-title">기본 계정 정보</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="user-id">아이디</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="user-id" value="tester_user" readonly>
+                                    </div>
+                                    <p class="field-guide">아이디는 변경할 수 없습니다.</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="user-name">성명 <span class="required-mark">*</span></label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="user-name" value="홍길동" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 비밀번호 변경 -->
+                        <div class="form-section">
+                            <h3 class="section-title">비밀번호 변경</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="new-password">새 비밀번호</label>
+                                    <div class="input-wrapper">
+                                        <input type="password" id="new-password" placeholder="변경할 경우에만 입력하세요">
+                                    </div>
+                                    <p class="field-guide">영문, 숫자, 특수문자를 포함하여 10자 이상 입력해주세요.</p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="confirm-password">새 비밀번호 확인</label>
+                                    <div class="input-wrapper">
+                                        <input type="password" id="confirm-password" placeholder="비밀번호를 다시 입력하세요">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 소속 및 상세 정보 -->
+                        <div class="form-section">
+                            <h3 class="section-title">소속 및 상세 정보</h3>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label for="company-name">기관명 또는 회사명 <span class="required-mark">*</span></label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="company-name" value="(주)자율주행연구소" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="dept-name">부서명</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="dept-name" value="기술개발팀">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="job-title">직책</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="job-title" value="선임연구원">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="contact-num">연락처 <span class="required-mark">*</span></label>
+                                    <div class="input-wrapper">
+                                        <input type="tel" id="contact-num" value="010-1234-5678" required>
+                                    </div>
+                                </div>
+                                <div class="form-group-full">
+                                    <label for="email-addr">이메일 <span class="required-mark">*</span></label>
+                                    <div class="input-wrapper">
+                                        <input type="email" id="email-addr" value="tester@adbc-center.kr" required>
+                                    </div>
+                                </div>
+                                <div class="form-group-full">
+                                    <label for="address">주소 / 기본 정보</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="address" value="경상북도 구미시 구미대로 350-27" placeholder="상세 정보를 입력하세요">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="form-actions">
+                            <button type="button" class="btn-outline btn-large" onclick="history.back()">취소</button>
+                            <button type="submit" class="btn-primary btn-large">회원정보 수정</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer style="background: #f1f3f5; padding: 60px 0; text-align: center; border-top: 1px solid var(--border-color); margin-top: 80px;">
+        <div class="container">
+            <p style="color: var(--text-muted);">&copy; 2026 ADBC Center. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        document.getElementById('edit-profile-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Simple validation check for demo
+            const newPw = document.getElementById('new-password').value;
+            const confirmPw = document.getElementById('confirm-password').value;
+            
+            if (newPw && newPw !== confirmPw) {
+                alert('비밀번호가 일치하지 않습니다.');
+                return;
+            }
+            
+            alert('회원정보가 성공적으로 수정되었습니다.');
+        });
+    </script>
+</body>
+</html>

@@ -73,57 +73,57 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // 3. Identity Verification (Mockup)
-        const phoneInput = document.getElementById('phone');
-        const btnRequestAuth = document.getElementById('btn-request-auth');
-        const authCodeWrapper = document.getElementById('auth-code-wrapper');
-        const authCodeInput = document.getElementById('auth-code');
-        const btnVerifyAuth = document.getElementById('btn-verify-auth');
-        const authTimer = document.getElementById('auth-timer');
-        const authStatus = document.getElementById('auth-status');
-        const authSuccessBadge = document.getElementById('auth-success-badge');
+        // 3. Email Identity Verification (Mockup)
+        const emailInput = document.getElementById('email');
+        const btnRequestEmailAuth = document.getElementById('btn-request-email-auth');
+        const emailAuthWrapper = document.getElementById('email-auth-wrapper');
+        const emailAuthCodeInput = document.getElementById('email-auth-code');
+        const btnVerifyEmailAuth = document.getElementById('btn-verify-email-auth');
+        const emailAuthTimer = document.getElementById('email-auth-timer');
+        const emailAuthStatus = document.getElementById('email-auth-status');
+        const emailAuthSuccessBadge = document.getElementById('email-auth-success-badge');
 
-        let isPhoneVerified = false;
+        let isEmailVerified = false;
         let timerInterval;
 
-        btnRequestAuth.addEventListener('click', () => {
-            if (!phoneInput.value) {
-                alert('휴대폰 번호를 입력해주세요.');
+        btnRequestEmailAuth.addEventListener('click', () => {
+            if (!emailInput.value || !emailInput.value.includes('@')) {
+                alert('올바른 이메일 주소를 입력해주세요.');
                 return;
             }
-            alert('인증번호가 발송되었습니다. (인증번호: 1234)');
-            authCodeWrapper.style.display = 'block';
-            startAuthTimer();
-            btnRequestAuth.innerText = '재전송';
+            alert('인증번호가 이메일로 발송되었습니다. (인증번호: 1234)');
+            emailAuthWrapper.style.display = 'block';
+            startEmailAuthTimer();
+            btnRequestEmailAuth.innerText = '재전송';
         });
 
-        function startAuthTimer() {
+        function startEmailAuthTimer() {
             clearInterval(timerInterval);
             let timeLeft = 180;
             timerInterval = setInterval(() => {
                 const min = Math.floor(timeLeft / 60);
                 const sec = timeLeft % 60;
-                authTimer.innerText = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
+                emailAuthTimer.innerText = `${min.toString().padStart(2, '0')}:${sec.toString().padStart(2, '0')}`;
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
-                    authStatus.innerText = '인증 시간이 만료되었습니다. 다시 시도해주세요.';
-                    authStatus.className = 'status-msg error-text';
+                    emailAuthStatus.innerText = '인증 시간이 만료되었습니다. 다시 시도해주세요.';
+                    emailAuthStatus.className = 'status-msg error-text';
                 }
                 timeLeft--;
             }, 1000);
         }
 
-        btnVerifyAuth.addEventListener('click', () => {
-            if (authCodeInput.value === '1234') {
+        btnVerifyEmailAuth.addEventListener('click', () => {
+            if (emailAuthCodeInput.value === '1234') {
                 clearInterval(timerInterval);
-                isPhoneVerified = true;
-                authCodeWrapper.style.display = 'none';
-                authSuccessBadge.style.display = 'block';
-                btnRequestAuth.disabled = true;
-                phoneInput.disabled = true;
+                isEmailVerified = true;
+                emailAuthWrapper.style.display = 'none';
+                emailAuthSuccessBadge.style.display = 'block';
+                btnRequestEmailAuth.disabled = true;
+                emailInput.disabled = true;
             } else {
-                authStatus.innerText = '인증번호가 일치하지 않습니다.';
-                authStatus.className = 'status-msg error-text';
+                emailAuthStatus.innerText = '인증번호가 일치하지 않습니다.';
+                emailAuthStatus.className = 'status-msg error-text';
             }
         });
 
@@ -200,9 +200,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
-            // Check Phone Verification
-            if (!isPhoneVerified) {
-                alert('본인 인증을 완료해주세요.');
+            // Check Email Verification
+            if (!isEmailVerified) {
+                alert('이메일 인증을 완료해주세요.');
                 return;
             }
 
@@ -321,16 +321,16 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <a href="index.html" class="${currentPage === 'index.html' ? 'active' : ''}">모니터링</a>
                     <div class="has-dropdown">
-                        <a href="autonomous-data.html" class="${['autonomous-data.html', 'autonomous-data-apply.html', 'autonomous-data-apply-form.html', 'analysis-data-apply.html', 'analysis-data-apply-form.html'].includes(currentPage) ? 'active' : ''}">자율주행 데이터</a>
+                        <a href="autonomous-data-apply.html" class="${['autonomous-data.html', 'autonomous-data-apply.html', 'autonomous-data-apply-form.html', 'analysis-data-apply.html', 'analysis-data-apply-form.html'].includes(currentPage) ? 'active' : ''}">자율주행 데이터</a>
                         <div class="dropdown-menu">
                             <a href="autonomous-data-apply.html">자율주행 데이터 신청</a>
                             <a href="analysis-data-apply.html">분석 데이터 신청</a>
                         </div>
                     </div>
-                    <a href="#">인프라 예약</a>
-                    <a href="signup.html" class="${currentPage === 'signup.html' ? 'active' : ''}">회원가입</a>
+                    <a href="mypage-edit.html" class="${currentPage === 'mypage-edit.html' ? 'active' : ''}">마이페이지</a>
+
                 </div>
-                <a href="signup.html" class="btn-primary">시스템 접속</a>
+                <a href="login.html" class="btn-primary">로그인</a>
             </div>
         </nav>
         `;
