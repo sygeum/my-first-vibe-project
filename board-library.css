@@ -1,0 +1,54 @@
+/* board-library.css */
+/* Category Badges */
+.lib-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.cat-form { background: #e7f5ff; color: #1971c2; } /* 신청서 */
+.cat-guide { background: #f3f0ff; color: #6741d9; } /* 가이드 */
+.cat-tech { background: #e6fcf5; color: #099268; } /* 기술문서 */
+.cat-security { background: #fff5f5; color: #e03131; } /* 보안문서 */
+
+/* Table File Icons and Buttons */
+.file-type-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-right: 5px;
+}
+
+.btn-download-sm {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background: #f1f3f5;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    border: 1px solid #dee2e6;
+}
+
+.btn-download-sm:hover {
+    background: var(--primary-navy);
+    border-color: var(--primary-navy);
+}
+
+.btn-download-sm:hover svg {
+    fill: #fff;
+}
+
+.btn-download-sm svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--text-muted);
+}
+
+/* List Extension */
+.board-table td.td-file {
+    text-align: center;
+}

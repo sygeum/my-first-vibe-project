@@ -1,0 +1,223 @@
+/* operation-equipment.css */
+/* Section Common for Equipment Tab */
+.eq-section-padding {
+    padding: 80px 0;
+}
+
+.eq-title-wrap {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.eq-sub-title {
+    color: var(--accent-blue);
+    font-weight: 700;
+    font-size: 1rem;
+    display: block;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.eq-main-title {
+    font-size: 2.2rem;
+    color: var(--primary-navy);
+    font-weight: 800;
+}
+
+/* Equipment Section Layout */
+.equipment-item {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 100px;
+}
+
+.equipment-item:last-child {
+    margin-bottom: 0;
+}
+
+.equipment-item.reverse {
+    flex-direction: row-reverse;
+}
+
+.equipment-image-box {
+    flex: 1;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 30px rgba(0, 44, 95, 0.1);
+    position: relative;
+    background: #eee;
+}
+
+.equipment-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.equipment-image-box:hover img {
+    transform: scale(1.05);
+}
+
+.equipment-info {
+    flex: 1;
+}
+
+.equipment-info .category-tag {
+    display: inline-block;
+    padding: 5px 14px;
+    background: var(--primary-navy);
+    color: #fff;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.equipment-info h3 {
+    font-size: 2rem;
+    color: var(--primary-navy);
+    margin-bottom: 15px;
+    font-weight: 800;
+}
+
+.equipment-info .main-desc {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #4b5563;
+    margin-bottom: 30px;
+}
+
+/* Specs Grid */
+.specs-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
+.spec-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+.spec-card:hover {
+    border-color: var(--accent-blue);
+    box-shadow: var(--shadow);
+}
+
+.spec-label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--accent-blue);
+    font-weight: 700;
+    margin-bottom: 6px;
+}
+
+.spec-value {
+    font-size: 1rem;
+    color: var(--primary-navy);
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.spec-list {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0 0;
+}
+
+.spec-list li {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    position: relative;
+    padding-left: 12px;
+    margin-bottom: 4px;
+}
+
+.spec-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+}
+
+/* Summary Cards */
+.summary-container {
+    background: var(--bg-gray);
+    padding: 80px 0;
+    border-radius: 20px;
+    margin-top: 50px;
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.summary-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    text-align: center;
+    border-top: 4px solid var(--primary-navy);
+}
+
+.summary-card:nth-child(2) { border-top-color: var(--accent-blue); }
+.summary-card:nth-child(3) { border-top-color: var(--primary-blue); }
+
+.summary-icon {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.summary-card h4 {
+    font-size: 1.25rem;
+    color: var(--primary-navy);
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.data-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.data-tag {
+    background: var(--bg-gray);
+    color: var(--text-main);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    border: 1px solid var(--border-color);
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .equipment-item, .equipment-item.reverse {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .equipment-image-box {
+        width: 100%;
+        height: 300px;
+    }
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+}

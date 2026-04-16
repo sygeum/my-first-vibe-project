@@ -1,73 +1,222 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>자율주행 빅데이터 관제센터 | ADBC</title>
-    <meta name="description" content="세종시 자율주행 빅데이터 관제센터 - 미래 교통의 중심, 안전한 자율주행 시대를 엽니다.">
+    <title>구미시 자율주행 관제센터 | Gumi Autonomous Driving Center</title>
+    <meta name="description" content="실도로 기반 자율주행 데이터 서비스 플랫폼 - 데이터 신청 및 기업 지원">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div id="gnb-root"></div>
 
+    <!-- Page Indicator (Dots) -->
+    <div class="fp-indicator" id="fp-indicator">
+        <div class="fp-dot active" data-index="0"></div>
+        <div class="fp-dot" data-index="1"></div>
+        <div class="fp-dot" data-index="2"></div>
+        <div class="fp-dot" data-index="3"></div>
+    </div>
 
-    <header class="hero">
-        <div class="container">
-            <h1>미래 모빌리티의 기준, 자율주행 데이터 허브</h1>
-            <p>세종시 자율주행 빅데이터 관제센터는 자율 및 비자율 차량의 혼합 주행 환경 데이터를 통합하여 안전한 교통 시스템을 구축합니다.</p>
+    <div class="fullpage-container">
+        <div class="fullpage-wrapper" id="fullpage-wrapper">
+
+            <!-- SECTION 1: HERO -->
+            <section class="fp-section main-hero" data-theme="light">
+                <div class="container">
+                    <div class="hero-content" style="text-align: center; margin: 0 auto; max-width: 1000px;">
+                        <h1 class="hero-animate">
+                            <span class="hero-gradient-text"
+                                style="font-size: 2.2rem; display: block; margin-bottom: 20px; font-weight: 800;">구미시
+                                자율주행 관제센터</span>
+                            실도로 기반 자율주행 <br>
+                            데이터 서비스 플랫폼
+                        </h1>
+                        <p class="hero-animate" style="margin-top: 25px; font-size: 1.3rem; opacity: 0.9;">
+                            자율주행 차량과 인프라에서 수집된 실제 도로 환경 데이터를 기반으로 <br>
+                            데이터 신청, 분석, 기업 지원 서비스를 하나로 통합하여 제공합니다.
+                        </p>
+                        <div class="hero-btns hero-animate" style="margin-top: 50px; justify-content: center;">
+                            <a href="autonomous-data-apply.html" class="btn-primary"
+                                style="padding: 20px 45px; border-radius: 50px;">데이터 신청하기</a>
+                            <a href="operation-equipment.html" class="btn-outline"
+                                style="padding: 20px 45px; border-radius: 50px; border-width: 2px;">장비소개 보기</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Scroll Indicator -->
+                <div class="scroll-indicator hero-animate">
+                    <div class="mouse">
+                        <div class="mouse-wheel"></div>
+                    </div>
+                    <span style="font-size: 0.8rem; font-weight: 700; letter-spacing: 2px;">SCROLL DOWN</span>
+                </div>
+            </section>
+
+
+            <!-- SECTION 3: CORE SERVICES (핵심 서비스) -->
+            <section class="fp-section reveal">
+                <div class="container">
+                    <h2 class="section-title" style="text-align: center; margin-bottom: 60px;">핵심 서비스</h2>
+                    <div class="service-grid">
+                        <div class="main-service-card reveal stagger-item">
+                            <span class="icon">📡</span>
+                            <h3>자율주행 데이터 제공</h3>
+                            <p>차량 단말기 및 도로 인프라(RSU)에서 실시간으로 수집된 V2X, LiDAR, GPS 등 고도의 정밀성을 가진 데이터를 개방합니다.</p>
+                        </div>
+                        <div class="main-service-card reveal stagger-item">
+                            <span class="icon">📊</span>
+                            <h3>혼합 주행 분석 데이터</h3>
+                            <p>자율차와 일반 차량이 공존하는 복잡한 도로 환경에서의 교통 흐름 안정성 분석 리포트를 제공합니다.</p>
+                        </div>
+                        <div class="main-service-card reveal stagger-item">
+                            <span class="icon">🖥️</span>
+                            <h3>실시간 관제 데이터</h3>
+                            <p>디지털 트윈 모델을 기반으로 센터에서 상시 모니터링 중인 구미 구역의 실시간 교통 현황 및 이벤트 데이터를 전송합니다.</p>
+                        </div>
+                        <div class="main-service-card reveal stagger-item">
+                            <span class="icon">🏢</span>
+                            <h3>기업 지원 서비스</h3>
+                            <p>자율주행 기술 실증이 필요한 기업을 위해 데이터 가공 및 기술 멘토링 서비스를 지원합니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: NOTICE & CTA -->
+            <section class="fp-section reveal" style="padding: 0; flex-direction: column; background: #f8fafc;">
+                <div class="container"
+                    style="display: flex; gap: 40px; flex: 1; align-items: center; min-height: 0; width: 100%; padding-top: 40px; padding-bottom: 40px;">
+                    <!-- Left: Notice -->
+                    <div style="flex: 1.2; display: flex; flex-direction: column; justify-content: center;">
+                        <div
+                            style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px;">
+                            <h2 class="section-title"
+                                style="margin: 0; font-size: 1.8rem; text-align: left; padding-bottom: 0;">플랫폼 공지사항</h2>
+                            <a href="board-notice.html"
+                                style="color: var(--accent-blue); text-decoration: none; font-weight: 800; font-size: 1rem;">전체보기
+                                +</a>
+                        </div>
+                        <div class="notice-list" style="margin-top: 20px;">
+                            <div class="notice-item reveal stagger-item">
+                                <a href="#" style="font-size: 1.15rem; line-height: 1.4;">구미 국가산업단지 4단지 내 실증 구간 자율주행 원천
+                                    데이터 추가 개방 안내</a>
+                                <span style="margin-top: 10px; font-size: 0.9rem;">2026.04.12</span>
+                            </div>
+                            <div class="notice-item reveal stagger-item">
+                                <a href="#" style="font-size: 1.15rem; line-height: 1.4;">[모집] 2026년 상반기 자율주행 스타트업 대상 기술
+                                    실증 및 데이터 활용 지원 사업</a>
+                                <span style="margin-top: 10px; font-size: 0.9rem;">2026.04.10</span>
+                            </div>
+                            <div class="notice-item reveal stagger-item" style="border-bottom: none;">
+                                <a href="#" style="font-size: 1.15rem; line-height: 1.4;">통합 데이터 플랫폼 활용 가이드 v2.1 업데이트 및
+                                    설명회 개최 안내</a>
+                                <span style="margin-top: 10px; font-size: 0.9rem;">2026.04.05</span>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Right: CTA Card -->
+                    <div
+                        style="flex: 0.8; height: 400px; background: linear-gradient(135deg, var(--primary-navy), #001a3d); border-radius: 40px; display: flex; align-items: center; justify-content: center; padding: 40px; box-shadow: 0 20px 40px rgba(0,44,95,0.15); color: #fff;">
+                        <div class="cta-section-title" style="text-align: center; width: 100%;">
+                            <h2 style="font-size: 2.2rem; margin-bottom: 20px; color: #fff;">모빌리티의 진화,<br>당신과 함께 앞당깁니다
+                            </h2>
+                            <p
+                                style="margin: 30px auto; font-size: 1.15rem; line-height: 1.6; opacity: 0.8; color: rgba(255,255,255,0.8);">
+                                지금 구미시 자율주행 관제센터에 가입하고,<br>고품질 데이터를 경험해 보세요.</p>
+                            <div style="display: flex; gap: 15px; justify-content: center; margin-top: 30px;">
+                                <a href="signup.html"
+                                    style="background: #fff; color: var(--primary-navy); border-radius: 50px; font-weight: 700; padding: 12px 28px; font-size: 1rem; text-decoration: none; display: inline-block; border: none;">회원가입</a>
+                                <a href="login.html"
+                                    style="background: #fff; color: var(--primary-navy); border-radius: 50px; font-weight: 700; padding: 12px 28px; font-size: 1rem; text-decoration: none; display: inline-block; border: none;">로그인</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: FIND US (LOCATION) -->
+            <section class="fp-section reveal location-section" style="flex-direction: column;">
+                <div class="container" style="flex: 1; display: flex; align-items: center; width: 100%;">
+                    <div class="location-content-inner"
+                        style="border-radius: 24px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.1);">
+                        <!-- Left: Info -->
+                        <div class="location-info-side">
+                            <h2>찾아오시는 길</h2>
+                            <div class="location-details">
+                                <div class="loc-item-group">
+                                    <h4>기관명</h4>
+                                    <p>구미시 자율주행 관제센터</p>
+                                </div>
+                                <div class="loc-item-group">
+                                    <h4>주소</h4>
+                                    <address>경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+                                </div>
+                                <div class="loc-item-group">
+                                    <h4>운영시간</h4>
+                                    <p>평일 09:00 ~ 18:00</p>
+                                </div>
+                                <div class="loc-item-group">
+                                    <h4>문의 안내</h4>
+                                    <ul class="loc-contact-list">
+                                        <li><b>대표번호</b> 054-000-0000</li>
+                                        <li><b>팩스</b> 054-000-0001</li>
+                                        <li><b>이메일</b> contact@gumi-adbc.kr</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Right: Map -->
+                        <div class="location-map-side">
+                            <iframe
+                                src="https://maps.google.com/maps?q=경북%20구미시%20구미대로%20350-27&t=&z=16&ie=UTF8&iwloc=&output=embed"
+                                title="관제 센터 위치" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+                            <div class="main-map-overlay">
+                                <h3>구미시 자율주행 관제센터</h3>
+                                <p>경상북도 구미시 구미대로 350-27 관제센터 2층</p>
+                                <a href="https://map.kakao.com/?q=경북+구미시+구미대로+350-27" target="_blank"
+                                    class="btn-primary"
+                                    style="padding: 10px 20px; font-size: 0.9rem; border-radius: 8px; display: inline-block; text-decoration: none;">빠른길
+                                    찾기</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer Integrated inside the last section -->
+                <footer class="site-footer">
+                    <div class="container footer-container">
+                        <div class="footer-top">
+                            <div class="footer-info-group">
+                                <div class="footer-logo">구미시 자율주행 관제센터</div>
+                                <address class="footer-address">경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+                            </div>
+                        </div>
+                        <div class="footer-contact">
+                            <span><b>Tel:</b> 054-000-0000</span>
+                            <span><b>Email:</b> contact@gumi-adbc.kr</span>
+                            <span><b>Fax:</b> 054-000-0001</span>
+                        </div>
+                        <div class="footer-bottom">
+                            <p class="copyright">&copy; 2026 Gumi Autonomous Driving Control Center. All Rights
+                                Reserved.</p>
+                        </div>
+                    </div>
+                </footer>
+            </section>
+
         </div>
-    </header>
+    </div>
 
-    <main>
-        <section class="dashboard-overview">
-            <div class="container">
-                <h2 class="section-title">실시간 관제 현황</h2>
-                <div class="stat-grid">
-                    <div class="stat-card">
-                        <div class="stat-val" id="stat-vehicles">32</div>
-                        <div class="stat-label">활성 주행 차량</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-val" id="stat-data">1.45 TB</div>
-                        <div class="stat-label">일일 데이터 수집량</div>
-                    </div>
-                    <div class="stat-card">
-                        <div class="stat-val" id="stat-speed">45.2</div>
-                        <div class="stat-label">구역 평균 속도 (km/h)</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="container">
-            <h2 class="section-title">핵심 실증 파트</h2>
-            <div class="strategy-grid">
-                <div class="strategy-card">
-                    <span class="card-num">CORE 01</span>
-                    <h3>혼합 주행 거버넌스</h3>
-                    <p>자율차와 비자율차가 공존하는 복합 도로 환경의 안전성 확보와 데이터 연계 체계를 구축합니다.</p>
-                </div>
-                <div class="strategy-card">
-                    <span class="card-num">CORE 02</span>
-                    <h3>V2X 실시간 통신</h3>
-                    <p>도로 인프라(RSU)와 차량 간의 양방향 지능형 통신망 최적화 및 보안 인증을 관리합니다.</p>
-                </div>
-                <div class="strategy-card">
-                    <span class="card-num">CORE 03</span>
-                    <h3>표준화 데이터 공유</h3>
-                    <p>글로벌 표준(SAE J2735) 기반의 고품질 데이터를 가공하여 민간 기업의 기술 개발을 지원합니다.</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer style="background: #f1f3f5; padding: 60px 0; text-align: center; border-top: 1px solid var(--border-color);">
-        <div class="container">
-            <p style="color: var(--text-muted);">&copy; 2026 Sejong Autonomous Driving Big Data Control Center. All Rights Reserved.</p>
-        </div>
-    </footer>
-
+    <!-- Scripts -->
     <script src="main.js"></script>
+    <script src="home.js"></script>
 </body>
+
 </html>

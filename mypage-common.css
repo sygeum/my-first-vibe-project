@@ -1,0 +1,178 @@
+/* 
+    MyPage Common Styles 
+    Layout: Left LNB (260px) + Right Content Area
+*/
+
+.mypage-container {
+    display: flex;
+    gap: 30px;
+    margin-top: 40px;
+    align-items: flex-start;
+}
+
+/* 1. LNB (Sidebar) Styles */
+.mypage-sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 110px; /* GNB 높이에 맞춰 조정 */
+}
+
+.sidebar-header {
+    background: var(--primary-navy);
+    color: #fff;
+    padding: 30px 24px;
+    text-align: center;
+}
+
+.sidebar-header h3 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.sidebar-header p {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-top: 0;
+}
+
+.sidebar-menu {
+    list-style: none;
+    padding: 10px 0;
+}
+
+.sidebar-menu li a {
+    display: flex;
+    align-items: center;
+    padding: 16px 24px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 600;
+    font-size: 1rem;
+    transition: var(--transition);
+    border-left: 4px solid transparent;
+}
+
+.sidebar-menu li a:hover {
+    background: var(--secondary-blue);
+    color: var(--primary-blue);
+}
+
+.sidebar-menu li a.active {
+    background: var(--secondary-blue);
+    color: var(--primary-blue);
+    border-left-color: var(--accent-blue);
+}
+
+/* 2. Content Area Styles */
+.mypage-content {
+    flex: 1;
+    min-width: 0;
+}
+
+/* MyPage Common Card Style */
+.mypage-card {
+    background: #fff;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    padding: 30px;
+}
+
+/* Table / List Header inside MyPage */
+.mypage-header {
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--primary-navy);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.mypage-header h2 {
+    font-size: 1.8rem;
+    color: var(--primary-navy);
+    font-weight: 800;
+}
+
+/* 3. Responsive Styles */
+@media (max-width: 1024px) {
+    .mypage-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .mypage-sidebar {
+        width: 100%;
+        position: static;
+        border-radius: 12px;
+    }
+    
+    .sidebar-header {
+        padding: 20px 24px;
+    }
+    
+    .sidebar-menu {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0;
+    }
+    
+    .sidebar-menu li {
+        flex: 1 1 33.333%;
+        border-right: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+    }
+    
+    .sidebar-menu li:nth-child(3n) {
+        border-right: none;
+    }
+    
+    .sidebar-menu li a {
+        border-left: none;
+        border-bottom: 4px solid transparent;
+        justify-content: center;
+        padding: 14px 10px;
+        font-size: 0.95rem;
+    }
+    
+    .sidebar-menu li a.active {
+        border-bottom-color: var(--accent-blue);
+        background: var(--secondary-blue);
+    }
+}
+
+@media (max-width: 768px) {
+    .mypage-container {
+        margin-top: 20px;
+    }
+    
+    .mypage-card {
+        padding: 24px;
+    }
+    
+    .sidebar-menu li {
+        flex: 1 1 50%;
+    }
+    
+    .sidebar-menu li:nth-child(2n) {
+        border-right: none;
+    }
+    
+    .mypage-header h2 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar-menu li {
+        flex: 1 1 100%;
+        border-right: none;
+    }
+}

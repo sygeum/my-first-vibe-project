@@ -1,0 +1,57 @@
+/* board-library-write.css */
+.lib-write-container {
+    margin-top: 20px;
+    border-top: 2px solid var(--primary-navy);
+}
+
+.lib-write-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.lib-write-table th {
+    width: 160px;
+    padding: 20px 25px;
+    background: #f8f9fa;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+    font-weight: 700;
+    color: var(--text-dark);
+}
+
+.lib-write-table td {
+    padding: 15px 25px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.lib-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.lib-input:focus {
+    border-color: var(--accent-blue);
+    outline: none;
+}
+
+.lib-textarea {
+    height: 300px;
+    resize: none;
+}
+
+.lib-actions {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+.btn-lib-submit {
+    padding: 12px 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}

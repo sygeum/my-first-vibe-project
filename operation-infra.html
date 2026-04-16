@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div id="gnb-root"></div>
 
@@ -32,7 +34,7 @@
         <section style="padding: 60px 0 0;">
             <div class="container">
                 <div class="sub-tab-container">
-                    <a href="#" class="sub-tab-item">장비소개</a>
+                    <a href="operation-equipment.html" class="sub-tab-item">장비소개</a>
                     <a href="operation-control-map.html" class="sub-tab-item">관제 및 정밀지도 구축 범위</a>
                     <a href="operation-infra.html" class="sub-tab-item active">인프라 설치 구간</a>
                 </div>
@@ -44,8 +46,10 @@
             <div class="container" style="text-align: center;">
                 <!-- Section Title & Description -->
                 <div style="margin-top: 40px;">
-                    <h3 style="font-size: 1.75rem; color: var(--primary-navy); margin-bottom: 20px; text-align: center;">인프라 설치 구간</h3>
-                    
+                    <h3
+                        style="font-size: 1.75rem; color: var(--primary-navy); margin-bottom: 20px; text-align: center;">
+                        인프라 설치 구간</h3>
+
                     <div style="max-width: 900px; margin: 0 auto 32px; text-align: center;">
                         <p style="font-size: 1.2rem; line-height: 1.8; color: var(--text-main); word-break: keep-all;">
                             인프라 설치 구간을 기반으로 자율주행 환경에서<br>
@@ -53,14 +57,17 @@
                         </p>
                     </div>
 
-                    <div style="background: var(--bg-gray); border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow); max-width: 1000px; margin: 0 auto;">
+                    <div
+                        style="background: var(--bg-gray); border-radius: 20px; overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow); max-width: 1000px; margin: 0 auto;">
                         <img src="img/map-infra.jpg" alt="인프라 설치 구간 지도" style="width: 100%; display: block;">
                     </div>
 
                     <!-- New Section: Infrastructure Equipment Composition -->
                     <div class="infra-equip-section">
-                        <h3 style="font-size: 1.75rem; color: var(--primary-navy); margin-bottom: 20px; text-align: center;">인프라 장비 구성</h3>
-                        
+                        <h3
+                            style="font-size: 1.75rem; color: var(--primary-navy); margin-bottom: 20px; text-align: center;">
+                            인프라 장비 구성</h3>
+
                         <div class="infra-equip-grid">
                             <!-- Block 1 -->
                             <div class="infra-equip-card">
@@ -70,7 +77,8 @@
                                 <h4 class="infra-equip-title">이동형 실도로 인프라 시스템</h4>
                                 <span class="infra-equip-main-label">주요 장비</span>
                                 <span class="infra-equip-main-text">CCTV, RSU, 서버, DGPS</span>
-                                <p class="infra-equip-desc">차량 기반 이동형 인프라로, 실도로 환경에서 영상·통신·정밀 위치 데이터를 수집하고 현장 관제 및 데이터 처리를 지원합니다.</p>
+                                <p class="infra-equip-desc">차량 기반 이동형 인프라로, 실도로 환경에서 영상·통신·정밀 위치 데이터를 수집하고 현장 관제 및 데이터
+                                    처리를 지원합니다.</p>
                             </div>
 
                             <!-- Block 2 -->
@@ -81,7 +89,8 @@
                                 <h4 class="infra-equip-title">이동 설치용 실도로 인프라 시스템 (RSU+CCTV)</h4>
                                 <span class="infra-equip-main-label">주요 장비</span>
                                 <span class="infra-equip-main-text">RSU, CCTV</span>
-                                <p class="infra-equip-desc">주요 구간에 설치되어 도로 상황과 차량 통신 정보를 수집하며, 관제 시스템과 연계한 실시간 운영을 지원합니다.</p>
+                                <p class="infra-equip-desc">주요 구간에 설치되어 도로 상황과 차량 통신 정보를 수집하며, 관제 시스템과 연계한 실시간 운영을
+                                    지원합니다.</p>
                             </div>
 
                             <!-- Block 3 -->
@@ -92,7 +101,8 @@
                                 <h4 class="infra-equip-title">이동 설치용 실도로 인프라 시스템 (RSU+CCTV+Radar/Lidar)</h4>
                                 <span class="infra-equip-main-label">주요 장비</span>
                                 <span class="infra-equip-main-text">CCTV, RSU, Radar, Lidar</span>
-                                <p class="infra-equip-desc">영상·통신 데이터와 함께 거리 및 객체 인지 정보를 수집하여 보다 정밀한 모니터링과 상황 분석을 지원합니다.</p>
+                                <p class="infra-equip-desc">영상·통신 데이터와 함께 거리 및 객체 인지 정보를 수집하여 보다 정밀한 모니터링과 상황 분석을 지원합니다.
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -101,12 +111,26 @@
         </section>
     </main>
 
-    <footer style="background: #f1f3f5; padding: 60px 0; text-align: center; border-top: 1px solid var(--border-color);">
-        <div class="container">
-            <p style="color: var(--text-muted);">&copy; 2026 Sejong Autonomous Driving Big Data Control Center. All Rights Reserved.</p>
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-info-group">
+                    <div class="footer-logo">구미시 자율주행 관제센터</div>
+                    <address class="footer-address">경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <span><b>Tel:</b> 054-000-0000</span>
+                <span><b>Email:</b> contact@gumi-adbc.kr</span>
+                <span><b>Fax:</b> 054-000-0001</span>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Gumi Autonomous Driving Control Center. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 
     <script src="main.js"></script>
 </body>
+
 </html>

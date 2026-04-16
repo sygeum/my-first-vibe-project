@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | 게시판 | 구미시 자율주행 관제센터</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="board-faq.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="gnb-root"></div>
+
+    <div class="breadcrumb-container">
+        <div class="container breadcrumb">
+            <span>Home</span>
+            <span>게시판</span>
+            <span class="active">FAQ</span>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="board-container">
+            <!-- Sidebar (LNB) -->
+            <aside class="board-sidebar">
+                <h3>게시판</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="board-notice.html">공지사항</a></li>
+                    <li><a href="board-faq.html" class="active">FAQ</a></li>
+                    <li><a href="board-qna.html">질의응답</a></li>
+                    <li><a href="board-library.html">자료실</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Board Content -->
+            <div class="board-content">
+                <div class="board-header">
+                    <div class="board-title">
+                        <h2>FAQ</h2>
+                        <div class="total-count">총 <span id="total-count">5</span>건</div>
+                    </div>
+                </div>
+
+                <!-- Search Area (Matches Notice Style) -->
+                <div class="board-search">
+                    <select id="search-type">
+                        <option value="all">전체</option>
+                        <option value="q">질문</option>
+                        <option value="a">답변</option>
+                    </select>
+                    <input type="text" id="search-keyword" placeholder="궁금하신 내용을 입력하세요">
+                    <button class="btn-search" onclick="searchFaq()">검색</button>
+                </div>
+
+                <!-- FAQ Accordion List -->
+                <div class="faq-list" id="faq-accordion">
+                    <!-- FAQ 1 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-num">01</span>
+                            <span class="faq-title">자율주행 데이터는 어떻게 신청하나요?</span>
+                            <span class="faq-meta">2026-04-10</span>
+                            <span class="faq-toggle">
+                                <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </span>
+                        </div>
+                        <div class="faq-answer">
+                            <span class="answer-label">ANSWER</span>
+                            <p>자율주행 데이터 신청은 상단 메뉴의 [자율주행 데이터] > [자율주행 데이터 신청] 페이지에서 가능합니다.</p>
+                            <p>원하시는 데이터셋을 선택하신 후 활용 목적과 개인정보 수집 동의 절차를 거쳐 신청해주시면, 관리자 승인 후 다운로드 링크가 활성화됩니다.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 2 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-num">02</span>
+                            <span class="faq-title">회원가입 후 바로 데이터를 다운로드할 수 있나요?</span>
+                            <span class="faq-meta">2026-04-08</span>
+                            <span class="faq-toggle">
+                                <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </span>
+                        </div>
+                        <div class="faq-answer">
+                            <span class="answer-label">ANSWER</span>
+                            <p>포털의 데이터는 공공데이터 개방 정책에 따라 별도의 승인 절차가 필요합니다.</p>
+                            <p>회원가입 후 [마이페이지]에서 기업인증 또는 사용자 인증을 완료하신 후, 개별 데이터셋 신청서를 제출해 주셔야 합니다. 승인 처리는 근무일 기준 평균 1~3일이 소요됩니다.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 3 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-num">03</span>
+                            <span class="faq-title">데이터 제공 형식은 어떤 종류가 있나요?</span>
+                            <span class="faq-meta">2026-04-05</span>
+                            <span class="faq-toggle">
+                                <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </span>
+                        </div>
+                        <div class="faq-answer">
+                            <span class="answer-label">ANSWER</span>
+                            <p>본 관제센터에서 제공하는 데이터는 크게 다음과 같은 형식을 지원합니다.</p>
+                            <ul>
+                                <li><strong>차량 주행 데이터</strong>: CSV, JSON, ROSBAG</li>
+                                <li><strong>인프라/V2X 데이터</strong>: PCAP, XML</li>
+                                <li><strong>센서/영상 데이터</strong>: MP4, JPG (이미지 라벨링 데이터 포함)</li>
+                                <li><strong>정밀지도 데이터</strong>: SHP, DWG</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 4 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-num">04</span>
+                            <span class="faq-title">기업회원과 일반회원의 차이는 무엇인가요?</span>
+                            <span class="faq-meta">2026-04-01</span>
+                            <span class="faq-toggle">
+                                <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </span>
+                        </div>
+                        <div class="faq-answer">
+                            <span class="answer-label">ANSWER</span>
+                            <p>기업회원은 자율주행 관련 기술 개발 및 사업화를 목적으로 하는 법인 사용자를 의미하며, 일반회원 대비 고해상도 원천 데이터 및 비공개 데이터셋에 대한 접근 권한을 추가로 부여받으실 수 있습니다.</p>
+                            <p>일반회원(개인)은 연구 및 교육 목적의 공공 개방 데이터셋 위주로 활용이 가능합니다.</p>
+                        </div>
+                    </div>
+
+                    <!-- FAQ 5 -->
+                    <div class="faq-item">
+                        <div class="faq-question" onclick="toggleFaq(this)">
+                            <span class="faq-num">05</span>
+                            <span class="faq-title">신청 후 승인까지 얼마나 걸리나요?</span>
+                            <span class="faq-meta">2026-03-28</span>
+                            <span class="faq-toggle">
+                                <svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                            </span>
+                        </div>
+                        <div class="faq-answer">
+                            <span class="answer-label">ANSWER</span>
+                            <p>데이터 신청 승인은 관리자가 신청서의 내실 및 활용 목적의 적절성을 검토한 후 처리됩니다.</p>
+                            <p>통상적으로 <strong>영업일 기준 48시간 이내</strong>에 승인 여부가 결정되며, 보완이 필요한 경우 마이페이지 또는 이메일을 통해 보완 요청이 발송될 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination (Matches Notice Style) -->
+                <div style="display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+                    <div class="pagination">
+                        <a href="#" class="page-link">&lt;</a>
+                        <a href="#" class="page-link active">1</a>
+                        <a href="#" class="page-link">&gt;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-info-group">
+                    <div class="footer-logo">구미시 자율주행 관제센터</div>
+                    <address class="footer-address">경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <span><b>Tel:</b> 054-000-0000</span>
+                <span><b>Email:</b> contact@gumi-adbc.kr</span>
+                <span><b>Fax:</b> 054-000-0001</span>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Gumi Autonomous Driving Control Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+        function toggleFaq(element) {
+            const item = element.parentElement;
+            const answer = item.querySelector('.faq-answer');
+            const isActive = item.classList.contains('active');
+
+            // Close all other items
+            document.querySelectorAll('.faq-item').forEach(otherItem => {
+                if (otherItem !== item) {
+                    otherItem.classList.remove('active');
+                    otherItem.querySelector('.faq-answer').style.display = 'none';
+                }
+            });
+
+            // Toggle current item
+            if (isActive) {
+                item.classList.remove('active');
+                answer.style.display = 'none';
+            } else {
+                item.classList.add('active');
+                answer.style.display = 'block';
+            }
+        }
+
+        function searchFaq() {
+            const keyword = document.getElementById('search-keyword').value.toLowerCase();
+            const items = document.querySelectorAll('.faq-item');
+            let visibleCount = 0;
+
+            items.forEach(item => {
+                const title = item.querySelector('.faq-title').innerText.toLowerCase();
+                const content = item.querySelector('.faq-answer').innerText.toLowerCase();
+                
+                if (title.includes(keyword) || content.includes(keyword)) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            document.getElementById('total-count').innerText = visibleCount;
+        }
+
+        // Allow Enter key
+        document.getElementById('search-keyword').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') searchFaq();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>자료실 | 게시판 | 구미시 자율주행 관제센터</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="board-library.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="gnb-root"></div>
+
+    <div class="breadcrumb-container">
+        <div class="container breadcrumb">
+            <span>Home</span>
+            <span>게시판</span>
+            <span class="active">자료실</span>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="board-container">
+            <!-- Sidebar (LNB) -->
+            <aside class="board-sidebar">
+                <h3>게시판</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="board-notice.html">공지사항</a></li>
+                    <li><a href="board-faq.html">FAQ</a></li>
+                    <li><a href="board-qna.html">질의응답</a></li>
+                    <li><a href="board-library.html" class="active">자료실</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Board Content -->
+            <div class="board-content">
+                <div class="board-header">
+                    <div class="board-title">
+                        <h2>자료실</h2>
+                        <div class="total-count">총 <span id="total-count">6</span>건</div>
+                    </div>
+                </div>
+
+                <!-- Search & Filter Area -->
+                <div class="board-search library-search">
+                    <div style="display: flex; gap: 10px; flex: 1;">
+                        <select id="lib-category">
+                            <option value="all">카테고리 전체</option>
+                            <option value="form">신청서 양식</option>
+                            <option value="guide">데이터 활용 가이드</option>
+                            <option value="tech">기술 문서</option>
+                            <option value="security">정책/보안 문서</option>
+                        </select>
+                        <select id="search-type">
+                            <option value="all">제목+내용</option>
+                            <option value="title">제목</option>
+                            <option value="filename">파일명</option>
+                        </select>
+                    </div>
+                    <input type="text" id="search-keyword" placeholder="자료명을 검색하세요">
+                    <button class="btn-search">검색</button>
+                </div>
+
+                <!-- Library Table -->
+                <table class="board-table library-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 70px;">번호</th>
+                            <th style="width: 120px;">카테고리</th>
+                            <th>제목</th>
+                            <th style="width: 100px;">파일형식</th>
+                            <th style="width: 110px;">등록일</th>
+                            <th style="width: 90px;">조회수</th>
+                            <th style="width: 90px;">다운로드</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Doc 1 -->
+                        <tr>
+                            <td>6</td>
+                            <td><span class="lib-badge cat-form">신청서 양식</span></td>
+                            <td class="td-title"><a href="board-library-detail.html?id=6">자율주행 데이터 활용 신청서 양식 (개인/기업)</a></td>
+                            <td class="td-file text-center"><span style="color: #e03131; font-weight: 700;">PDF</span></td>
+                            <td>2026-04-12</td>
+                            <td>124</td>
+                            <td class="text-center">
+                                <a href="#" class="btn-download-sm">
+                                    <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Doc 2 -->
+                        <tr>
+                            <td>5</td>
+                            <td><span class="lib-badge cat-guide">데이터 활용 가이드</span></td>
+                            <td class="td-title"><a href="board-library-detail.html?id=5">구미시 자율주행 데이터 활용 가이드북 v1.2</a></td>
+                            <td class="td-file text-center"><span style="color: #e03131; font-weight: 700;">PDF</span></td>
+                            <td>2026-04-08</td>
+                            <td>85</td>
+                            <td class="text-center">
+                                <a href="#" class="btn-download-sm">
+                                    <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Doc 3 -->
+                        <tr>
+                            <td>4</td>
+                            <td><span class="lib-badge cat-tech">기술 문서</span></td>
+                            <td class="td-title"><a href="board-library-detail.html?id=4">LiDAR / RADAR 센서 데이터 규격 및 좌표계 설명서</a></td>
+                            <td class="td-file text-center"><span style="color: #e03131; font-weight: 700;">PDF</span></td>
+                            <td>2026-04-05</td>
+                            <td>210</td>
+                            <td class="text-center">
+                                <a href="#" class="btn-download-sm">
+                                    <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Doc 4 -->
+                        <tr>
+                            <td>3</td>
+                            <td><span class="lib-badge cat-guide">데이터 활용 가이드</span></td>
+                            <td class="td-title"><a href="board-library-detail.html?id=3">SPaT / MAP 동적 데이터 샘플 구성 설명서</a></td>
+                            <td class="td-file text-center"><span style="color: #2b8a3e; font-weight: 700;">XLSX</span></td>
+                            <td>2026-04-01</td>
+                            <td>56</td>
+                            <td class="text-center">
+                                <a href="#" class="btn-download-sm">
+                                    <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Doc 5 -->
+                        <tr>
+                            <td>2</td>
+                            <td><span class="lib-badge cat-security">정책/보안 문서</span></td>
+                            <td class="td-title"><a href="board-library-detail.html?id=2">자율주행 데이터 활용 연구 보안 서약서 양식</a></td>
+                            <td class="td-file text-center"><span style="color: #1971c2; font-weight: 700;">HWP</span></td>
+                            <td>2026-03-25</td>
+                            <td>42</td>
+                            <td class="text-center">
+                                <a href="#" class="btn-download-sm">
+                                    <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                                </a>
+                            </td>
+                        </tr>
+                        <!-- Doc 6 -->
+                        <tr>
+                            <td>1</td>
+                            <td><span class="lib-badge cat-tech">기술 문서</span></td>
+                            <td class="td-title"><a href="board-library-detail.html?id=1">기업회원 전용 데이터 활용 플랫폼 매뉴얼</a></td>
+                            <td class="td-file text-center"><span style="color: #1971c2; font-weight: 700;">DOCX</span></td>
+                            <td>2026-03-20</td>
+                            <td>189</td>
+                            <td class="text-center">
+                                <a href="#" class="btn-download-sm">
+                                    <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Pagination & Bottom Actions -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px;">
+                    <div style="width: 100px;"></div>
+                    <div class="pagination">
+                        <a href="#" class="page-link">&lt;</a>
+                        <a href="#" class="page-link active">1</a>
+                        <a href="#" class="page-link">&gt;</a>
+                    </div>
+                    <div style="width: 100px; text-align: right;">
+                        <a href="board-library-write.html" class="btn-primary" style="padding: 10px 20px; font-weight: 700;">자료 등록</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-info-group">
+                    <div class="footer-logo">구미시 자율주행 관제센터</div>
+                    <address class="footer-address">경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <span><b>Tel:</b> 054-000-0000</span>
+                <span><b>Email:</b> contact@gumi-adbc.kr</span>
+                <span><b>Fax:</b> 054-000-0001</span>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Gumi Autonomous Driving Control Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

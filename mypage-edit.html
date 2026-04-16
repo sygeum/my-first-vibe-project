@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원정보수정 | 마이페이지 | ADBC Center</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mypage-common.css">
     <link rel="stylesheet" href="mypage-edit.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
@@ -37,10 +38,9 @@
                 </div>
                 <ul class="sidebar-menu">
                     <li><a href="mypage-edit.html" class="active">회원정보수정</a></li>
-                    <li><a href="#">질의응답</a></li>
-                    <li><a href="autonomous-data-history.html">자율주행 데이터 조회</a></li>
-                    <li><a href="#">분석데이터 조회</a></li>
-                    <li><a href="#">모바일 서비스 신청 조회</a></li>
+                    <li><a href="mypage-qna.html">질의응답</a></li>
+                    <li><a href="autonomous-data-history.html">자율주행&분석 데이터 조회</a></li>
+                    <li><a href="mypage-mobile-service.html">모바일 서비스 신청 조회</a></li>
                 </ul>
             </aside>
 
@@ -104,6 +104,13 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="biz-reg-num">사업자 등록번호</label>
+                                    <div class="input-wrapper">
+                                        <input type="text" id="biz-reg-num" value="123-45-67890" readonly>
+                                    </div>
+                                    <p class="field-guide">사업자 번호는 변경하실 수 없습니다.</p>
+                                </div>
+                                <div class="form-group">
                                     <label for="dept-name">부서명</label>
                                     <div class="input-wrapper">
                                         <input type="text" id="dept-name" value="기술개발팀">
@@ -121,13 +128,13 @@
                                         <input type="tel" id="contact-num" value="010-1234-5678" required>
                                     </div>
                                 </div>
-                                <div class="form-group-full">
+                                <div class="form-group form-group-full">
                                     <label for="email-addr">이메일 <span class="required-mark">*</span></label>
                                     <div class="input-wrapper">
                                         <input type="email" id="email-addr" value="tester@adbc-center.kr" required>
                                     </div>
                                 </div>
-                                <div class="form-group-full">
+                                <div class="form-group form-group-full" style="margin-top: 15px;">
                                     <label for="address">주소 / 기본 정보</label>
                                     <div class="input-wrapper">
                                         <input type="text" id="address" value="경상북도 구미시 구미대로 350-27" placeholder="상세 정보를 입력하세요">
@@ -147,9 +154,22 @@
         </div>
     </main>
 
-    <footer style="background: #f1f3f5; padding: 60px 0; text-align: center; border-top: 1px solid var(--border-color); margin-top: 80px;">
-        <div class="container">
-            <p style="color: var(--text-muted);">&copy; 2026 ADBC Center. All Rights Reserved.</p>
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-info-group">
+                    <div class="footer-logo">구미시 자율주행 관제센터</div>
+                    <address class="footer-address">경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <span><b>Tel:</b> 054-000-0000</span>
+                <span><b>Email:</b> contact@gumi-adbc.kr</span>
+                <span><b>Fax:</b> 054-000-0001</span>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Gumi Autonomous Driving Control Center. All Rights Reserved.</p>
+            </div>
         </div>
     </footer>
 

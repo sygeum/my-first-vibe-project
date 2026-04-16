@@ -1,0 +1,70 @@
+/* board-qna-write.css */
+.qna-write-table {
+    width: 100%;
+    border-top: 2px solid var(--primary-navy);
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.qna-write-table th {
+    width: 180px;
+    padding: 20px 25px;
+    background: #f8f9fa;
+    border-bottom: 1px solid var(--border-color);
+    text-align: left;
+    color: var(--text-dark);
+    font-weight: 700;
+}
+
+.qna-write-table td {
+    padding: 15px 25px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.qna-input-full {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.qna-input-full:focus {
+    border-color: var(--accent-blue);
+    outline: none;
+}
+
+.qna-textarea {
+    height: 350px;
+    resize: none;
+}
+
+.write-notice {
+    margin-top: 15px;
+    padding: 15px;
+    background: #fff9db;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: #856404;
+}
+
+.write-actions {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.btn-large {
+    padding: 12px 40px;
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+@media (max-width: 768px) {
+    .qna-write-table th {
+        width: 100px;
+        padding: 15px;
+    }
+}

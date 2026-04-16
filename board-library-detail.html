@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세보기 | 자료실 | 게시판 | ADBC Center</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="board-library.css">
+    <link rel="stylesheet" href="board-library-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="gnb-root"></div>
+
+    <div class="breadcrumb-container">
+        <div class="container breadcrumb">
+            <span>Home</span>
+            <span>게시판</span>
+            <span class="active">자료실</span>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="board-container">
+            <!-- Sidebar (LNB) -->
+            <aside class="board-sidebar">
+                <h3>게시판</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="board-notice.html">공지사항</a></li>
+                    <li><a href="board-faq.html">FAQ</a></li>
+                    <li><a href="board-qna.html">질의응답</a></li>
+                    <li><a href="board-library.html" class="active">자료실</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Board Content -->
+            <div class="board-content">
+                <div class="board-header">
+                    <div class="board-title">
+                        <h2>자료실 상세보기</h2>
+                    </div>
+                </div>
+
+                <div class="lib-detail-view">
+                    <!-- Detail Header -->
+                    <div class="lib-detail-header">
+                        <div class="lib-header-top">
+                            <span class="lib-badge cat-form">신청서 양식</span>
+                        </div>
+                        <h3 class="lib-title">자율주행 데이터 활용 신청서 양식 (개인/기업)</h3>
+                        <div class="lib-meta-info">
+                            <span><b>작성자</b> 관제센터 운영팀</span>
+                            <span><b>등록일</b> 2026-04-12</span>
+                            <span><b>조회수</b> 124</span>
+                            <span><b>다운로드</b> 452회</span>
+                        </div>
+                    </div>
+
+                    <!-- Material Content -->
+                    <div class="lib-body-content">
+                        <!-- Section 1: Introduction -->
+                        <div class="lib-info-section">
+                            <h4 class="lib-section-title">자료 개요 및 활용 목적</h4>
+                            <p class="lib-intro-text">
+                                본 자료는 구미시 자율주행 관제센터에서 개방하는 자율주행 원천 데이터 및 정밀지도 데이터를 활용하고자 하는 사용자를 위한 신청서 양식입니다.<br><br>
+                                자율주행 기술 연구, 앱 서비스 개발, 교육 목적 등 데이터를 활용하고자 하는 개인 또는 법인 회원은 본 양식을 다운로드하여 작성하신 후, 데이터 신청 페이지를 통해 업로드해 주시기 바랍니다.
+                            </p>
+                        </div>
+
+                        <!-- Section 2: File Download Box -->
+                        <div class="lib-info-section">
+                            <h4 class="lib-section-title">첨부파일 다운로드</h4>
+                            <div class="file-download-container">
+                                <!-- File 1 -->
+                                <div class="file-item-row">
+                                    <div class="file-info-col">
+                                        <div style="color: #e03131; font-weight: 800; font-size: 1.1rem;">PDF</div>
+                                        <div>
+                                            <div class="file-name-text">자율주행_데이터_활용_신청서(기업용).pdf</div>
+                                            <div class="file-detail-text">크기: 1.2 MB | 형식: Adobe PDF</div>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn-download-lg">
+                                        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                                        다운로드
+                                    </a>
+                                </div>
+                                <!-- File 2 -->
+                                <div class="file-item-row">
+                                    <div class="file-info-col">
+                                        <div style="color: #1971c2; font-weight: 800; font-size: 1.1rem;">HWP</div>
+                                        <div>
+                                            <div class="file-name-text">자율주행_데이터_활용_신청서(개인용).hwp</div>
+                                            <div class="file-detail-text">크기: 850 KB | 형식: 한컴오피스 한글</div>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="btn-download-lg">
+                                        <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                                        다운로드
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 3: Notice Tips -->
+                        <div style="margin-top: 40px; padding: 25px; background: #fff9db; border-radius: 8px; color: #856404; font-size: 0.95rem;">
+                            <p style="font-weight: 700; margin-bottom: 8px;">💡 자료 활용 안내</p>
+                            <ul style="padding-left: 20px; line-height: 1.6;">
+                                <li>데이터 신청 전 반드시 보안 서약서(별도 자료실 등록)를 함께 확인해 주세요.</li>
+                                <li>해당 양식은 2026년 4월 개정된 최신 버전입니다. 이전 버전을 사용하지 않도록 주의 바랍니다.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div style="margin-top: 40px; display: flex; justify-content: space-between; padding-top: 30px; border-top: 1px solid var(--border-color);">
+                    <a href="board-library.html" class="btn-secondary" style="padding: 10px 25px;">목록으로</a>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-secondary" style="padding: 10px 25px;">수정</button>
+                        <button class="btn-secondary" style="padding: 10px 25px; color: #e03131;">삭제</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-info-group">
+                    <div class="footer-logo">구미시 자율주행 관제센터</div>
+                    <address class="footer-address">경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <span><b>Tel:</b> 054-000-0000</span>
+                <span><b>Email:</b> contact@gumi-adbc.kr</span>
+                <span><b>Fax:</b> 054-000-0001</span>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Gumi Autonomous Driving Control Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -1,75 +1,6 @@
 /* MyPage Edit specific styles */
 
-.mypage-container {
-    display: flex;
-    gap: 40px;
-    margin-top: 40px;
-    align-items: flex-start;
-}
-
-/* 1. LNB (Sidebar) Styles */
-.mypage-sidebar {
-    width: 260px;
-    flex-shrink: 0;
-    background: #fff;
-    border: 1px solid var(--border-color);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: var(--shadow);
-}
-
-.sidebar-header {
-    background: var(--primary-navy);
-    color: #fff;
-    padding: 30px 24px;
-    text-align: center;
-}
-
-.sidebar-header h3 {
-    font-size: 1.4rem;
-    font-weight: 800;
-    margin-bottom: 5px;
-}
-
-.sidebar-header p {
-    font-size: 0.85rem;
-    opacity: 0.7;
-}
-
-.sidebar-menu {
-    list-style: none;
-    padding: 10px 0;
-}
-
-.sidebar-menu li a {
-    display: flex;
-    align-items: center;
-    padding: 16px 24px;
-    text-decoration: none;
-    color: var(--text-main);
-    font-weight: 600;
-    font-size: 1rem;
-    transition: var(--transition);
-    border-left: 4px solid transparent;
-}
-
-.sidebar-menu li a:hover {
-    background: var(--secondary-blue);
-    color: var(--primary-blue);
-}
-
-.sidebar-menu li a.active {
-    background: var(--secondary-blue);
-    color: var(--primary-blue);
-    border-left-color: var(--accent-blue);
-}
-
-/* 2. Content Area Styles */
-.mypage-content {
-    flex: 1;
-    min-width: 0;
-}
-
+/* Content Area Styles - Form specific */
 .edit-form-card {
     background: #fff;
     border-radius: 16px;
@@ -85,17 +16,6 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
-}
-
-.form-header h2 {
-    font-size: 1.8rem;
-    color: var(--primary-navy);
-    font-weight: 800;
-}
-
-.form-header .required-info {
-    font-size: 0.85rem;
-    color: var(--text-muted);
 }
 
 .required-mark {
@@ -209,27 +129,7 @@
 
 /* Responsive */
 @media (max-width: 1024px) {
-    .mypage-container {
-        flex-direction: column;
-    }
-    .mypage-sidebar {
-        width: 100%;
-    }
-    .sidebar-menu {
-        display: flex;
-        flex-wrap: wrap;
-    }
-    .sidebar-menu li {
-        flex: 1 1 50%;
-    }
-    .sidebar-menu li a {
-        border-left: none;
-        border-bottom: 2px solid transparent;
-        justify-content: center;
-    }
-    .sidebar-menu li a.active {
-        border-bottom-color: var(--accent-blue);
-    }
+    /* Form specific adjustments if any */
 }
 
 @media (max-width: 768px) {
@@ -241,9 +141,6 @@
     }
     .form-group-full {
         grid-column: span 1;
-    }
-    .sidebar-menu li {
-        flex: 1 1 100%;
     }
     .form-actions {
         flex-direction: column;

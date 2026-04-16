@@ -147,9 +147,9 @@
                     <hr class="divider">
                     <h3 class="section-title">5. 기업 정보 입력</h3>
                     <div class="form-group">
-                        <label for="company-name">회사명 <span class="required-mark">*</span></label>
+                        <label for="company-name">기관명 또는 회사명 <span class="required-mark">*</span></label>
                         <div class="input-wrapper">
-                            <input type="text" id="company-name" placeholder="회사명을 입력하세요">
+                            <input type="text" id="company-name" placeholder="기관명 또는 회사명을 입력하세요">
                         </div>
                     </div>
                     <div class="form-group">
@@ -160,6 +160,30 @@
                         </div>
                         <div id="biz-success-badge" style="display: none; margin-top: 5px;">
                             <span class="badge success">✅ 사업자 인증 완료</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dept-name">부서명</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="dept-name" placeholder="부서명을 입력하세요">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="job-title">직책</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="job-title" placeholder="직책을 입력하세요">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-num">연락처 <span class="required-mark">*</span></label>
+                        <div class="input-wrapper">
+                            <input type="tel" id="contact-num" placeholder="010-0000-0000">
+                        </div>
+                    </div>
+                    <div class="form-group form-group-full" style="margin-top: 15px;">
+                        <label for="address">주소 / 기본 정보</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="address" placeholder="회사 주소 또는 상세 정보를 입력하세요">
                         </div>
                     </div>
                 </section>
@@ -192,5 +216,23 @@
     </div>
 
     <script src="main.js"></script>
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-info-group">
+                    <div class="footer-logo">구미시 자율주행 관제센터</div>
+                    <address class="footer-address">경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <span><b>Tel:</b> 054-000-0000</span>
+                <span><b>Email:</b> contact@gumi-adbc.kr</span>
+                <span><b>Fax:</b> 054-000-0001</span>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Gumi Autonomous Driving Control Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>

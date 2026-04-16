@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>질의응답 | 게시판 | 구미시 자율주행 관제센터</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="board-qna.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="gnb-root"></div>
+
+    <div class="breadcrumb-container">
+        <div class="container breadcrumb">
+            <span>Home</span>
+            <span>게시판</span>
+            <span class="active">질의응답</span>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="board-container">
+            <!-- Sidebar (LNB) -->
+            <aside class="board-sidebar">
+                <h3>게시판</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="board-notice.html">공지사항</a></li>
+                    <li><a href="board-faq.html">FAQ</a></li>
+                    <li><a href="board-qna.html" class="active">질의응답</a></li>
+                    <li><a href="board-library.html">자료실</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Board Content -->
+            <div class="board-content">
+                <div class="board-header">
+                    <div class="board-title">
+                        <h2>질의응답</h2>
+                        <div class="total-count">총 <span id="total-count">5</span>건</div>
+                    </div>
+                </div>
+
+                <!-- Search & Filter Area -->
+                <div class="board-search">
+                    <div class="qna-search-group">
+                        <select id="status-filter">
+                            <option value="all">상태 전체</option>
+                            <option value="wait">답변대기</option>
+                            <option value="complete">답변완료</option>
+                        </select>
+                        <select id="type-filter">
+                            <option value="all">유형 전체</option>
+                            <option value="data">데이터 문의</option>
+                            <option value="system">시스템 문의</option>
+                            <option value="account">계정 문의</option>
+                        </select>
+                    </div>
+                    <input type="text" id="search-keyword" placeholder="검색어를 입력하세요">
+                    <button class="btn-search">검색</button>
+                </div>
+
+                <!-- Q&A Table -->
+                <table class="board-table qna-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 70px;">번호</th>
+                            <th style="width: 100px;">상태</th>
+                            <th style="width: 120px;">유형</th>
+                            <th>제목</th>
+                            <th style="width: 110px;">작성자</th>
+                            <th style="width: 110px;">작성일</th>
+                            <th style="width: 70px;">조회수</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Complete Case -->
+                        <tr>
+                            <td>5</td>
+                            <td><span class="qna-status-badge status-complete">답변완료</span></td>
+                            <td><span class="qna-type">데이터 문의</span></td>
+                            <td class="td-title"><a href="board-qna-detail.html?id=5">자율주행 원천 데이터 LiDAR 센서 좌표계 관련 문의</a></td>
+                            <td>user***</td>
+                            <td>2026-04-12</td>
+                            <td>42</td>
+                        </tr>
+                        <!-- Wait Case -->
+                        <tr>
+                            <td>4</td>
+                            <td><span class="qna-status-badge status-wait">답변대기</span></td>
+                            <td><span class="qna-type">시스템 문의</span></td>
+                            <td class="td-title"><a href="board-qna-detail.html?id=4">데이터 다운로드 속도 저하 문제에 대해 문의드립니다.</a></td>
+                            <td>tech***</td>
+                            <td>2026-04-10</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><span class="qna-status-badge status-complete">답변완료</span></td>
+                            <td><span class="qna-type">계정 문의</span></td>
+                            <td class="td-title"><a href="board-qna-detail.html?id=3">기업회원 권한 승인 기간은 보통 얼마나 걸리나요?</a></td>
+                            <td>gumi***</td>
+                            <td>2026-04-05</td>
+                            <td>89</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><span class="qna-status-badge status-complete">답변완료</span></td>
+                            <td><span class="qna-type">데이터 문의</span></td>
+                            <td class="td-title"><a href="board-qna-detail.html?id=2">RSU 통신 데이터 제공 범위 및 정밀도 정보 요청</a></td>
+                            <td>auto***</td>
+                            <td>2026-04-01</td>
+                            <td>156</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td><span class="qna-status-badge status-complete">답변완료</span></td>
+                            <td><span class="qna-type">시스템 문의</span></td>
+                            <td class="td-title"><a href="board-qna-detail.html?id=1">계정 비밀번호 변경 오류 관련 확인 요청</a></td>
+                            <td>test***</td>
+                            <td>2026-03-25</td>
+                            <td>34</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <!-- Pagination & Bottom Actions -->
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 40px;">
+                    <div style="width: 100px;"></div>
+                    <div class="pagination">
+                        <a href="#" class="page-link">&lt;</a>
+                        <a href="#" class="page-link active">1</a>
+                        <a href="#" class="page-link">&gt;</a>
+                    </div>
+                    <div style="width: 100px; text-align: right;">
+                        <a href="board-qna-write.html" class="btn-primary" style="padding: 10px 20px; font-weight: 700;">글쓰기</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-info-group">
+                    <div class="footer-logo">구미시 자율주행 관제센터</div>
+                    <address class="footer-address">경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <span><b>Tel:</b> 054-000-0000</span>
+                <span><b>Email:</b> contact@gumi-adbc.kr</span>
+                <span><b>Fax:</b> 054-000-0001</span>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Gumi Autonomous Driving Control Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

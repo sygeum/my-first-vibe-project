@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>장비소개 | 자율주행 운영 범위 | 센터 소개 | ADBC Center</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="operation-equipment.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div id="gnb-root"></div>
+
+    <div class="breadcrumb-container">
+        <div class="container breadcrumb">
+            <span>Home</span>
+            <span>센터 소개</span>
+            <span>자율주행 운영 범위</span>
+            <span class="active">장비소개</span>
+        </div>
+    </div>
+
+    <!-- 1. Hero Section -->
+    <header class="hero" style="height: 300px;">
+        <div class="container">
+            <h1>자율주행 운영 범위</h1>
+            <p>자율주행 실증 및 데이터 수집을 위한 최적의 운영 인프라와 관제 범위를 안내합니다.</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- 2. Sub Tab Menu (3Depth) -->
+        <section style="padding: 60px 0 0;">
+            <div class="container">
+                <div class="sub-tab-container">
+                    <a href="operation-equipment.html" class="sub-tab-item active">장비소개</a>
+                    <a href="operation-control-map.html" class="sub-tab-item">관제 및 정밀지도 구축 범위</a>
+                    <a href="operation-infra.html" class="sub-tab-item">인프라 설치 구간</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Content Section (Extracted from old equipment-introduction.html) -->
+        <section class="eq-section-padding">
+            <div class="container">
+                <!-- Equipment Overview -->
+                <div class="eq-title-wrap">
+                    <span class="eq-sub-title">Overview</span>
+                    <h2 class="eq-main-title">자율주행 데이터 수집 체계</h2>
+                    <p
+                        style="max-width: 800px; margin: 20px auto 0; color: var(--text-muted); line-height: 1.7; text-align: center;">
+                        자율주행 데이터 수집에 활용되는 주요 장비를 소개합니다. 각 장비는 차량 주행 상태, 도로 인프라 정보,
+                        주변 객체 인식 정보를 수집하여 관제 시스템 및 데이터 서비스에 활용됩니다.
+                    </p>
+                </div>
+
+                <!-- Vehicle Equipment -->
+                <div class="equipment-item">
+                    <div class="equipment-image-box">
+                        <img src="img/equipment-vehicle.png" alt="차량 장비">
+                    </div>
+                    <div class="equipment-info">
+                        <span class="category-tag">Vehicle Equipment</span>
+                        <h3>차량 내 데이터 수집 장비</h3>
+                        <p class="main-desc">
+                            자율주행 차량 내부에 장착된 장치를 통해 실시간 차량 상태 및 정밀 위치 정보를 수집합니다.
+                            OBU와 GPS 장비는 차량의 거동 데이터를 디지털화하여 관제센터로 송신하는 핵심 역할을 수행합니다.
+                        </p>
+                        <div class="specs-grid">
+                            <div class="spec-card">
+                                <span class="spec-label">주요 장비</span>
+                                <span class="spec-value">OBU 데이터 수집 장치</span>
+                                <ul class="spec-list">
+                                    <li>차량 내부 통신망 정보 수집</li>
+                                    <li>실시간 데이터 로깅 및 전송</li>
+                                </ul>
+                            </div>
+                            <div class="spec-card">
+                                <span class="spec-label">주요 장비</span>
+                                <span class="spec-value">고정밀 GPS</span>
+                                <ul class="spec-list">
+                                    <li>정밀 위치 정보 측정</li>
+                                    <li>주행 경로 추적 및 라벨링</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Infrastructure Equipment -->
+                <div class="equipment-item reverse">
+                    <div class="equipment-image-box">
+                        <img src="img/equipment-infra.png" alt="인프라 장비">
+                    </div>
+                    <div class="equipment-info">
+                        <span class="category-tag">Infrastructure</span>
+                        <h3>도로 인프라 연계 장비</h3>
+                        <p class="main-desc">
+                            도로 및 교차로에 설치된 지능형 인프라 장비를 통해 차량-인프라 간 통신(V2I) 정보를 교환합니다.
+                        </p>
+                        <div class="specs-grid">
+                            <div class="spec-card">
+                                <span class="spec-label">주요 장비</span>
+                                <span class="spec-value">RSU (노변기지국)</span>
+                                <ul class="spec-list">
+                                    <li>V2X 통신 인터페이스</li>
+                                    <li>인프라 데이터 통합 송수신</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sensor Equipment -->
+                <div class="equipment-item">
+                    <div class="equipment-image-box">
+                        <img src="img/equipment-sensor.png" alt="센서 장비">
+                    </div>
+                    <div class="equipment-info">
+                        <span class="category-tag">Sensors & Perception</span>
+                        <h3>고정밀 환경 인식 센서</h3>
+                        <p class="main-desc">
+                            차량 외부와 주변 환경을 인지하기 위한 시각 및 거리 측정 센서 그룹입니다.
+                            LiDAR와 Radar 등은 복합 주행 환경에서 객체와의 거리를 정밀하게 산출하여 데이터의 가치를 증명합니다.
+                        </p>
+                        <div class="specs-grid">
+                            <div class="spec-card">
+                                <span class="spec-label">주요 장비</span>
+                                <span class="spec-value">LiDAR & Radar 센서</span>
+                                <ul class="spec-list">
+                                    <li>3D 포인트 클라우드 수집</li>
+                                    <li>객체 위치 및 거리 정밀 측정</li>
+                                </ul>
+                            </div>
+                            <div class="spec-card">
+                                <span class="spec-label">주요 장비</span>
+                                <span class="spec-value">CCTV</span>
+                                <ul class="spec-list">
+                                    <li>주행 영상 및 시각 데이터</li>
+                                    <li>신호 및 표지판 인식 정보</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Summary Grid -->
+                <div class="summary-container">
+                    <div class="eq-title-wrap">
+                        <span class="eq-sub-title">Data Summary</span>
+                        <h2 class="eq-main-title" style="font-size: 1.8rem;">장비별 수집 데이터 항목</h2>
+                    </div>
+                    <div class="summary-grid">
+                        <div class="summary-card">
+                            <span class="summary-icon">🚗</span>
+                            <h4>차량 장비</h4>
+                            <div class="data-tags">
+                                <span class="data-tag">실시간 위치(GPS)</span>
+                                <span class="data-tag">차량 속도/가속도</span>
+                                <span class="data-tag">조향/제동 상태</span>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <span class="summary-icon">📡</span>
+                            <h4>인프라 장비</h4>
+                            <div class="data-tags">
+                                <span class="data-tag">V2X 통신 리포트</span>
+                                <span class="data-tag">신호 정보 (SPaT)</span>
+                                <span class="data-tag">도로 돌발 상황</span>
+                            </div>
+                        </div>
+                        <div class="summary-card">
+                            <span class="summary-icon">📸</span>
+                            <h4>센서 장비</h4>
+                            <div class="data-tags">
+                                <span class="data-tag">Radar&LiDAR</span>
+                                <span class="data-tag">객체 위치/거리</span>
+                                <span class="data-tag">주행 영상 데이터</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer Info -->
+                    <div
+                        style="margin-top: 50px; text-align: center; padding: 30px; background: rgba(0, 44, 95, 0.03); border-radius: 12px;">
+                        <p style="font-size: 1rem; line-height: 1.7; color: var(--primary-navy); font-weight: 500;">
+                            이와 같은 장비를 통해 수집된 데이터는 구미시 자율주행 관제센터의 관제 시스템 운영과 데이터 서비스 제공, <br>
+                            기업 지원 및 자율주행 기술 검증에 핵심적인 자원으로 활용됩니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-info-group">
+                    <div class="footer-logo">구미시 자율주행 관제센터</div>
+                    <address class="footer-address">경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <span><b>Tel:</b> 054-000-0000</span>
+                <span><b>Email:</b> contact@gumi-adbc.kr</span>
+                <span><b>Fax:</b> 054-000-0001</span>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Gumi Autonomous Driving Control Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

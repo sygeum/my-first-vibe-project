@@ -1,0 +1,156 @@
+/* board-qna-detail.css */
+.qna-detail-view {
+    border-top: 2px solid var(--primary-navy);
+    margin-top: 20px;
+}
+
+.qna-detail-header {
+    background: #f8f9fa;
+    padding: 25px 30px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.qna-header-top {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 12px;
+}
+
+.qna-detail-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    line-height: 1.4;
+}
+
+.qna-info-bar {
+    display: flex;
+    gap: 20px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.qna-info-bar span b {
+    color: var(--text-dark);
+    margin-right: 5px;
+}
+
+/* Content Area */
+.qna-content-body {
+    padding: 40px 30px;
+    min-height: 200px;
+    line-height: 1.8;
+    color: #333;
+    font-size: 1.05rem;
+}
+
+.qna-attachment {
+    margin-top: 40px;
+    padding: 20px;
+    background: #f1f3f5;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.attachment-label {
+    font-weight: 700;
+    color: var(--primary-navy);
+}
+
+/* Answer Box */
+.qna-answer-section {
+    margin-top: 50px;
+}
+
+.answer-box {
+    background: #f8f9ff;
+    border: 1px solid #e1e7f0;
+    border-radius: 12px;
+    padding: 35px;
+    position: relative;
+}
+
+.answer-box::before {
+    content: 'A';
+    position: absolute;
+    left: -15px;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    background: var(--accent-blue);
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 8px rgba(33, 122, 252, 0.3);
+}
+
+.answer-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.answer-writer {
+    font-weight: 700;
+    color: var(--primary-navy);
+    font-size: 1.1rem;
+}
+
+.answer-date {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.answer-content {
+    line-height: 1.8;
+    color: #444;
+}
+
+/* Admin Input Area */
+.admin-reply-form {
+    background: #fff;
+    border: 2px dashed var(--border-color);
+    border-radius: 12px;
+    padding: 25px;
+    margin-top: 30px;
+}
+
+.admin-label {
+    display: block;
+    font-weight: 700;
+    color: var(--accent-blue);
+    margin-bottom: 10px;
+}
+
+.admin-reply-form textarea {
+    width: 100%;
+    height: 120px;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    resize: none;
+    font-family: inherit;
+    margin-bottom: 15px;
+}
+
+.admin-actions {
+    text-align: right;
+}
+
+/* Detail Actions */
+.detail-actions {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}

@@ -1,0 +1,36 @@
+/* board-qna.css */
+/* Status Badges */
+.qna-status-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 700;
+}
+
+.status-wait {
+    background: #f1f3f5;
+    color: #6b778c;
+}
+
+.status-complete {
+    background: #e6fcf5;
+    color: #0ca678;
+}
+
+/* Q&A specific Table styling */
+.qna-type {
+    color: var(--accent-blue);
+    font-weight: 600;
+}
+
+/* Search Area Extension */
+.qna-search-group {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+}
+
+.board-search select {
+    min-width: 120px;
+}

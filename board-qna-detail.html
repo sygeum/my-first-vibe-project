@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상세보기 | 질의응답 | 게시판 | ADBC Center</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="board-qna.css">
+    <link rel="stylesheet" href="board-qna-detail.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="gnb-root"></div>
+
+    <div class="breadcrumb-container">
+        <div class="container breadcrumb">
+            <span>Home</span>
+            <span>게시판</span>
+            <span class="active">질의응답</span>
+        </div>
+    </div>
+
+    <main class="container">
+        <div class="board-container">
+            <!-- Sidebar (LNB) -->
+            <aside class="board-sidebar">
+                <h3>게시판</h3>
+                <ul class="sidebar-menu">
+                    <li><a href="board-notice.html">공지사항</a></li>
+                    <li><a href="board-faq.html">FAQ</a></li>
+                    <li><a href="board-qna.html" class="active">질의응답</a></li>
+                    <li><a href="board-library.html">자료실</a></li>
+                </ul>
+            </aside>
+
+            <!-- Main Board Content -->
+            <div class="board-content">
+                <div class="board-header">
+                    <div class="board-title">
+                        <h2>질의응답 상세보기</h2>
+                    </div>
+                </div>
+
+                <div class="qna-detail-view">
+                    <!-- Detail Header -->
+                    <div class="qna-detail-header">
+                        <div class="qna-header-top">
+                            <span class="qna-status-badge status-complete">답변완료</span>
+                            <span class="qna-type">데이터 문의</span>
+                        </div>
+                        <h3 class="qna-detail-title">자율주행 원천 데이터 LiDAR 센서 좌표계 관련 문의드립니다.</h3>
+                        <div class="qna-info-bar">
+                            <span><b>작성자</b> user***</span>
+                            <span><b>작성일</b> 2026-04-12</span>
+                            <span><b>조회수</b> 42</span>
+                        </div>
+                    </div>
+
+                    <!-- Question Content -->
+                    <div class="qna-content-body">
+                        안녕하세요.<br><br>
+                        제공해주시는 구미시 자율주행 원천 데이터셋을 연구용으로 활용하고 있습니다.<br>
+                        다만, 데이터 명세서 상에 LiDAR 센서의 원점(Origin) 좌표계 정보가 실제 데이터와 약간의 오차가 발생하는 것 같아 확인 요청드립니다.<br><br>
+                        1. 각 LiDAR(전방/후방) 센서의 Offset 정보가 ISO 8855 좌표기준인가요?<br>
+                        2. 차량 무게 중심점 대비 센서 위치 좌표값을 다시 한번 확인 부탁드립니다.<br><br>
+                        감사합니다.
+
+                        <!-- Attachment -->
+                        <div class="qna-attachment">
+                            <span class="attachment-label">첨부파일</span>
+                            <a href="#" style="color: var(--primary-blue); text-decoration: underline;">lidar_coordinate_error_report.pdf</a>
+                        </div>
+                    </div>
+
+                    <!-- Administrator Answer (Answered State) -->
+                    <div class="qna-answer-section">
+                        <div class="answer-box">
+                            <div class="answer-header">
+                                <span class="answer-writer">관제센터 관리자</span>
+                                <span class="answer-date">2026-04-13 14:20</span>
+                            </div>
+                            <div class="answer-content">
+                                안녕하세요. 구미시 자율주행 관제센터입니다.<br><br>
+                                먼저 저희 데이터를 활용해주셔서 감사드립니다. 문의하신 내용에 대해 다음과 같이 답변드립니다.<br><br>
+                                1. 제공되는 LiDAR 원천 데이터의 좌표계는 제안하신 ISO 8855 규격을 기반으로 작성되었습니다.<br>
+                                2. 지난 3월 센서 캘리브레이션 업데이트 과정에서 발생한 미세한 오차가 확인되어, 수정된 센서 설치 좌표(Offset) 데이터를 별도로 보내드렸습니다.<br><br> 추가적인 문의사항이 있으시면 언제든지 연락 부탁드립니다.<br>
+                                감사합니다.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Admin Input Form (Demonstration for Admin context) -->
+                    <div class="admin-reply-form">
+                        <span class="admin-label">관리자 답변 등록 (운영자 전용)</span>
+                        <textarea placeholder="답변 내용을 입력하세요..."></textarea>
+                        <div class="admin-actions">
+                            <button class="btn-primary" style="padding: 10px 25px;">답변 등록</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Detail Actions -->
+                <div class="detail-actions">
+                    <a href="board-qna.html" class="btn-secondary" style="padding: 10px 25px;">목록으로</a>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="btn-secondary" style="padding: 10px 25px;">수정</button>
+                        <button class="btn-secondary" style="padding: 10px 25px; color: #e03131;">삭제</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-top">
+                <div class="footer-info-group">
+                    <div class="footer-logo">구미시 자율주행 관제센터</div>
+                    <address class="footer-address">경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+                </div>
+            </div>
+            <div class="footer-contact">
+                <span><b>Tel:</b> 054-000-0000</span>
+                <span><b>Email:</b> contact@gumi-adbc.kr</span>
+                <span><b>Fax:</b> 054-000-0001</span>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Gumi Autonomous Driving Control Center. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

@@ -298,28 +298,27 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="container">
                 <a href="index.html" class="logo">
                     <div class="logo-dot"></div>
-                    ADBC Center
+                    <span class="logo-text">구미시 자율주행 관제센터</span>
                 </a>
                 <div class="nav-links">
                     <div class="has-dropdown">
-                        <a href="#" class="${['about-purpose.html', 'about-facility.html', 'operation-control-map.html', 'operation-infra.html', 'center-location.html'].includes(currentPage) ? 'active' : ''}">센터 소개</a>
+                        <a href="#" class="${['about-purpose.html', 'about-facility.html', 'operation-equipment.html', 'operation-control-map.html', 'operation-infra.html', 'center-location.html'].includes(currentPage) ? 'active' : ''}">센터 소개</a>
                         <div class="dropdown-menu">
                             <a href="about-purpose.html">설립 배경 및 목적</a>
                             <a href="about-facility.html">자율주행 관제센터</a>
-                            <a href="operation-control-map.html">자율주행 운영 범위</a>
+                            <a href="operation-equipment.html">자율주행 운영 범위</a>
                             <a href="center-location.html">센터 위치</a>
                         </div>
                     </div>
                     <div class="has-dropdown">
-                        <a href="board-notice.html" class="${['board-notice.html', 'board-view.html', 'board-write.html'].includes(currentPage) ? 'active' : ''}">게시판</a>
+                        <a href="board-notice.html" class="${['board-notice.html', 'board-faq.html', 'board-qna.html', 'board-qna-detail.html', 'board-qna-write.html', 'board-library.html', 'board-library-detail.html', 'board-library-write.html', 'board-view.html', 'board-write.html'].includes(currentPage) ? 'active' : ''}">게시판</a>
                         <div class="dropdown-menu">
                             <a href="board-notice.html">공지사항</a>
-                            <a href="#">FAQ</a>
-                            <a href="#">질의응답</a>
-                            <a href="#">자료실</a>
+                            <a href="board-faq.html">FAQ</a>
+                            <a href="board-qna.html">질의응답</a>
+                            <a href="board-library.html">자료실</a>
                         </div>
                     </div>
-                    <a href="index.html" class="${currentPage === 'index.html' ? 'active' : ''}">모니터링</a>
                     <div class="has-dropdown">
                         <a href="autonomous-data-apply.html" class="${['autonomous-data.html', 'autonomous-data-apply.html', 'autonomous-data-apply-form.html', 'analysis-data-apply.html', 'analysis-data-apply-form.html'].includes(currentPage) ? 'active' : ''}">자율주행 데이터</a>
                         <div class="dropdown-menu">
