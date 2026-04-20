@@ -2391,110 +2391,127 @@ section {
 .success-actions { display: flex; justify-content: center; gap: 10px; }
 .success-actions button { flex: 1; padding: 12px; }
 
-/* Footer Styles */
+/* Footer Style Redesign - Compact Institution Style */
 .site-footer {
-    background: #111;
+    background-color: #0f172a; /* Dark navy */
     color: #94a3b8;
-    padding: 60px 0 40px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    width: 100%; /* Ensure full width in flex parents */
+    padding: 30px 0 20px; /* Reduced vertical padding */
+    width: 100%;
     position: relative;
-    z-index: 100;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footer-container {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 15px; /* Compact spacing between rows */
 }
 
-.footer-top {
+/* Row 1: Agency Info */
+.footer-info-row {
     display: flex;
-    justify-content: flex-start; /* Grouped layout */
+    justify-content: space-between;
     align-items: flex-start;
     flex-wrap: wrap;
-    gap: 40px;
-}
-
-.footer-info-group {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.footer-logo {
-    font-size: 1.4rem;
-    font-weight: 800;
-    color: #fff;
-    letter-spacing: -0.5px;
-}
-
-.footer-address {
-    font-style: normal;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    max-width: 500px;
-    color: #94a3b8;
-}
-
-.footer-contact {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    padding: 25px 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    gap: 20px;
+    padding-bottom: 15px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-.footer-contact span {
-    font-size: 0.9rem;
+.footer-agency {
     display: flex;
-    align-items: center;
-    gap: 8px;
+    flex-direction: column;
+    gap: 4px;
 }
 
-.footer-contact span b {
+.footer-agency .name {
+    font-size: 1.15rem;
+    font-weight: 800;
     color: #f8fafc;
-    font-weight: 700;
+    letter-spacing: -0.5px;
 }
 
-.footer-bottom {
+.footer-agency .address {
+    font-style: normal;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.footer-contact-info {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-top: 10px;
+    flex-wrap: wrap;
+    gap: 15px;
+    font-size: 0.85rem;
 }
 
-.copyright {
+.footer-contact-info span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.footer-contact-info b {
+    color: #cbd5e1;
+}
+
+/* Row 2: Policy Links */
+.footer-links-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
     font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.4);
-    text-align: center;
+}
+
+.footer-links-row a {
+    color: #94a3b8;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links-row a:hover {
+    color: var(--accent-blue);
+}
+
+.footer-links-row .sep {
+    color: rgba(255, 255, 255, 0.1);
+    font-size: 0.75rem;
+}
+
+/* Row 3: Copyright */
+.footer-copyright-row {
+    padding-top: 5px;
+}
+
+.footer-copyright-row .copyright {
+    font-size: 0.8rem;
+    color: rgba(148, 163, 184, 0.5);
+    margin: 0;
+}
+
+/* Responsive Footer */
+@media (max-width: 991px) {
+    .footer-info-row {
+        flex-direction: column;
+        gap: 15px;
+    }
 }
 
 @media (max-width: 768px) {
-    .footer-top {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 20px;
-    }
-    
-    .footer-info-group {
-        align-items: center;
-    }
-
-    .footer-address {
-        max-width: 100%;
-    }
-    
-    .footer-contact {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
+    .site-footer {
+        padding: 40px 0 30px;
         text-align: center;
     }
     
-    .footer-bottom {
-        text-align: center;
+    .footer-info-row {
+        align-items: center;
+    }
+    
+    .footer-contact-info {
+        justify-content: center;
+    }
+    
+    .footer-links-row {
+        justify-content: center;
     }
 }
