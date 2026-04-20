@@ -315,15 +315,16 @@ document.addEventListener('DOMContentLoaded', () => {
                         <div class="dropdown-menu">
                             <a href="board-notice.html">공지사항</a>
                             <a href="board-faq.html">FAQ</a>
-                            <a href="board-qna.html">질의응답</a>
+                            <a href="board-qna-write.html">질의응답</a>
                             <a href="board-library.html">자료실</a>
                         </div>
                     </div>
                     <div class="has-dropdown">
-                        <a href="autonomous-data-apply.html" class="${['autonomous-data.html', 'autonomous-data-apply.html', 'autonomous-data-apply-form.html', 'analysis-data-apply.html', 'analysis-data-apply-form.html'].includes(currentPage) ? 'active' : ''}">자율주행 데이터</a>
+                        <a href="autonomous-data-apply.html" class="${['autonomous-data.html', 'autonomous-data-apply.html', 'autonomous-data-apply-form.html', 'analysis-data-apply.html', 'analysis-data-apply-form.html', 'mobile-service-apply.html'].includes(currentPage) ? 'active' : ''}">자율주행 데이터</a>
                         <div class="dropdown-menu">
                             <a href="autonomous-data-apply.html">자율주행 데이터 신청</a>
                             <a href="analysis-data-apply.html">분석 데이터 신청</a>
+                            <a href="mobile-service-apply.html">모바일 서비스 신청</a>
                         </div>
                     </div>
                     <a href="mypage-edit.html" class="${currentPage === 'mypage-edit.html' ? 'active' : ''}">마이페이지</a>

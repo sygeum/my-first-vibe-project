@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>모바일 서비스 신청 | 자율주행 데이터 | ADBC Center</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile-service-apply.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="sticky-footer-body">
+    <div id="gnb-root"></div>
+
+    <div class="breadcrumb-container">
+        <div class="container breadcrumb">
+            <span>Home</span>
+            <span>자율주행 데이터</span>
+            <span class="active">모바일 서비스 신청</span>
+        </div>
+    </div>
+
+    <!-- 1. Hero Section -->
+    <header class="hero" style="height: 300px;">
+        <div class="container">
+            <h1>모바일 서비스 신청</h1>
+            <p>모바일 기기를 통한 데이터 서비스 이용을 위해 신청 절차를 확인해 주세요.</p>
+        </div>
+    </header>
+
+    <main class="container" style="padding: 60px 0 100px;">
+        <div class="board-container" style="justify-content: center;">
+            <div class="board-content" style="max-width: 900px; width: 100%; border:none; padding:0;">
+                
+                <h3 style="font-size: 1.75rem; color: var(--primary-navy); margin-bottom: 20px; text-align: center;">모바일 서비스 신청 안내</h3>
+
+                <!-- 안내 문구 영역 -->
+                <div class="intro-text-box" style="margin-bottom: 60px;">
+                    <p>
+                        <strong>모바일 환경에서 자율주행 관제 데이터를 실시간으로 확인할 수 있는 서비스를 제공합니다.</strong><br>
+                        서비스 신청 후 관리자 승인을 거쳐 전용 접속 URL이 발급되며,<br>
+                        발급된 URL을 통해 장소 제약 없이 모바일 기기로 서비스에 접속할 수 있습니다.
+                    </p>
+                </div>
+
+                <!-- 주요 기능 섹션 (5열 1줄 레이아웃) -->
+                <h2 class="section-title">모바일 서비스 주요 기능</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <span class="feature-icon">🗺️</span>
+                        <h4>실시간 차량 위치</h4>
+                        <p>지도 기반의 실시간 위치 및 주행 정보 상시 확인</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">⚠️</span>
+                        <h4>이상 주행 감지</h4>
+                        <p>급정기/급가속 등 위험 상황 이벤트 즉시 감지</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">🔔</span>
+                        <h4>알림 및 위험 안내</h4>
+                        <p>사고/공사 정보 알림 및 위험도 시각화 표시</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📊</span>
+                        <h4>주행 이력 조회</h4>
+                        <p>과거 주행 이력 및 발생 이벤트 목록 상세 조회</p>
+                    </div>
+                    <div class="feature-card">
+                        <span class="feature-icon">📈</span>
+                        <h4>주행 분석 리포트</h4>
+                        <p>운전 패턴 및 안전성 데이터를 수치화된 리포트 제공</p>
+                    </div>
+                </div>
+
+                <!-- 절차 안내 영역 -->
+                <h2 class="section-title">모바일 서비스 이용 절차</h2>
+                
+                <div class="flow-container" style="margin-bottom: 60px;">
+                    <div class="flow-step">
+                        <div class="flow-icon">📋</div>
+                        <span class="card-num">STEP 1</span>
+                        <h4>신청 접수</h4>
+                        <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">(모바일 서비스 신청서 작성)</p>
+                    </div>
+
+                    <div class="flow-arrow">➔</div>
+
+                    <div class="flow-step">
+                        <div class="flow-icon">🛡️</div>
+                        <span class="card-num">STEP 2</span>
+                        <h4>관리자 승인</h4>
+                        <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">(신청 내용 검토 및 승인)</p>
+                    </div>
+
+                    <div class="flow-arrow">➔</div>
+
+                    <div class="flow-step">
+                        <div class="flow-icon">🔗</div>
+                        <span class="card-num">STEP 3</span>
+                        <h4>URL 발급</h4>
+                        <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">(전용 접속 URL 생성 및 제공)</p>
+                    </div>
+
+                    <div class="flow-arrow">➔</div>
+
+                    <div class="flow-step">
+                        <div class="flow-icon">📱</div>
+                        <span class="card-num">STEP 4</span>
+                        <h4>모바일 접속</h4>
+                        <p style="font-size: 0.85rem; color: #666; margin-top: 5px;">(전용 URL 서버 접속 및 이용)</p>
+                    </div>
+                </div>
+
+                <!-- 버튼 영역 (단일 CTA) -->
+                <div style="text-align: center; margin-bottom: 80px;">
+                    <a href="#" onclick="alert('현재 서비스 신청 폼 준비 중입니다.'); return false;" class="btn-primary" style="font-size: 1.1rem; padding: 18px 60px; display: inline-block;">모바일 서비스 신청하기</a>
+                </div>
+
+                <!-- 단계별 상세 설명 영역 (간소화) -->
+                <div class="step-detail-box">
+                    <div class="step-detail-left">
+                        <span class="card-num">STEP 1</span>
+                        <h4>신청 접수</h4>
+                    </div>
+                    <div class="step-detail-right">
+                        <ul>
+                            <li>로그인 후 모바일 서비스 신청 메뉴 접속</li>
+                            <li>개인정보 활용 동의 및 신청서 제출</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-detail-box">
+                    <div class="step-detail-left">
+                        <span class="card-num">STEP 2</span>
+                        <h4>관리자 승인</h4>
+                    </div>
+                    <div class="step-detail-right">
+                        <ul>
+                            <li>관리자가 신청인의 이용 권한 및 목적 타당성 검토</li>
+                            <li>자율주행 데이터 보안 정책 준수 여부 확인</li>
+                            <li>승인 완료 시 SMS/이메일 자동 통보</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-detail-box">
+                    <div class="step-detail-left">
+                        <span class="card-num">STEP 3</span>
+                        <h4>URL 발급</h4>
+                    </div>
+                    <div class="step-detail-right">
+                        <ul>
+                            <li>승인 완료 시 마이페이지에서 전용 URL 확인</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-detail-box">
+                    <div class="step-detail-left">
+                        <span class="card-num">STEP 4</span>
+                        <h4>모바일 접속</h4>
+                    </div>
+                    <div class="step-detail-right">
+                        <ul>
+                            <li><strong>실시간 차량 상태 및 위치 모니터링</strong> 수행</li>
+                            <li><strong>이벤트 발생 시 즉시 알림</strong> 제공</li>
+                            <li><strong>주행 데이터 기반 분석 정보</strong> 제공</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="notice-highlight">
+                    <ul style="list-style: none; padding: 0; margin: 0;">
+                        <li>※ 본 서비스는 승인된 사용자에게만 제공되며, 외부 공유가 제한됩니다.</li>
+                        <li>※ 이용 전 반드시 보안 서약 내용을 숙지하시기 바랍니다.</li>
+                        <li>※ 일부 데이터는 통신 환경에 따라 지연될 수 있습니다.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <!-- Row 1: Agency Info -->
+            <div class="footer-info-row">
+                <div class="footer-agency">
+                    <div class="name">구미시 자율주행 관제센터</div>
+                    <address class="address">경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+                </div>
+                <div class="footer-contact-info">
+                    <span><b>Tel:</b> 054-000-0000</span>
+                    <span><b>Email:</b> <a href="mailto:contact@gumi-adbc.kr" style="color: inherit; text-decoration: none;">contact@gumi-adbc.kr</a></span>
+                    <span><b>Fax:</b> 054-000-0001</span>
+                </div>
+            </div>
+
+            <!-- Row 2: Policy Links -->
+            <div class="footer-links-row">
+                <a href="#" style="font-weight: 700; color: #fff;">개인정보처리방침</a>
+                <span class="sep">|</span>
+                <a href="#">이용약관</a>
+                <span class="sep">|</span>
+                <a href="#">이메일 무단수집 거부</a>
+                <span class="sep">|</span>
+                <a href="center-location.html">센터 위치(오시는 길)</a>
+                <span class="sep">|</span>
+                <a href="#">관련 사이트</a>
+            </div>
+
+            <!-- Row 3: Copyright -->
+            <div class="footer-copyright-row">
+                <p class="copyright">&copy; 2026 구미시 자율주행 관제센터. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

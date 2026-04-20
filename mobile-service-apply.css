@@ -1,0 +1,94 @@
+/* mobile-service-apply.css */
+/* UI 최적화: 주요 기능 한 줄(5열) 레이아웃 및 반응형(Tablet 3+2) 적용 */
+
+.feature-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 60px;
+}
+
+.feature-card {
+    flex: 1;
+    min-width: 150px; /* PC 5열 유지를 위한 최소 너비 */
+    max-width: 20%; /* PC 기준 5개 배치 */
+    background: #fff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 30px 15px; /* 공간 효율을 위한 패딩 조정 */
+    text-align: center;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 44, 95, 0.08);
+    border-color: var(--primary-blue);
+}
+
+.feature-icon {
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.feature-card h4 {
+    font-size: 1rem;
+    color: var(--primary-navy);
+    margin-bottom: 10px;
+    font-weight: 800;
+    word-break: keep-all;
+    white-space: nowrap; /* 제목 한 줄 유지 */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.feature-card p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    word-break: keep-all;
+    margin: 0;
+}
+
+.notice-highlight {
+    background: #fff4e6;
+    color: #d9480f;
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-top: 20px;
+}
+
+/* 탭 바 1Depth (GNB active state) 와의 간섭 방지 */
+main.container {
+    position: relative;
+    z-index: 1;
+}
+
+/* 반응형 브레이크포인트 */
+@media (max-width: 1024px) {
+    .feature-card {
+        flex: 0 1 calc(33.333% - 15px); /* 태블릿: 3 + 2 구조 */
+        max-width: calc(33.333% - 15px);
+    }
+}
+
+@media (max-width: 768px) {
+    .feature-card {
+        flex: 0 1 calc(50% - 15px); /* 모바일 상단: 2열 */
+        max-width: calc(50% - 15px);
+    }
+}
+
+@media (max-width: 480px) {
+    .feature-card {
+        flex: 0 1 100%; /* 모바일: 1열 */
+        max-width: 100%;
+    }
+}

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="sticky-footer-body">
     <div id="gnb-root"></div>
 
 
@@ -52,19 +52,35 @@
 
     <footer class="site-footer">
         <div class="container footer-container">
-            <div class="footer-top">
-                <div class="footer-info-group">
-                    <div class="footer-logo">구미시 자율주행 관제센터</div>
-                    <address class="footer-address">경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+            <!-- Row 1: Agency Info -->
+            <div class="footer-info-row">
+                <div class="footer-agency">
+                    <div class="name">구미시 자율주행 관제센터</div>
+                    <address class="address">경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+                </div>
+                <div class="footer-contact-info">
+                    <span><b>Tel:</b> 054-000-0000</span>
+                    <span><b>Email:</b> <a href="mailto:contact@gumi-adbc.kr" style="color: inherit; text-decoration: none;">contact@gumi-adbc.kr</a></span>
+                    <span><b>Fax:</b> 054-000-0001</span>
                 </div>
             </div>
-            <div class="footer-contact">
-                <span><b>Tel:</b> 054-000-0000</span>
-                <span><b>Email:</b> contact@gumi-adbc.kr</span>
-                <span><b>Fax:</b> 054-000-0001</span>
+
+            <!-- Row 2: Policy Links -->
+            <div class="footer-links-row">
+                <a href="#" style="font-weight: 700; color: #fff;">개인정보처리방침</a>
+                <span class="sep">|</span>
+                <a href="#">이용약관</a>
+                <span class="sep">|</span>
+                <a href="#">이메일 무단수집 거부</a>
+                <span class="sep">|</span>
+                <a href="center-location.html">센터 위치(오시는 길)</a>
+                <span class="sep">|</span>
+                <a href="#">관련 사이트</a>
             </div>
-            <div class="footer-bottom">
-                <p class="copyright">&copy; 2026 Gumi Autonomous Driving Control Center. All Rights Reserved.</p>
+
+            <!-- Row 3: Copyright -->
+            <div class="footer-copyright-row">
+                <p class="copyright">&copy; 2026 구미시 자율주행 관제센터. All Rights Reserved.</p>
             </div>
         </div>
     </footer>

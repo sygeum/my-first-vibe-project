@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="board-qna-write.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="sticky-footer-body">
     <div id="gnb-root"></div>
 
     <div class="breadcrumb-container">
@@ -27,7 +27,7 @@
                 <ul class="sidebar-menu">
                     <li><a href="board-notice.html">공지사항</a></li>
                     <li><a href="board-faq.html">FAQ</a></li>
-                    <li><a href="board-qna.html" class="active">질의응답</a></li>
+                    <li><a href="board-qna-write.html" class="active">질의응답</a></li>
                     <li><a href="board-library.html">자료실</a></li>
                 </ul>
             </aside>
@@ -36,7 +36,11 @@
             <div class="board-content">
                 <div class="board-header">
                     <div class="board-title">
-                        <h2>질의응답 등록</h2>
+                        <h2>질의응답</h2>
+                        <p style="margin-top: 10px; color: var(--text-muted);">
+                            궁금하신 점을 남겨주시면 관리자가 확인 후 답변해 드립니다.<br>
+                            <span style="color: var(--accent-blue); font-weight: 600;">※ 질문 내용은 관리자에게만 전달되며, 다른 사용자에게 공개되지 않습니다.</span>
+                        </p>
                     </div>
                 </div>
 
@@ -81,7 +85,7 @@
                     </table>
 
                     <div class="write-actions">
-                        <a href="board-qna.html" class="btn-secondary btn-large">취소</a>
+                        <a href="mypage-qna.html" class="btn-outline btn-large" style="border: 1px solid var(--border-color); color: var(--text-main);">내 문의 내역 확인</a>
                         <button type="submit" class="btn-primary btn-large">문의 등록</button>
                     </div>
                 </form>
@@ -91,19 +95,35 @@
 
     <footer class="site-footer">
         <div class="container footer-container">
-            <div class="footer-top">
-                <div class="footer-info-group">
-                    <div class="footer-logo">구미시 자율주행 관제센터</div>
-                    <address class="footer-address">경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+            <!-- Row 1: Agency Info -->
+            <div class="footer-info-row">
+                <div class="footer-agency">
+                    <div class="name">구미시 자율주행 관제센터</div>
+                    <address class="address">경상북도 구미시 구미대로 350-27 관제센터 2층</address>
+                </div>
+                <div class="footer-contact-info">
+                    <span><b>Tel:</b> 054-000-0000</span>
+                    <span><b>Email:</b> <a href="mailto:contact@gumi-adbc.kr" style="color: inherit; text-decoration: none;">contact@gumi-adbc.kr</a></span>
+                    <span><b>Fax:</b> 054-000-0001</span>
                 </div>
             </div>
-            <div class="footer-contact">
-                <span><b>Tel:</b> 054-000-0000</span>
-                <span><b>Email:</b> contact@gumi-adbc.kr</span>
-                <span><b>Fax:</b> 054-000-0001</span>
+
+            <!-- Row 2: Policy Links -->
+            <div class="footer-links-row">
+                <a href="#" style="font-weight: 700; color: #fff;">개인정보처리방침</a>
+                <span class="sep">|</span>
+                <a href="#">이용약관</a>
+                <span class="sep">|</span>
+                <a href="#">이메일 무단수집 거부</a>
+                <span class="sep">|</span>
+                <a href="center-location.html">센터 위치(오시는 길)</a>
+                <span class="sep">|</span>
+                <a href="#">관련 사이트</a>
             </div>
-            <div class="footer-bottom">
-                <p class="copyright">&copy; 2026 Gumi Autonomous Driving Control Center. All Rights Reserved.</p>
+
+            <!-- Row 3: Copyright -->
+            <div class="footer-copyright-row">
+                <p class="copyright">&copy; 2026 구미시 자율주행 관제센터. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
