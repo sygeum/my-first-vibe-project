@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 | 자율주행 데이터 신청 조회</title>
+    <!-- 독립적인 CSS 사용을 위해 admin 전용 CSS만 로드 -->
+    <link rel="stylesheet" href="admin-autonomous-data.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="admin-header-logo-area">
+            <div class="admin-logo-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+            </div>
+            <div class="admin-logo-text">
+                <span class="admin-logo-title">구미 자율주행</span>
+                <span class="admin-logo-sub">관리자 시스템</span>
+            </div>
+        </div>
+        <div class="admin-header-nav">
+            <div class="admin-header-breadcrumb">관리자 > 자율주행 데이터 신청 조회</div>
+            <div class="admin-header-info">
+                <span style="font-weight: 800; margin-right:5px;">ADMIN</span>
+                <span class="admin-badge-role">최고관리자 ▾</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Layout -->
+    <div class="admin-layout">
+        
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-title">메뉴 관리</div>
+            <ul class="admin-sidebar-menu">
+                <li>
+                    <a href="admin-autonomous-data.html" class="admin-sidebar-link active">
+                        <span class="admin-menu-icon">📄</span> 
+                        <span class="admin-sidebar-link-text">자율주행 데이터 신청 조회</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="admin-analysis-data.html" class="admin-sidebar-link">
+                        <span class="admin-menu-icon" style="color:var(--admin-text-muted);">📊</span> 
+                        <span class="admin-sidebar-link-text" style="color:var(--admin-text-muted);">분석 데이터 신청 확인</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="admin-mobile-service.html" class="admin-sidebar-link">
+                        <span class="admin-menu-icon" style="color:var(--admin-text-muted);">📱</span> 
+                        <span class="admin-sidebar-link-text" style="color:var(--admin-text-muted);">모바일 서비스 신청</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            
+            <div class="admin-page-header">
+                <div class="admin-page-title-row">
+                    <h2 class="admin-page-title">자율주행 데이터 신청 조회</h2>
+                    <span class="admin-title-badge">관리자</span>
+                </div>
+                <p class="admin-page-desc">사용자 신청 내역을 확인하고 승인 또는 반려 처리합니다. 처리 방식에 따라 결과 데이터를 함께 등록할 수 있습니다.</p>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="admin-summary-cards">
+                <div class="admin-card">
+                    <div class="admin-card-icon-wrap icon-total">📄</div>
+                    <div class="admin-card-info">
+                        <span class="admin-card-title">전체 신청</span>
+                        <span class="admin-card-value card-val-total">5</span>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-icon-wrap icon-wait">⏳</div>
+                    <div class="admin-card-info">
+                        <span class="admin-card-title">승인대기</span>
+                        <span class="admin-card-value card-val-wait">2</span>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-icon-wrap icon-appr">✅</div>
+                    <div class="admin-card-info">
+                        <span class="admin-card-title">승인완료</span>
+                        <span class="admin-card-value card-val-appr">2</span>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-icon-wrap icon-reje">❌</div>
+                    <div class="admin-card-info">
+                        <span class="admin-card-title">반려</span>
+                        <span class="admin-card-value card-val-reje">1</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Section -->
+            <div class="admin-table-section">
+                <div class="admin-table-header">
+                    <h3 class="admin-table-title">신청 목록</h3>
+                    <div class="admin-filter-group">
+                        <button class="admin-filter-btn active" data-filter="all">전체</button>
+                        <button class="admin-filter-btn" data-filter="pending">승인대기</button>
+                        <button class="admin-filter-btn" data-filter="approved">승인완료</button>
+                        <button class="admin-filter-btn" data-filter="rejected">반려</button>
+                    </div>
+                </div>
+                
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th>접수번호</th>
+                            <th>신청자명<br><span style="font-size:0.75rem; font-weight:normal; color:#a3a3a3;">연락처 (소속)</span></th>
+                            <th>신청 유형</th>
+                            <th>신청일시</th>
+                            <th>처리일자</th>
+                            <th style="text-align: center;">상태</th>
+                            <th style="text-align: center;">처리 / 조회</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-table-body">
+                        <!-- Row 1: 승인완료 -->
+                        <tr class="admin-request-row" data-status="approved">
+                            <td style="font-weight: 600;">AD-20260410-1025</td>
+                            <td>홍길동<br><span style="font-size:0.8rem; color:#666;">(주)미래차랩스</span></td>
+                            <td>LiDAR, SPaT</td>
+                            <td>2026.04.10 14:30</td>
+                            <td>2026.04.12 09:15</td>
+                            <td style="text-align: center;"><span class="admin-badge badge-approved">승인완료</span></td>
+                            <td style="text-align: center;">
+                                <button class="admin-action-btn btn-outline-blue" onclick="openFilePanel('AD-20260410-1025', '홍길동', 'LiDAR, SPaT', 'manage')">파일관리</button>
+                                <button class="admin-action-btn btn-outline-gray" onclick="openDetailModal('AD-20260410-1025', 'approved')">상세</button>
+                            </td>
+                        </tr>
+                        <!-- Row 2: 대기 -->
+                        <tr class="admin-request-row" data-status="pending">
+                            <td style="font-weight: 600;">AD-20260411-2047</td>
+                            <td>김철수<br><span style="font-size:0.8rem; color:#666;">한국대학교</span></td>
+                            <td>영상데이터, Radar</td>
+                            <td>2026.04.11 10:15</td>
+                            <td>-</td>
+                            <td style="text-align: center;"><span class="admin-badge badge-waiting">승인대기</span></td>
+                            <td style="text-align: center;">
+                                <button class="admin-action-btn btn-solid-blue" onclick="openFilePanel('AD-20260411-2047', '김철수', '영상데이터, Radar', 'approve')">승인</button>
+                                <button class="admin-action-btn btn-solid-red" onclick="openRejectModal('AD-20260411-2047')">반려</button>
+                                <button class="admin-action-btn btn-outline-gray" onclick="openDetailModal('AD-20260411-2047', 'waiting', '김철수', '영상데이터, Radar')">상세</button>
+                            </td>
+                        </tr>
+                        <!-- Row 3: 반려 -->
+                        <tr class="admin-request-row" data-status="rejected">
+                            <td style="font-weight: 600;">AD-20260412-3084</td>
+                            <td>이영희<br><span style="font-size:0.8rem; color:#666;">자율주행스타트업</span></td>
+                            <td>돌발정보, TIM</td>
+                            <td>2026.04.12 09:00</td>
+                            <td>2026.04.13 14:30</td>
+                            <td style="text-align: center;"><span class="admin-badge badge-rejected">반려</span></td>
+                            <td style="text-align: center;">
+                                <button class="admin-action-btn btn-outline-gray" onclick="openDetailModal('AD-20260412-3084', 'rejected')">상세</button>
+                            </td>
+                        </tr>
+                        <!-- Row 4: 대기 -->
+                        <tr class="admin-request-row" data-status="pending">
+                            <td style="font-weight: 600;">AD-20260413-4055</td>
+                            <td>박지민<br><span style="font-size:0.8rem; color:#666;">Gumi Auto</span></td>
+                            <td>PVD, RSA</td>
+                            <td>2026.04.13 16:45</td>
+                            <td>-</td>
+                            <td style="text-align: center;"><span class="admin-badge badge-waiting">승인대기</span></td>
+                            <td style="text-align: center;">
+                                <button class="admin-action-btn btn-solid-blue" onclick="openFilePanel('AD-20260413-4055', '박지민', 'PVD, RSA', 'approve')">승인</button>
+                                <button class="admin-action-btn btn-solid-red" onclick="openRejectModal('AD-20260413-4055')">반려</button>
+                                <button class="admin-action-btn btn-outline-gray" onclick="openDetailModal('AD-20260413-4055', 'waiting', '박지민', 'PVD, RSA')">상세</button>
+                            </td>
+                        </tr>
+                        <!-- Row 5: 승인완료 -->
+                        <tr class="admin-request-row" data-status="approved">
+                            <td style="font-weight: 600;">AD-20260414-5012</td>
+                            <td>최수민<br><span style="font-size:0.8rem; color:#666;">개인연구자</span></td>
+                            <td>LiDAR</td>
+                            <td>2026.04.14 11:20</td>
+                            <td>2026.04.14 15:00</td>
+                            <td style="text-align: center;"><span class="admin-badge badge-approved">승인완료</span></td>
+                            <td style="text-align: center;">
+                                <button class="admin-action-btn btn-outline-blue" onclick="openFilePanel('AD-20260414-5012', '최수민', 'LiDAR', 'manage')">파일관리</button>
+                                <button class="admin-action-btn btn-outline-gray" onclick="openDetailModal('AD-20260414-5012', 'approved')">상세</button>
+                            </td>
+                        </tr>
+                        
+                        <!-- 빈 결과 안내 (숨김 상태 기본) -->
+                        <tr id="admin-empty-row" style="display: none;">
+                            <td colspan="7" class="admin-empty-message" style="text-align: center; padding: 60px 20px; color: var(--admin-text-muted);">
+                                선택한 상태의 신청 내역이 없습니다.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- 파일등록 / 파일관리 사이드 패널 (Slide Panel) -->
+    <div id="filePanelOverlay" class="admin-file-panel-overlay">
+        <div class="admin-file-panel">
+            
+            <div class="admin-file-panel-header">
+                <div class="admin-file-panel-header-top">
+                    <!-- Title changes dynamically based on mode -->
+                    <h3 class="admin-file-panel-title" id="file-panel-title">승인 및 파일 등록</h3>
+                    <button class="admin-file-panel-close" onclick="closeFilePanel()">×</button>
+                </div>
+                <div class="admin-file-panel-info">
+                    <strong>접수번호: </strong> <span id="file-panel-id">AD-20260410-1025</span><br>
+                    <strong>신청자: </strong> <span id="file-panel-name">홍길동</span><br>
+                    <strong>신청 데이터 유형: </strong> <span id="file-panel-type" style="color:var(--admin-blue-main); font-weight:700;">LiDAR, SPaT</span>
+                </div>
+            </div>
+
+            <div class="admin-file-panel-body">
+                
+                <!-- 파일 업로드 컴포넌트 -->
+                <div class="admin-file-upload">
+                    <div class="admin-file-upload-icon">📥</div>
+                    <p>파일을 드래그하거나 클릭하여 업로드하세요</p>
+                    <span>(지원 확장자: .xlsx, .csv, .zip 등)</span>
+                    <button class="admin-btn admin-btn-secondary" onclick="alert('파일 탐색기 열기 (개발 예정)')">파일 선택</button>
+                </div>
+
+                <!-- 파일 목록 타이틀 -->
+                <div class="admin-file-list-header">
+                    <div class="admin-file-list-title">업로드된 파일 목록</div>
+                    <!-- Summary changes dynamically based on mode -->
+                    <div class="admin-file-summary" id="file-panel-summary">총 0개 파일 업로드됨</div>
+                </div>
+
+                <!-- 업로드된 파일이 없을 때 보여질 메시지 영역 -->
+                <div id="file-panel-empty-msg" class="admin-file-empty">
+                    등록된 파일이 없습니다.
+                </div>
+
+                <!-- 업로드된 파일 리스트 (동적 표시) -->
+                <div class="admin-file-list" id="file-panel-file-list" style="display:none;">
+                    <!-- 항목 1 -->
+                    <div class="admin-file-item">
+                        <div class="admin-file-item-info">
+                            <span class="admin-file-icon">📊</span>
+                            <div>
+                                <div class="admin-file-name">GPS_data_2026.xlsx</div>
+                                <div class="admin-file-size">1.2 MB</div>
+                            </div>
+                        </div>
+                        <button class="admin-file-delete-btn" onclick="alert('파일이 삭제됩니다.')">[삭제]</button>
+                    </div>
+                    <!-- 항목 2 -->
+                    <div class="admin-file-item">
+                        <div class="admin-file-item-info">
+                            <span class="admin-file-icon">📊</span>
+                            <div>
+                                <div class="admin-file-name">Radar_Log_A.xlsx</div>
+                                <div class="admin-file-size">4.5 MB</div>
+                            </div>
+                        </div>
+                        <button class="admin-file-delete-btn" onclick="alert('파일이 삭제됩니다.')">[삭제]</button>
+                    </div>
+                    <!-- 항목 3 -->
+                    <div class="admin-file-item">
+                        <div class="admin-file-item-info">
+                            <span class="admin-file-icon">📊</span>
+                            <div>
+                                <div class="admin-file-name">CCTV_Sample.xlsx</div>
+                                <div class="admin-file-size">2.8 MB</div>
+                            </div>
+                        </div>
+                        <button class="admin-file-delete-btn" onclick="alert('파일이 삭제됩니다.')">[삭제]</button>
+                    </div>
+                </div>
+
+                <!-- 제공 옵션 영역 -->
+                <label class="admin-file-option">
+                    <input type="checkbox" checked>
+                    <span>zip 파일로 압축하여 사용자에게 제공</span>
+                </label>
+
+            </div>
+
+            <!-- 패널 하단 고정 버튼 -->
+            <div class="admin-file-panel-footer">
+                <button class="admin-btn admin-btn-secondary" onclick="closeFilePanel()">취소</button>
+                <button class="admin-btn admin-btn-primary" id="file-panel-submit-btn" onclick="closeFilePanel();">파일 저장 후 승인</button>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- 상세 조회 모달 (Detail Modal) -->
+    <div id="detailModalOverlay" class="admin-modal-overlay">
+        <!-- 기존 상세 마크업 -->
+        <div class="admin-modal">
+            <div class="admin-modal-header">
+                <h3 class="admin-modal-title">신청 상세 내역</h3>
+                <button class="admin-modal-close" onclick="closeModal('detailModalOverlay')">×</button>
+            </div>
+            <div class="admin-modal-body">
+                <div class="admin-detail-grid">
+                    <div class="admin-detail-label">접수번호</div>
+                    <div class="admin-detail-value" id="modal-id" style="font-weight: 700; color: var(--admin-blue-main);">AD-20260411-2047</div>
+
+                    <div class="admin-detail-label">상태</div>
+                    <div class="admin-detail-value"><span id="modal-status-badge" class="admin-badge badge-waiting">승인대기</span></div>
+
+                    <div class="admin-detail-label">신청자명 (소속)</div>
+                    <div class="admin-detail-value">김철수 / 한국대학교</div>
+
+                    <div class="admin-detail-label">연락처 / 이메일</div>
+                    <div class="admin-detail-value">010-1234-5678 / user@example.com</div>
+
+                    <div class="admin-detail-label">신청 데이터 유형</div>
+                    <div class="admin-detail-value">영상데이터, Radar</div>
+
+                    <div class="admin-detail-label">데이터 활용 목적</div>
+                    <div class="admin-detail-value">자율주행 관제 시스템에 연동 가능한 인지 시스템 개선 알고리즘 테스트 연구 목적</div>
+
+                    <div class="admin-detail-label">첨부파일</div>
+                    <div class="admin-detail-value"><a href="#" style="color: var(--admin-blue-main); text-decoration: underline;">사업계획서.pdf</a></div>
+                </div>
+
+                <!-- 반려 사유 영역 -->
+                <div id="modal-rejected-reason" style="display: none; margin-top:20px; border:1px solid var(--admin-border); padding:15px; border-radius:8px; background:#f9fafb;">
+                    <div style="font-weight: 700; color: #dc2626; margin-bottom: 5px;">반려 사유</div>
+                    <div style="color: var(--admin-text-main); line-height: 1.5;">요청하신 데이터 제공 기간이 최대 허용 범위를 초과하였습니다. 기간을 조정하여 재신청 부탁드립니다.</div>
+                </div>
+            </div>
+            <div class="admin-modal-footer" id="modal-action-footer">
+                <button class="admin-btn admin-btn-cancel" onclick="closeModal('detailModalOverlay')">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 반려 처리 모달 (Reject Action Modal) -->
+    <div id="rejectModalOverlay" class="admin-modal-overlay">
+        <!-- 기존 반려 모달 그대로 유지 -->
+        <div class="admin-modal" style="width: 500px;">
+            <div class="admin-modal-header">
+                <h3 class="admin-modal-title" style="color: #dc2626;">반려 처리</h3>
+                <button class="admin-modal-close" onclick="closeModal('rejectModalOverlay')">×</button>
+            </div>
+            <div class="admin-modal-body">
+                <p style="margin-top: 0;">선택하신 <strong id="reject-modal-id"></strong> 건을 반려 처리합니다.</p>
+                <div style="font-weight: 600; margin-bottom: 8px;">반려 사유 입력 <span style="color: #dc2626;">*</span></div>
+                <textarea class="admin-reason-textarea" placeholder="상세한 반려 사유를 입력하세요."></textarea>
+            </div>
+            <div class="admin-modal-footer">
+                <button class="admin-btn admin-btn-cancel" onclick="closeModal('rejectModalOverlay')">취소</button>
+                <button class="admin-btn admin-btn-danger" onclick="alert('반려 처리되었습니다.'); closeModal('rejectModalOverlay');">반려 확정</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        /* ==================
+           Table Filter Logic
+           ================== */
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.admin-filter-btn');
+            const tableRows = document.querySelectorAll('.admin-request-row');
+            const emptyRow = document.getElementById('admin-empty-row');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // 버튼 활성화 처리
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    // 필터값 획득
+                    const filterValue = this.getAttribute('data-filter');
+                    let visibleCount = 0;
+
+                    // 행 순회하며 노출 제어
+                    tableRows.forEach(row => {
+                        if (filterValue === 'all' || row.getAttribute('data-status') === filterValue) {
+                            row.style.display = '';
+                            visibleCount++;
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+
+                    // 빈 결과 안내 처리
+                    if (visibleCount === 0) {
+                        emptyRow.style.display = '';
+                    } else {
+                        emptyRow.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        /* ==================
+           File Panel Control Logic
+           ================== */
+        // mode = 'approve' (승인 시 파일등록) OR 'manage' (승인완료 시 파일관리)
+        function openFilePanel(id, name, dataType, mode) {
+            
+            document.getElementById('file-panel-id').innerText = id;
+            document.getElementById('file-panel-name').innerText = name;
+            document.getElementById('file-panel-type').innerText = dataType;
+            
+            const title = document.getElementById('file-panel-title');
+            const submitBtn = document.getElementById('file-panel-submit-btn');
+            const emptyMsg = document.getElementById('file-panel-empty-msg');
+            const fileList = document.getElementById('file-panel-file-list');
+            const summary = document.getElementById('file-panel-summary');
+
+            // [승인 버튼 클릭 -> approve 모드]
+            if (mode === 'approve') {
+                title.innerText = '승인 및 파일 등록';
+                submitBtn.innerText = '파일 저장 후 승인';
+                // 승인 처리 메시지 후 닫기
+                submitBtn.setAttribute('onclick', "alert('파일이 등록되었으며 승인완료 상태로 변경되었습니다.'); closeFilePanel();");
+                
+                // 더미 파일 숨김 처리 (신규 승인은 파일이 없다고 가정)
+                emptyMsg.style.display = 'block';
+                fileList.style.display = 'none';
+                summary.innerText = '총 0개 파일 업로드됨';
+
+            // [파일관리 버튼 클릭 -> manage 모드]
+            } else if (mode === 'manage') {
+                title.innerText = '파일 관리';
+                submitBtn.innerText = '저장';
+                // 단순 저장 메시지 후 닫기
+                submitBtn.setAttribute('onclick', "alert('파일 등록/수정이 완료되었습니다.'); closeFilePanel();");
+                
+                // 더미 파일 노출 처리 (기존 승인건은 파일이 있다고 가정)
+                emptyMsg.style.display = 'none';
+                fileList.style.display = 'flex';
+                summary.innerText = '총 3개 파일 업로드됨';
+            }
+
+            // 패널 열기
+            document.getElementById('filePanelOverlay').classList.add('active');
+        }
+
+        function closeFilePanel() {
+            document.getElementById('filePanelOverlay').classList.remove('active');
+        }
+
+        /* ==================
+           Detail / Reject Modal Control
+           ================== */
+        // 상세 모달에서도 원활하게 파일 패널을 호출할 수 있도록 name, type 인자 추가
+        function openDetailModal(id, status, name = '해당 신청자', type = '선택된 유형') {
+            document.getElementById('modal-id').innerText = id;
+            
+            const badge = document.getElementById('modal-status-badge');
+            const rejectBox = document.getElementById('modal-rejected-reason');
+            const footer = document.getElementById('modal-action-footer');
+            
+            // 초기화
+            rejectBox.style.display = 'none';
+            
+            // 상태별 버튼 노출 렌더링
+            if (status === 'waiting') {
+                badge.className = 'admin-badge badge-waiting';
+                badge.innerText = '승인대기';
+                // Alert 승인 처리 대신, 패널 호출 로직으로 변경 ('승인 및 파일등록' 버튼)
+                footer.innerHTML = `
+                    <button class="admin-btn admin-btn-cancel" onclick="closeModal('detailModalOverlay')">닫기</button>
+                    <button class="admin-btn admin-btn-danger" onclick="closeModal('detailModalOverlay'); openRejectModal('${id}')">반려 처리</button>
+                    <button class="admin-btn admin-btn-primary" onclick="closeModal('detailModalOverlay'); window.setTimeout(()=>openFilePanel('${id}', '${name}', '${type}', 'approve'), 300)">승인 및 파일등록</button>
+                `;
+            } else if (status === 'approved') {
+                badge.className = 'admin-badge badge-approved';
+                badge.innerText = '승인완료';
+                footer.innerHTML = `
+                    <button class="admin-btn admin-btn-cancel" onclick="closeModal('detailModalOverlay')">닫기</button>
+                `;
+            } else if (status === 'rejected') {
+                badge.className = 'admin-badge badge-rejected';
+                badge.innerText = '반려';
+                rejectBox.style.display = 'block';
+                footer.innerHTML = `
+                    <button class="admin-btn admin-btn-cancel" onclick="closeModal('detailModalOverlay')">닫기</button>
+                `;
+            }
+
+            document.getElementById('detailModalOverlay').classList.add('active');
+        }
+
+        function openRejectModal(id) {
+            document.getElementById('reject-modal-id').innerText = id;
+            document.getElementById('rejectModalOverlay').classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Close overlay when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('admin-modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+            if (event.target.classList.contains('admin-file-panel-overlay')) {
+                event.target.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>

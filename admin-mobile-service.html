@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>관리자 | 모바일 서비스 신청 확인</title>
+    <link rel="stylesheet" href="admin-mobile-service.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div class="admin-header-logo-area">
+            <div class="admin-logo-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+            </div>
+            <div class="admin-logo-text">
+                <span class="admin-logo-title">구미 자율주행</span>
+                <span class="admin-logo-sub">관리자 시스템</span>
+            </div>
+        </div>
+        <div class="admin-header-nav">
+            <div class="admin-header-breadcrumb">관리자 > 모바일 서비스 신청</div>
+            <div class="admin-header-info">
+                <span style="font-weight: 800; margin-right:5px;">ADMIN</span>
+                <span class="admin-badge-role">최고관리자 ▾</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Admin Layout -->
+    <div class="admin-layout">
+        
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <div class="admin-sidebar-title">메뉴 관리</div>
+            <ul class="admin-sidebar-menu">
+                <li>
+                    <a href="admin-autonomous-data.html" class="admin-sidebar-link">
+                        <span class="admin-menu-icon" style="color:var(--admin-text-muted);">📄</span> 
+                        <span class="admin-sidebar-link-text" style="color:var(--admin-text-muted);">자율주행 데이터 신청 조회</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="admin-analysis-data.html" class="admin-sidebar-link">
+                        <span class="admin-menu-icon" style="color:var(--admin-text-muted);">📊</span> 
+                        <span class="admin-sidebar-link-text" style="color:var(--admin-text-muted);">분석 데이터 신청 확인</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="admin-mobile-service.html" class="admin-sidebar-link active">
+                        <span class="admin-menu-icon">📱</span> 
+                        <span class="admin-sidebar-link-text">모바일 서비스 신청</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            
+            <div class="admin-page-header">
+                <div class="admin-page-title-row">
+                    <h2 class="admin-page-title">모바일 서비스 신청 확인</h2>
+                    <span class="admin-title-badge">관리자</span>
+                </div>
+                <p class="admin-page-desc">사용자가 제출한 모바일 서비스 신청 내역을 확인하고, 서비스 이용 목적 검토 후 URL 링크를 등록하여 승인 또는 반려 처리합니다.</p>
+            </div>
+
+            <!-- Summary Cards -->
+            <div class="admin-summary-cards">
+                <div class="admin-card">
+                    <div class="admin-card-icon-wrap icon-total">📱</div>
+                    <div class="admin-card-info">
+                        <span class="admin-card-title">전체 신청</span>
+                        <span class="admin-card-value card-val-total">5</span>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-icon-wrap icon-wait">⏳</div>
+                    <div class="admin-card-info">
+                        <span class="admin-card-title">승인대기</span>
+                        <span class="admin-card-value card-val-wait">2</span>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-icon-wrap icon-appr">✅</div>
+                    <div class="admin-card-info">
+                        <span class="admin-card-title">승인완료</span>
+                        <span class="admin-card-value card-val-appr">2</span>
+                    </div>
+                </div>
+                <div class="admin-card">
+                    <div class="admin-card-icon-wrap icon-reje">❌</div>
+                    <div class="admin-card-info">
+                        <span class="admin-card-title">반려</span>
+                        <span class="admin-card-value card-val-reje">1</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Table Section -->
+            <div class="admin-table-section">
+                <div class="admin-table-header">
+                    <h3 class="admin-table-title">신청 목록</h3>
+                    <div class="admin-filter-group">
+                        <button class="admin-filter-btn active" data-filter="all">전체</button>
+                        <button class="admin-filter-btn" data-filter="pending">승인대기</button>
+                        <button class="admin-filter-btn" data-filter="approved">승인완료</button>
+                        <button class="admin-filter-btn" data-filter="rejected">반려</button>
+                    </div>
+                </div>
+                
+                <table class="admin-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 14%;">접수번호</th>
+                            <th style="width: 12%;">신청자명</th>
+                            <th style="width: 20%;">서비스 이용 목적</th>
+                            <th style="width: 12%;">신청일시</th>
+                            <th style="width: 12%;">처리일자</th>
+                            <th style="width: 10%; text-align: center;">상태</th>
+                            <th style="width: 20%; text-align: center;">처리 / 조회</th>
+                        </tr>
+                    </thead>
+                    <tbody id="admin-table-body">
+                        <!-- Row 1: 승인완료 -->
+                        <tr class="admin-request-row" data-status="approved">
+                            <td style="font-weight: 600;">MB-20260421-001</td>
+                            <td>김대표</td>
+                            <td>현장 모니터링용 모바일 접속</td>
+                            <td>2026.04.21 10:00</td>
+                            <td>2026.04.21 13:30</td>
+                            <td style="text-align: center;"><span class="admin-badge badge-approved">승인완료</span></td>
+                            <td style="text-align: center;">
+                                <button class="admin-action-btn btn-outline-blue" onclick="openUrlPanel('MB-20260421-001', '김대표', '현장 모니터링용 모바일 접속', 'manage', 'https://example.com/mobile-service/a1b2c3')">URL관리</button>
+                                <button class="admin-action-btn btn-outline-gray" onclick="openDetailModal('MB-20260421-001', 'approved', '김대표', '현장 모니터링용 모바일 접속', '지원사업_증빙자료.pdf', '2026.04.21 10:00', 'https://example.com/mobile-service/a1b2c3')">상세</button>
+                            </td>
+                        </tr>
+                        <!-- Row 2: 대기 -->
+                        <tr class="admin-request-row" data-status="pending">
+                            <td style="font-weight: 600;">MB-20260421-002</td>
+                            <td>이팀장</td>
+                            <td>테스트 차량 상태 확인</td>
+                            <td>2026.04.21 14:15</td>
+                            <td>-</td>
+                            <td style="text-align: center;"><span class="admin-badge badge-waiting">승인대기</span></td>
+                            <td style="text-align: center;">
+                                <button class="admin-action-btn btn-solid-blue" onclick="openUrlPanel('MB-20260421-002', '이팀장', '테스트 차량 상태 확인', 'approve')">승인</button>
+                                <button class="admin-action-btn btn-solid-red" onclick="openRejectModal('MB-20260421-002')">반려</button>
+                                <button class="admin-action-btn btn-outline-gray" onclick="openDetailModal('MB-20260421-002', 'waiting', '이팀장', '테스트 차량 상태 확인', '없음', '2026.04.21 14:15')">상세</button>
+                            </td>
+                        </tr>
+                        <!-- Row 3: 대기 -->
+                        <tr class="admin-request-row" data-status="pending">
+                            <td style="font-weight: 600;">MB-20260420-003</td>
+                            <td>박연구원</td>
+                            <td>관리자용 데모 계정 요청</td>
+                            <td>2026.04.20 09:30</td>
+                            <td>-</td>
+                            <td style="text-align: center;"><span class="admin-badge badge-waiting">승인대기</span></td>
+                            <td style="text-align: center;">
+                                <button class="admin-action-btn btn-solid-blue" onclick="openUrlPanel('MB-20260420-003', '박연구원', '관리자용 데모 계정 요청', 'approve')">승인</button>
+                                <button class="admin-action-btn btn-solid-red" onclick="openRejectModal('MB-20260420-003')">반려</button>
+                                <button class="admin-action-btn btn-outline-gray" onclick="openDetailModal('MB-20260420-003', 'waiting', '박연구원', '관리자용 데모 계정 요청', '연구계획서.pdf', '2026.04.20 09:30')">상세</button>
+                            </td>
+                        </tr>
+                        <!-- Row 4: 반려 -->
+                        <tr class="admin-request-row" data-status="rejected">
+                            <td style="font-weight: 600;">MB-20260419-004</td>
+                            <td>최직원</td>
+                            <td>서비스 시연 및 검토용</td>
+                            <td>2026.04.19 16:45</td>
+                            <td>2026.04.20 10:10</td>
+                            <td style="text-align: center;"><span class="admin-badge badge-rejected">반려</span></td>
+                            <td style="text-align: center;">
+                                <button class="admin-action-btn btn-outline-gray" onclick="openDetailModal('MB-20260419-004', 'rejected', '최직원', '서비스 시연 및 검토용', '없음', '2026.04.19 16:45', null, '소속 기관 증빙이 누락되어 승인이 불가합니다. 서류 보완 후 재신청 부탁드립니다.')">상세</button>
+                            </td>
+                        </tr>
+                        <!-- Row 5: 승인완료 -->
+                        <tr class="admin-request-row" data-status="approved">
+                            <td style="font-weight: 600;">MB-20260418-005</td>
+                            <td>정주임</td>
+                            <td>실시간 알림 수신용</td>
+                            <td>2026.04.18 11:20</td>
+                            <td>2026.04.19 09:00</td>
+                            <td style="text-align: center;"><span class="admin-badge badge-approved">승인완료</span></td>
+                            <td style="text-align: center;">
+                                <button class="admin-action-btn btn-outline-blue" onclick="openUrlPanel('MB-20260418-005', '정주임', '실시간 알림 수신용', 'manage', 'https://example.com/mobile-service/x9y8z7')">URL관리</button>
+                                <button class="admin-action-btn btn-outline-gray" onclick="openDetailModal('MB-20260418-005', 'approved', '정주임', '실시간 알림 수신용', '신청서_사본.pdf', '2026.04.18 11:20', 'https://example.com/mobile-service/x9y8z7')">상세</button>
+                            </td>
+                        </tr>
+                        
+                        <!-- 빈 결과 안내 (숨김 상태 기본) -->
+                        <tr id="admin-empty-row" style="display: none;">
+                            <td colspan="7" class="admin-empty-message" style="text-align: center; padding: 60px 20px; color: var(--admin-text-muted);">
+                                선택한 상태의 신청 내역이 없습니다.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- URL 등록 / 관리 사이드 패널 (Slide Panel) -->
+    <div id="urlPanelOverlay" class="admin-file-panel-overlay">
+        <div class="admin-file-panel">
+            
+            <div class="admin-file-panel-header">
+                <div class="admin-file-panel-header-top">
+                    <h3 class="admin-file-panel-title" id="url-panel-title">승인 및 URL 등록</h3>
+                    <button class="admin-file-panel-close" onclick="closeUrlPanel()">×</button>
+                </div>
+                <div class="admin-file-panel-info">
+                    <strong>접수번호: </strong> <span id="url-panel-id"></span><br>
+                    <strong>신청자명: </strong> <span id="url-panel-name"></span><br>
+                    <strong>서비스 이용 목적: </strong> <span id="url-panel-purpose" style="color:var(--admin-blue-main); font-weight:700;"></span>
+                </div>
+            </div>
+
+            <div class="admin-file-panel-body">
+                <div class="admin-url-input-section">
+                    <label class="admin-url-label">사용자에게 제공할 모바일 서비스 접속 URL을 입력해주세요.</label>
+                    <div class="admin-url-input-wrapper">
+                        <input type="text" id="url-input-field" class="admin-url-input" placeholder="https://example.com/mobile-service/abc123">
+                        <button class="admin-url-copy-btn" onclick="copyUrl()">복사</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="admin-file-panel-footer">
+                <button class="admin-btn admin-btn-secondary" onclick="closeUrlPanel()">취소</button>
+                <button class="admin-btn admin-btn-primary" id="url-panel-submit-btn" onclick="submitUrlAction()">저장 후 승인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 상세 조회 모달 -->
+    <div id="detailModalOverlay" class="admin-modal-overlay">
+        <div class="admin-modal">
+            <div class="admin-modal-header">
+                <h3 class="admin-modal-title">신청 상세 내역</h3>
+                <button class="admin-modal-close" onclick="closeModal('detailModalOverlay')">×</button>
+            </div>
+            <div class="admin-modal-body">
+                <div class="admin-detail-grid">
+                    <div class="admin-detail-label">접수번호</div>
+                    <div class="admin-detail-value" id="modal-id" style="font-weight: 700; color: var(--admin-blue-main);"></div>
+
+                    <div class="admin-detail-label">상태</div>
+                    <div class="admin-detail-value"><span id="modal-status-badge"></span></div>
+
+                    <div class="admin-detail-label">신청자명</div>
+                    <div class="admin-detail-value" id="modal-name"></div>
+
+                    <div class="admin-detail-label">신청일시</div>
+                    <div class="admin-detail-value" id="modal-date"></div>
+
+                    <div class="admin-detail-label">서비스 이용 목적</div>
+                    <div class="admin-detail-value" id="modal-purpose"></div>
+
+                    <div class="admin-detail-label">첨부파일</div>
+                    <div class="admin-detail-value" id="modal-file"></div>
+
+                    <div class="admin-detail-label" id="modal-url-label" style="display:none;">등록 URL</div>
+                    <div class="admin-detail-value" id="modal-url-value" style="display:none; color:var(--admin-blue-main); font-weight:600; text-decoration:underline;"></div>
+                </div>
+
+                <!-- 반려 사유 영역 -->
+                <div id="modal-rejected-reason" style="display: none; margin-top:20px; border:1px solid var(--admin-border); padding:15px; border-radius:8px; background:#f9fafb;">
+                    <div style="font-weight: 700; color: #dc2626; margin-bottom: 5px;">반려 사유</div>
+                    <div id="modal-reject-text" style="color: var(--admin-text-main); line-height: 1.5;"></div>
+                </div>
+            </div>
+            <div class="admin-modal-footer" id="modal-action-footer">
+                <button class="admin-btn admin-btn-cancel" onclick="closeModal('detailModalOverlay')">닫기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 반려 처리 모달 -->
+    <div id="rejectModalOverlay" class="admin-modal-overlay">
+        <div class="admin-modal" style="width: 500px;">
+            <div class="admin-modal-header">
+                <h3 class="admin-modal-title" style="color: #dc2626;">반려 처리</h3>
+                <button class="admin-modal-close" onclick="closeModal('rejectModalOverlay')">×</button>
+            </div>
+            <div class="admin-modal-body">
+                <p style="margin-top: 0;">선택하신 <strong id="reject-modal-id"></strong> 건을 반려 처리합니다.</p>
+                <div style="font-weight: 600; margin-bottom: 8px;">반려 사유 입력 <span style="color: #dc2626;">*</span></div>
+                <textarea class="admin-reason-textarea" placeholder="상세한 반려 사유를 입력하세요. 예) 서비스 이용 목적 확인 필요"></textarea>
+            </div>
+            <div class="admin-modal-footer">
+                <button class="admin-btn admin-btn-cancel" onclick="closeModal('rejectModalOverlay')">취소</button>
+                <button class="admin-btn admin-btn-danger" onclick="alert('반려 처리되었습니다.'); closeModal('rejectModalOverlay');">반려 확정</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /* ==================
+           Table Filter Logic
+           ================== */
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterBtns = document.querySelectorAll('.admin-filter-btn');
+            const tableRows = document.querySelectorAll('.admin-request-row');
+            const emptyRow = document.getElementById('admin-empty-row');
+
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    filterBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+
+                    const filterValue = this.getAttribute('data-filter');
+                    let visibleCount = 0;
+
+                    tableRows.forEach(row => {
+                        if (filterValue === 'all' || row.getAttribute('data-status') === filterValue) {
+                            row.style.display = '';
+                            visibleCount++;
+                        } else {
+                            row.style.display = 'none';
+                        }
+                    });
+
+                    if (visibleCount === 0) {
+                        emptyRow.style.display = '';
+                    } else {
+                        emptyRow.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        /* ==================
+           URL Panel Control
+           ================== */
+        let currentUrlMode = 'approve';
+
+        // mode = 'approve' (승인 시 URL 등록) OR 'manage' (승인완료 시 URL 확인/수정)
+        function openUrlPanel(id, name, purpose, mode, url = '') {
+            document.getElementById('url-panel-id').innerText = id;
+            document.getElementById('url-panel-name').innerText = name;
+            document.getElementById('url-panel-purpose').innerText = purpose;
+            
+            const title = document.getElementById('url-panel-title');
+            const submitBtn = document.getElementById('url-panel-submit-btn');
+            const inputField = document.getElementById('url-input-field');
+            
+            currentUrlMode = mode;
+            inputField.value = url;
+
+            if (mode === 'approve') {
+                title.innerText = '승인 및 URL 등록';
+                submitBtn.innerText = '저장 후 승인';
+            } else if (mode === 'manage') {
+                title.innerText = 'URL 관리';
+                submitBtn.innerText = '저장';
+            }
+
+            document.getElementById('urlPanelOverlay').classList.add('active');
+        }
+
+        function closeUrlPanel() {
+            document.getElementById('urlPanelOverlay').classList.remove('active');
+        }
+
+        function submitUrlAction() {
+            const urlVal = document.getElementById('url-input-field').value;
+            if(!urlVal.trim()) {
+                alert('URL을 입력해주세요.');
+                return;
+            }
+
+            if (currentUrlMode === 'approve') {
+                alert('URL이 등록되었으며 승인완료 상태로 변경되었습니다.');
+            } else {
+                alert('URL 정보가 저장되었습니다.');
+            }
+            closeUrlPanel();
+            // In a real scenario, this would update the UI or call an API.
+        }
+
+        function copyUrl() {
+            const urlVal = document.getElementById('url-input-field').value;
+            if(!urlVal) {
+                alert('복사할 URL이 없습니다.');
+                return;
+            }
+            navigator.clipboard.writeText(urlVal).then(() => {
+                alert('URL이 복사되었습니다.');
+            });
+        }
+
+        /* ==================
+           Detail / Reject Modal
+           ================== */
+        function openDetailModal(id, status, name, purpose, fileName, date, url = '', rejectReason = '') {
+            document.getElementById('modal-id').innerText = id;
+            document.getElementById('modal-name').innerText = name;
+            document.getElementById('modal-purpose').innerText = purpose;
+            document.getElementById('modal-date').innerText = date;
+            
+            // 파일 렌더링
+            const fileContainer = document.getElementById('modal-file');
+            if(fileName && fileName !== '없음') {
+                fileContainer.innerHTML = `<a href="#" style="color: var(--admin-blue-main); text-decoration: underline;">${fileName}</a>`;
+            } else {
+                fileContainer.innerText = '없음';
+            }
+            
+            const badge = document.getElementById('modal-status-badge');
+            const rejectBox = document.getElementById('modal-rejected-reason');
+            const rejectText = document.getElementById('modal-reject-text');
+            const urlLabel = document.getElementById('modal-url-label');
+            const urlValue = document.getElementById('modal-url-value');
+            const footer = document.getElementById('modal-action-footer');
+            
+            // 초기화
+            rejectBox.style.display = 'none';
+            urlLabel.style.display = 'none';
+            urlValue.style.display = 'none';
+            
+            // 상태별 렌더링
+            if (status === 'waiting') {
+                badge.className = 'admin-badge badge-waiting';
+                badge.innerText = '승인대기';
+                footer.innerHTML = `
+                    <button class="admin-btn admin-btn-cancel" onclick="closeModal('detailModalOverlay')">닫기</button>
+                    <button class="admin-btn admin-btn-danger" onclick="closeModal('detailModalOverlay'); openRejectModal('${id}')">반려 처리</button>
+                    <button class="admin-btn admin-btn-primary" onclick="closeModal('detailModalOverlay'); window.setTimeout(()=>openUrlPanel('${id}', '${name}', '${purpose}', 'approve'), 300)">승인 및 URL 등록</button>
+                `;
+            } else if (status === 'approved') {
+                badge.className = 'admin-badge badge-approved';
+                badge.innerText = '승인완료';
+                
+                urlLabel.style.display = 'block';
+                urlValue.style.display = 'block';
+                urlValue.innerText = url;
+                
+                footer.innerHTML = `
+                    <button class="admin-btn admin-btn-cancel" onclick="closeModal('detailModalOverlay')">닫기</button>
+                `;
+            } else if (status === 'rejected') {
+                badge.className = 'admin-badge badge-rejected';
+                badge.innerText = '반려';
+                
+                rejectBox.style.display = 'block';
+                rejectText.innerText = rejectReason;
+                
+                footer.innerHTML = `
+                    <button class="admin-btn admin-btn-cancel" onclick="closeModal('detailModalOverlay')">닫기</button>
+                `;
+            }
+
+            document.getElementById('detailModalOverlay').classList.add('active');
+        }
+
+        function openRejectModal(id) {
+            document.getElementById('reject-modal-id').innerText = id;
+            document.getElementById('rejectModalOverlay').classList.add('active');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+        }
+
+        // Close overlay when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('admin-modal-overlay')) {
+                event.target.classList.remove('active');
+            }
+            if (event.target.classList.contains('admin-file-panel-overlay')) {
+                event.target.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
